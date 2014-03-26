@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="371b0d0a-3d41-4432-ac5f-5f40d99a6a42" name="Nemanja@DNEVNA-SOBA 2014-03-01 01:54:02" runUser="DNEVNA-SOBA\Nemanja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="e92095fd-dfc3-4560-8d1f-742883501953">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Nemanja_DNEVNA-SOBA 2014-03-01 01_54_02">
+      <DeploymentItem filename="C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\PolAutData\bin\Debug\PolAutData.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-03-01T01:54:02.4375000+01:00" queuing="2014-03-01T01:54:05.1562500+01:00" start="2014-03-01T01:54:05.7812500+01:00" finish="2014-03-01T01:54:55.1875000+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="DNEVNA-SOBA" outcome="Error" timestamp="2014-03-01T01:54:55.1875000+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="OpenAndCloseConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\testproject1\bin\debug\testproject1.dll" id="11c6a725-341b-5dfd-d497-0eb44cd1cc86">
+      <Execution id="f4073112-5863-4e32-b88b-4414bb08224b" />
+      <TestMethod codeBase="C:/Documents and Settings/Nemanja/My Documents/Visual Studio 2008/Projects/PolovniAutomobili/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Providers.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="OpenAndCloseConnection" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="11c6a725-341b-5dfd-d497-0eb44cd1cc86" executionId="f4073112-5863-4e32-b88b-4414bb08224b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="f4073112-5863-4e32-b88b-4414bb08224b" testId="11c6a725-341b-5dfd-d497-0eb44cd1cc86" testName="OpenAndCloseConnection" computerName="DNEVNA-SOBA" duration="00:00:49.0781250" startTime="2014-03-01T01:54:06.1093750+01:00" endTime="2014-03-01T01:54:55.1875000+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f4073112-5863-4e32-b88b-4414bb08224b">
+    </UnitTestResult>
+  </Results>
+</TestRun>

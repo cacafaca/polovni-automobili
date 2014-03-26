@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestLists xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestList name="MsSql" id="09f3e5c9-bf37-4082-942e-3477352019b4" parentListId="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48" />
+  <TestList name="DatabaseLayer" id="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <Description>Isprobavanje</Description>
+  </TestList>
+  <TestList name="Firebird" id="43ae325e-a5d1-4905-855f-ffda2f2a0e79" parentListId="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48">
+    <TestLinks>
+      <TestLink id="53dc12fa-38cb-6ac0-e861-f7a415fc515d" name="OpenConnection" storage="polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="fcf921b8-27a6-da72-d5f5-9f806c670fff" name="DatabaseVersionIs_2_5_0" storage="polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="d159f183-296c-e63b-ea6d-79db194b1732" name="CloseConnection" storage="polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+  <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <RunConfiguration id="e92095fd-dfc3-4560-8d1f-742883501953" name="Local" storage="local.testsettings" type="Microsoft.VisualStudio.TestTools.Common.TestRunConfiguration, Microsoft.VisualStudio.QualityTools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  </TestList>
+</TestLists>

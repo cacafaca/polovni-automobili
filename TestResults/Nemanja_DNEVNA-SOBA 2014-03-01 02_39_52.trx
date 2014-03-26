@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="bc341bf4-894e-4e64-946d-c4be2d23f109" name="Nemanja@DNEVNA-SOBA 2014-03-01 02:39:52" runUser="DNEVNA-SOBA\Nemanja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="e92095fd-dfc3-4560-8d1f-742883501953">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Nemanja_DNEVNA-SOBA 2014-03-01 02_39_52">
+      <DeploymentItem filename="C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\PolAutData\bin\Debug\PolAutData.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-03-01T02:39:52.6562500+01:00" queuing="2014-03-01T02:39:52.6562500+01:00" start="2014-03-01T02:39:53.0625000+01:00" finish="2014-03-01T02:39:54.2187500+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DatabaseVersionIs_2_5_0" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" id="fcf921b8-27a6-da72-d5f5-9f806c670fff">
+      <Execution id="04e62763-c93b-47e8-916a-c6a90ba3c66c" />
+      <TestMethod codeBase="C:/Documents and Settings/Nemanja/My Documents/Visual Studio 2008/Projects/PolovniAutomobili/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Providers.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DatabaseVersionIs_2_5_0" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="DataLayer" id="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+      <Description>Isprobavanje</Description>
+    </TestList>
+    <TestList name="Lists of Results" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+    <TestList name="Firebird" id="43ae325e-a5d1-4905-855f-ffda2f2a0e79" parentListId="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48">
+      <TestLinks>
+        <TestLink id="53dc12fa-38cb-6ac0-e861-f7a415fc515d" name="OpenConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="fcf921b8-27a6-da72-d5f5-9f806c670fff" name="DatabaseVersionIs_2_5_0" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="d159f183-296c-e63b-ea6d-79db194b1732" name="CloseConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      </TestLinks>
+    </TestList>
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="fcf921b8-27a6-da72-d5f5-9f806c670fff" executionId="04e62763-c93b-47e8-916a-c6a90ba3c66c" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="04e62763-c93b-47e8-916a-c6a90ba3c66c" testId="fcf921b8-27a6-da72-d5f5-9f806c670fff" testName="DatabaseVersionIs_2_5_0" computerName="DNEVNA-SOBA" duration="00:00:00.3870581" startTime="2014-03-01T02:39:53.2968750+01:00" endTime="2014-03-01T02:39:54.0468750+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" relativeResultsDirectory="04e62763-c93b-47e8-916a-c6a90ba3c66c">
+    </UnitTestResult>
+  </Results>
+</TestRun>
