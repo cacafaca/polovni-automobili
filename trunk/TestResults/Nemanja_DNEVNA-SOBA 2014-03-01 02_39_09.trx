@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="2962831e-3cad-43c7-9a63-9042decad120" name="Nemanja@DNEVNA-SOBA 2014-03-01 02:39:09" runUser="DNEVNA-SOBA\Nemanja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="e92095fd-dfc3-4560-8d1f-742883501953">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Nemanja_DNEVNA-SOBA 2014-03-01 02_39_09">
+      <DeploymentItem filename="C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\PolAutData\bin\Debug\PolAutData.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-03-01T02:39:09.3281250+01:00" queuing="2014-03-01T02:39:09.3437500+01:00" start="2014-03-01T02:39:09.5937500+01:00" finish="2014-03-01T02:39:11.3906250+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="2" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="OpenConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" id="53dc12fa-38cb-6ac0-e861-f7a415fc515d">
+      <Execution id="dd94e169-9863-4ee9-b214-75faaf5980b4" />
+      <TestMethod codeBase="C:/Documents and Settings/Nemanja/My Documents/Visual Studio 2008/Projects/PolovniAutomobili/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Providers.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="OpenConnection" />
+    </UnitTest>
+    <UnitTest name="DatabaseVersionIs_2_5_0" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" id="fcf921b8-27a6-da72-d5f5-9f806c670fff">
+      <Execution id="d0584446-1282-4b0c-b28a-2e14f434931b" />
+      <TestMethod codeBase="C:/Documents and Settings/Nemanja/My Documents/Visual Studio 2008/Projects/PolovniAutomobili/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Providers.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DatabaseVersionIs_2_5_0" />
+    </UnitTest>
+    <UnitTest name="CloseConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" id="d159f183-296c-e63b-ea6d-79db194b1732">
+      <Execution id="6db1278a-e432-4737-90d3-a9c81e22f00a" />
+      <TestMethod codeBase="C:/Documents and Settings/Nemanja/My Documents/Visual Studio 2008/Projects/PolovniAutomobili/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Providers.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CloseConnection" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="DataLayer" id="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+      <Description>Isprobavanje</Description>
+    </TestList>
+    <TestList name="Lists of Results" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+    <TestList name="Firebird" id="43ae325e-a5d1-4905-855f-ffda2f2a0e79" parentListId="0f5e80c5-99c7-4fa2-b9d3-ff4b5e8eef48">
+      <TestLinks>
+        <TestLink id="53dc12fa-38cb-6ac0-e861-f7a415fc515d" name="OpenConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="fcf921b8-27a6-da72-d5f5-9f806c670fff" name="DatabaseVersionIs_2_5_0" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="d159f183-296c-e63b-ea6d-79db194b1732" name="CloseConnection" storage="c:\documents and settings\nemanja\my documents\visual studio 2008\projects\polovniautomobili\polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      </TestLinks>
+    </TestList>
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="53dc12fa-38cb-6ac0-e861-f7a415fc515d" executionId="dd94e169-9863-4ee9-b214-75faaf5980b4" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" />
+    <TestEntry testId="d159f183-296c-e63b-ea6d-79db194b1732" executionId="6db1278a-e432-4737-90d3-a9c81e22f00a" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" />
+    <TestEntry testId="fcf921b8-27a6-da72-d5f5-9f806c670fff" executionId="d0584446-1282-4b0c-b28a-2e14f434931b" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="dd94e169-9863-4ee9-b214-75faaf5980b4" testId="53dc12fa-38cb-6ac0-e861-f7a415fc515d" testName="OpenConnection" computerName="DNEVNA-SOBA" duration="00:00:00.4300152" startTime="2014-03-01T02:39:09.9687500+01:00" endTime="2014-03-01T02:39:10.8593750+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" relativeResultsDirectory="dd94e169-9863-4ee9-b214-75faaf5980b4">
+    </UnitTestResult>
+    <UnitTestResult executionId="6db1278a-e432-4737-90d3-a9c81e22f00a" testId="d159f183-296c-e63b-ea6d-79db194b1732" testName="CloseConnection" computerName="DNEVNA-SOBA" duration="00:00:00.1509267" startTime="2014-03-01T02:39:10.8593750+01:00" endTime="2014-03-01T02:39:11.0312500+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" relativeResultsDirectory="6db1278a-e432-4737-90d3-a9c81e22f00a">
+    </UnitTestResult>
+    <UnitTestResult executionId="d0584446-1282-4b0c-b28a-2e14f434931b" testId="fcf921b8-27a6-da72-d5f5-9f806c670fff" testName="DatabaseVersionIs_2_5_0" computerName="DNEVNA-SOBA" duration="00:00:00.1709851" startTime="2014-03-01T02:39:11.0312500+01:00" endTime="2014-03-01T02:39:11.2187500+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" relativeResultsDirectory="d0584446-1282-4b0c-b28a-2e14f434931b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;2.5.1&gt;. Actual:&lt;2.5.0&gt;. Can't read database version.</Message>
+          <StackTrace>   at PolAutDataTest.Providers.Firebird.TestDataFirebird.DatabaseVersionIs_2_5_0() in C:\Documents and Settings\Nemanja\My Documents\Visual Studio 2008\Projects\PolovniAutomobili\PolAutDataTest\Providers\Firebird\TestDataFirebird.cs:line 60
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
