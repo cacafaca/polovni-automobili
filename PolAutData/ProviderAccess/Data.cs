@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
+using System.Data;
 
 namespace PolAutData
 {
     /// <summary>
     /// Database access.
     /// </summary>
-    public abstract class Data
+    public abstract class Data: IData
     {
         #region Private fields
         #endregion
@@ -36,34 +34,12 @@ namespace PolAutData
             }
         }
 
-        public bool Open()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Close()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool BeginTran()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CommitTran()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool RollbackTran()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Izvrsi(string upit, System.Collections.Hashtable parametri)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract bool Open();
+        public abstract bool Close();
+        public abstract bool BeginTran();
+        public abstract bool CommitTran();
+        public abstract bool RollbackTran();
+        public abstract bool GetDataSet(string query, Hashtable parameters, DataSet queryResult);
+        public abstract bool Execute(string query, Hashtable parameters);
     }    
 }

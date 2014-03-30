@@ -11,7 +11,7 @@ namespace PolAutData
         bool BeginTran();
         bool CommitTran();
         bool RollbackTran();
-        DataSet GetDataSet(string query, Hashtable parameters);
+        bool GetDataSet(string query, Hashtable parameters, DataSet queryResult);
         bool Execute(string query, Hashtable parameters);
     }
 }
