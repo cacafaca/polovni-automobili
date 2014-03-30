@@ -13,7 +13,7 @@
     <RootPath>
     </RootPath>
     <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
-    <ModelCollation>1033,CI</ModelCollation>
+    <ModelCollation>2074,CS</ModelCollation>
     <DefaultFileStructure>BySchemaType</DefaultFileStructure>
     <DeployToDatabaseAddToServerExplorer>True</DeployToDatabaseAddToServerExplorer>
     <DeployToScript>True</DeployToScript>

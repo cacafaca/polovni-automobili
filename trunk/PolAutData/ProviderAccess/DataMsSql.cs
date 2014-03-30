@@ -17,7 +17,7 @@ namespace PolAutData
             //ConnectionString = Properties.Settings.Default.MsSqlConnectionString;
         }
 
-        public bool Open()
+        new public bool Open()
         {
             if (Connection != null)
                 Connection.Close();
@@ -32,7 +32,7 @@ namespace PolAutData
                 return false;
             }
         }
-        public bool Close()
+        new public bool Close()
         {
             try
             {
@@ -44,15 +44,15 @@ namespace PolAutData
                 return false;
             }
         }
-        public bool BeginTran()
+        new public bool BeginTran()
         {
             throw new System.NotImplementedException();
         }
-        public bool CommitTran()
+        new public bool CommitTran()
         {
             throw new System.NotImplementedException();
         }
-        public bool RollbackTran()
+        new public bool RollbackTran()
         {
             try
             {
@@ -71,15 +71,15 @@ namespace PolAutData
                 return false;
             }
         }
-        DataSet GetDataSet(string query, Hashtable parameters)
+        new public DataSet GetDataSet(string query, Hashtable parameters)
         {
-            
+            return null;
         }
-        bool Execute(string query, Hashtable parameters)
+        new public bool Execute(string query, Hashtable parameters)
         {
             throw new System.NotImplementedException();
         }
-        private void NapuniParametre(SqlCommand command, Hashtable parametri)
+        private void FillParams(SqlCommand command, Hashtable parametri)
         {
             if (parametri != null)
             {
