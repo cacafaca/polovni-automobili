@@ -25,17 +25,6 @@ namespace PolAutData.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Database=192.168.2.1:d:\\fbbaze\\POLOVNIAUTOMOBILI.FDB;User=sysdba;Password=megapla" +
-            "st;CHARSET=UTF8")]
-        public string FBConnectionString {
-            get {
-                return ((string)(this["FBConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("MsSql")]
         public string DatabaseProvider {
             get {
@@ -64,6 +53,17 @@ namespace PolAutData.Properties {
             }
             set {
                 this["PodrazumevaniPrefixParametra"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Database=192.168.2.1:e:\\fbbaze\\POLOVNIAUTOMOBILI.FDB;User=sysdba;Password=megapla" +
+            "st;CHARSET=UTF8")]
+        public string FBConnectionString {
+            get {
+                return ((string)(this["FBConnectionString"]));
             }
         }
     }

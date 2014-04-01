@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="631651b7-e0b2-4b80-890c-530aa434e891" name="Nemanja@DNEVNA-SOBA 2014-04-02 00:33:54" runUser="DNEVNA-SOBA\Nemanja" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="e92095fd-dfc3-4560-8d1f-742883501953">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\Projekti\PolovniAutomobili\trunk\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Nemanja_DNEVNA-SOBA 2014-04-02 00_33_54">
+      <DeploymentItem filename="C:\Projekti\PolovniAutomobili\trunk\PolAutData\bin\Debug\PolAutData.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-04-02T00:33:54.7031250+02:00" queuing="2014-04-02T00:33:54.7500000+02:00" start="2014-04-02T00:33:54.9843750+02:00" finish="2014-04-02T00:33:57.0625000+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="7" executed="7" passed="7" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="DropTestTable" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\bin\debug\testproject1.dll" id="b9d3826e-3e73-ce77-ad2b-94c635f7b968">
+      <TestMethod codeBase="C:/Projekti/PolovniAutomobili/trunk/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Provider.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DropTestTable" />
+    </UnitTest>
+    <UnitTest name="InsertRowInTestTable" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\bin\debug\testproject1.dll" id="f45de7aa-3c98-f035-347c-56ba731807b8">
+      <TestMethod codeBase="C:/Projekti/PolovniAutomobili/trunk/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Provider.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InsertRowInTestTable" />
+    </UnitTest>
+    <UnitTest name="CloseConnection" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\bin\debug\testproject1.dll" id="6c46d5aa-8e61-7ba9-376d-9b38de20e8da">
+      <TestMethod codeBase="C:/Projekti/PolovniAutomobili/trunk/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Provider.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CloseConnection" />
+    </UnitTest>
+    <UnitTest name="OpenConnection" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\bin\debug\testproject1.dll" id="735ecec0-232a-13fd-18ba-fc6df8e2434b">
+      <TestMethod codeBase="C:/Projekti/PolovniAutomobili/trunk/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Provider.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="OpenConnection" />
+    </UnitTest>
+    <OrderedTest name="OrderedTest1" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\orderedtest1.orderedtest" id="b42cccd0-bb62-4eaf-a32b-c4071797a652" continueAfterFailure="true">
+      <Execution id="2d2a4fdb-8846-4509-a653-dfea0b0cee23" />
+      <TestLinks>
+        <TestLink id="735ecec0-232a-13fd-18ba-fc6df8e2434b" name="OpenConnection" storage="bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="6c46d5aa-8e61-7ba9-376d-9b38de20e8da" name="CloseConnection" storage="bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="86526eb2-0c5b-0103-2c37-b8117662b8c8" name="DatabaseVersionIs_2_5_0" storage="bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="9574a0b1-25f0-7042-a6f9-5c873bbbac0a" name="CreateTestTable" storage="bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="f45de7aa-3c98-f035-347c-56ba731807b8" name="InsertRowInTestTable" storage="bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestLink id="b9d3826e-3e73-ce77-ad2b-94c635f7b968" name="DropTestTable" storage="bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+      </TestLinks>
+    </OrderedTest>
+    <UnitTest name="DatabaseVersionIs_2_5_0" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\bin\debug\testproject1.dll" id="86526eb2-0c5b-0103-2c37-b8117662b8c8">
+      <TestMethod codeBase="C:/Projekti/PolovniAutomobili/trunk/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Provider.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DatabaseVersionIs_2_5_0" />
+    </UnitTest>
+    <UnitTest name="CreateTestTable" storage="c:\projekti\polovniautomobili\trunk\polautdatatest\bin\debug\testproject1.dll" id="9574a0b1-25f0-7042-a6f9-5c873bbbac0a">
+      <TestMethod codeBase="C:/Projekti/PolovniAutomobili/trunk/PolAutDataTest/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="PolAutDataTest.Provider.Firebird.TestDataFirebird, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CreateTestTable" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="b42cccd0-bb62-4eaf-a32b-c4071797a652" executionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d">
+      <TestEntries>
+        <TestEntry testId="735ecec0-232a-13fd-18ba-fc6df8e2434b" executionId="b931e8fb-4a96-4aec-8b5e-b35dca34b342" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+        <TestEntry testId="6c46d5aa-8e61-7ba9-376d-9b38de20e8da" executionId="c6c75ee3-526e-49ca-ae06-2aeec703aa30" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+        <TestEntry testId="86526eb2-0c5b-0103-2c37-b8117662b8c8" executionId="46e30505-de65-4c7b-b8a0-e5136eb05ee1" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+        <TestEntry testId="9574a0b1-25f0-7042-a6f9-5c873bbbac0a" executionId="ff064dd9-693d-4f4c-9a86-3646d2e25c24" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+        <TestEntry testId="f45de7aa-3c98-f035-347c-56ba731807b8" executionId="cd182306-981a-4de0-a533-d4d179e53bfd" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+        <TestEntry testId="b9d3826e-3e73-ce77-ad2b-94c635f7b968" executionId="bd0170a0-cdd8-43fe-bce7-c554a54bdc4b" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+      </TestEntries>
+    </TestEntry>
+  </TestEntries>
+  <Results>
+    <TestResultAggregation executionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="b42cccd0-bb62-4eaf-a32b-c4071797a652" testName="OrderedTest1" computerName="DNEVNA-SOBA" duration="00:00:01.4671191" startTime="2014-04-02T00:33:55.3281250+02:00" endTime="2014-04-02T00:33:56.8437500+02:00" testType="ec4800e8-40e5-4ab3-8510-b8bf29b1904d" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d2a4fdb-8846-4509-a653-dfea0b0cee23">
+      <Counters error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="6" completed="0" inProgress="0" pending="0" />
+      <InnerResults>
+        <UnitTestResult executionId="b931e8fb-4a96-4aec-8b5e-b35dca34b342" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="735ecec0-232a-13fd-18ba-fc6df8e2434b" testName="OpenConnection" computerName="DNEVNA-SOBA" duration="00:00:00.2868495" startTime="2014-04-02T00:33:55.3750000+02:00" endTime="2014-04-02T00:33:55.9687500+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b931e8fb-4a96-4aec-8b5e-b35dca34b342">
+          <Output>
+          </Output>
+        </UnitTestResult>
+        <UnitTestResult executionId="c6c75ee3-526e-49ca-ae06-2aeec703aa30" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="6c46d5aa-8e61-7ba9-376d-9b38de20e8da" testName="CloseConnection" computerName="DNEVNA-SOBA" duration="00:00:00.1543391" startTime="2014-04-02T00:33:55.9687500+02:00" endTime="2014-04-02T00:33:56.1562500+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c6c75ee3-526e-49ca-ae06-2aeec703aa30">
+          <Output>
+          </Output>
+        </UnitTestResult>
+        <UnitTestResult executionId="46e30505-de65-4c7b-b8a0-e5136eb05ee1" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="86526eb2-0c5b-0103-2c37-b8117662b8c8" testName="DatabaseVersionIs_2_5_0" computerName="DNEVNA-SOBA" duration="00:00:00.1227169" startTime="2014-04-02T00:33:56.1562500+02:00" endTime="2014-04-02T00:33:56.2968750+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46e30505-de65-4c7b-b8a0-e5136eb05ee1">
+          <Output>
+          </Output>
+        </UnitTestResult>
+        <UnitTestResult executionId="ff064dd9-693d-4f4c-9a86-3646d2e25c24" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="9574a0b1-25f0-7042-a6f9-5c873bbbac0a" testName="CreateTestTable" computerName="DNEVNA-SOBA" duration="00:00:00.3024110" startTime="2014-04-02T00:33:56.2968750+02:00" endTime="2014-04-02T00:33:56.6093750+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ff064dd9-693d-4f4c-9a86-3646d2e25c24">
+          <Output>
+          </Output>
+        </UnitTestResult>
+        <UnitTestResult executionId="cd182306-981a-4de0-a533-d4d179e53bfd" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="f45de7aa-3c98-f035-347c-56ba731807b8" testName="InsertRowInTestTable" computerName="DNEVNA-SOBA" duration="00:00:00.0650940" startTime="2014-04-02T00:33:56.6093750+02:00" endTime="2014-04-02T00:33:56.6875000+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cd182306-981a-4de0-a533-d4d179e53bfd">
+          <Output>
+          </Output>
+        </UnitTestResult>
+        <UnitTestResult executionId="bd0170a0-cdd8-43fe-bce7-c554a54bdc4b" parentExecutionId="2d2a4fdb-8846-4509-a653-dfea0b0cee23" testId="b9d3826e-3e73-ce77-ad2b-94c635f7b968" testName="DropTestTable" computerName="DNEVNA-SOBA" duration="00:00:00.1298734" startTime="2014-04-02T00:33:56.6875000+02:00" endTime="2014-04-02T00:33:56.8437500+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bd0170a0-cdd8-43fe-bce7-c554a54bdc4b">
+          <Output>
+          </Output>
+        </UnitTestResult>
+      </InnerResults>
+    </TestResultAggregation>
+  </Results>
+</TestRun>

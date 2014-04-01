@@ -26,7 +26,7 @@ namespace PolAutoExport
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     Cursor = Cursors.WaitCursor;
-                    DataExport.ExportAutomobiliCSV(saveFileDialog1.FileName);
+                    //DataExport.ExportAutomobiliCSV(saveFileDialog1.FileName);
                     Cursor = Cursors.Default;
                     MessageBox.Show("Gotovo!", "Izvoz");
                 }
@@ -47,7 +47,7 @@ namespace PolAutoExport
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     Cursor = Cursors.WaitCursor;
-                    DataExport.ExportAutomobiliExcel(saveFileDialog1.FileName);
+                    //DataExport.ExportAutomobiliExcel(saveFileDialog1.FileName);
                     Cursor = Cursors.Default;
                     MessageBox.Show("Gotovo!", "Izvoz");
                 }

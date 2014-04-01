@@ -9,13 +9,13 @@ namespace PolovniAutomobiliDohvatanje
 {
     class CitacOglasa: Citac 
     {
-        PolAutData.AutomobilDB autoDB;
+        //PolAutData.AutomobilDB autoDB;
         PolAutData.AutomobilCSV autoCSV;
 
         public CitacOglasa(ref Common.Http.ListaStrana procitaneStraneOglasa, int threadId):
             base(ref procitaneStraneOglasa, threadId, typeof(CitacOglasa).Name, (int)Properties.Settings.Default.BrojCitacaOglasa)
         {
-            autoDB = new PolAutData.AutomobilDB();
+            //autoDB = new PolAutData.AutomobilDB();
             autoCSV = new AutomobilCSV();
         }
 
@@ -27,7 +27,7 @@ namespace PolovniAutomobiliDohvatanje
                 Strana strana = procitaneStrane.Uzmi();
                 if (strana != null)
                 {
-                    Common.Vozilo.Automobil auto = null;
+                    Common.Vehicle.Automobil auto = null;
                     try
                     {
                         if (strana.Procitaj())
@@ -35,7 +35,7 @@ namespace PolovniAutomobiliDohvatanje
                             auto = ((StranaOglasa)strana).Automobil;
                             if (auto != null)
                             {
-                                autoDB.Snimi(auto); // upis u bazu
+                                //autoDB.Snimi(auto); // upis u bazu
                                 //autoDB.Snimi2(auto); // upis u bazu
                                 //red.Dodaj(auto);
                                 //autoCSV.DodajMem(auto);
