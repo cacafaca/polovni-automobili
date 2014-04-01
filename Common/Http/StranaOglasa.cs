@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common.Vozilo;
+using Common.Vehicle;
 
 namespace Common.Http
 {

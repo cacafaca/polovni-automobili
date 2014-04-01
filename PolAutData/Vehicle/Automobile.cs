@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common.Vozilo;
+using Common.Vehicle;
 using PolAutData;
 using System.Collections;
 using System.Threading;
+using PolAutData.Provider;
 
 namespace PolAutData.Vehicle
 {
     public class Automobile: Vehicle
     {
         #region Private fields
-        Data data;
+        Data Data;
         #endregion
 
         #region Constructors
-        public Automobile()
+        public Automobile(Data data)
         {
-            data = Data.GetDataInstance();
+            Data = data;
         }
         #endregion
 
-        private Hashtable NapuniParametre(Automobil automobil)
+        private Hashtable FillParams(Automobil automobil)
         {
             Hashtable par = new Hashtable();
             par.Add("@brojoglasa", automobil.BrojOglasa);
@@ -72,32 +73,33 @@ namespace PolAutData.Vehicle
             return par;
         }
 
-        private bool PostojiOglas(Automobil automobil)
+        private bool Exists(int adNumber)
         {
-            bool postoji = false;
+            bool found = false;
             try
             {
                 Hashtable par = new Hashtable();
-                par.Add("@brojOglasa", automobil.BrojOglasa);
-                System.Data.DataSet ds = data.Otvori("select null from automobil where brojOglasa = @brojOglasa", par);
-                postoji = ds != null && ds.Tables[0].Rows.Count == 1;
+                par.Add("@brojOglasa", adNumber);
+                System.Data.DataSet exists = null;
+                if(Data.GetDataSet("select null from automobil where brojOglasa = @brojOglasa", par, exists))
+                    found = exists != null && exists.Tables[0].Rows.Count == 1;
             }
             catch (Exception ex)
             {
                 Common.EventLogger.WriteEventError("Neuspela provera oglasa.", ex);
             }
-            return postoji;
+            return found;
         }
         
         /// <summary>
         /// Insert u tabelu AUTOMOBILI
         /// </summary>
         /// <param name="automobil"></param>
-        private bool Dodaj(Automobil automobil)
+        private bool Insert(Automobil automobil)
         {
-            Hashtable parametri;
-            parametri = NapuniParametre(automobil);
-            return data.Izvrsi(
+            Hashtable parameters;
+            parameters = FillParams(automobil);
+            return Data.Execute(
                 "insert into automobil (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija, " +
                     " gorivo, fiksnacena, zamena, datumpostavljanja, kubikaza, snaga_KW, snaga_KS, Kilometraza, EmisionaKlasa, " +
                     " Pogon, Menjac, brojvrata, brojsedista, stranavolana, klima, boja, registrovando, POREKLOVOZILA, " +
@@ -106,16 +108,16 @@ namespace PolAutData.Vehicle
                     " @gorivo, @fiksnacena, @zamena, @datumpostavljanja, @kubikaza, @snaga_KW, @snaga_KS, @Kilometraza, @EmisionaKlasa, " +
                     " @Pogon, @Menjac, @brojvrata, @brojsedista, @stranavolana, @klima, @boja, @registrovando, @POREKLOVOZILA, " +
                     " @opis, @kontakt, @thread)"
-                    , parametri);
+                    , parameters);
         }
         /// <summary>
         /// Update u tabelu automobili.
         /// </summary>
         /// <param name="automobil"></param>
-        private bool Izmeni(Automobil automobil)
+        private bool Update(Automobil automobil)
         {
-            Hashtable parametri;
-            parametri = NapuniParametre(automobil);
+            Hashtable parameters;
+            parameters = FillParams(automobil);
 
             StringBuilder updateCommand = new StringBuilder();
             updateCommand.AppendLine("UPDATE automobil");
@@ -149,7 +151,7 @@ namespace PolAutData.Vehicle
             updateCommand.AppendLine("       ,kontakt = @kontakt");
             updateCommand.AppendLine("       ,thread = @thread");
             updateCommand.AppendLine("WHERE  brojoglasa = @brojoglasa ");
-            return data.Izvrsi(updateCommand.ToString(), parametri);
+            return Data.Execute(updateCommand.ToString(), parameters);
         }
 
         /// <summary>
@@ -158,19 +160,19 @@ namespace PolAutData.Vehicle
         /// <param name="automobil">Objekat koji se snima u bazu.</param>
         public void Snimi(Automobil automobil)
         {
-            if (data.TranasakcijaOtvorena()) // ako je otvorena zatvori. ne smem da zateknem ovde otvorenu transakciju
+            if (Data.InTransaction()) // ako je otvorena zatvori. ne smem da zateknem ovde otvorenu transakciju
             {
                 Common.Dnevnik.PisiSaThredomUpozorenje("Transakcija je bila otvorena, a nije trebala da bude. Rollback-ujem");
                 try
                 {
-                    data.RollbackTran();
+                    Data.RollbackTran();
                 }
                 catch (Exception ex)
                 {
                     Common.Dnevnik.PisiSaThredomGreska("Nisam mogao da rollbackujem transakciju.", ex);
                     try
                     {
-                        data.OtvoriPonovoKonekciju();
+                        Data.Open();
                     }
                     catch (Exception ex1)
                     {
@@ -182,26 +184,26 @@ namespace PolAutData.Vehicle
             }
             try
             {
-                if (data.BeginTran())
+                if (Data.BeginTran())
                 {
                     try
                     {
-                        if (!PostojiOglas(automobil))   // select
-                            if(Dodaj(automobil))
+                        if (!Exists(automobil.BrojOglasa))   // select
+                            if(Insert(automobil))
                                 Common.Dnevnik.PisiSaThredom("Uspešno dodat u bazu oglas " + automobil);
                             else
                                 Common.Dnevnik.PisiSaThredom("Nije dodat u bazu oglas " + automobil);
                         else
-                            if (Izmeni(automobil))
+                            if (Update(automobil))
                                 Common.Dnevnik.PisiSaThredom("Uspešno izmenjen u bazi oglas " + automobil);
                             else
                                 Common.Dnevnik.PisiSaThredom("Nije izmenjen u bazi oglas " + automobil);
-                        if (!data.CommitTran())
+                        if (!Data.CommitTran())
                         {
                             // posto nije uspeo da komituje, pokusacu da rollbekujem
-                            if (!data.RollbackTran())
+                            if (!Data.RollbackTran())
                             {
-                                data.OtvoriPonovoKonekciju();
+                                Data.Open();
                             }
                             throw new Exception("Nisam uspeo da komitujem transakciju.");
                         }
@@ -209,9 +211,9 @@ namespace PolAutData.Vehicle
                     catch (Exception ex)
                     {
                         Common.Korisno.Korisno.LogujGresku(string.Format("Neuspelo azuriranje oglasa broj {0}.", automobil.BrojOglasa), ex);
-                        if (!data.RollbackTran())
+                        if (!Data.RollbackTran())
                         {
-                            data.OtvoriPonovoKonekciju();
+                            Data.Open();
                             throw new Exception("Nisam uspeo da rollbekujem transakciju.");
                         }
                         throw ex;
@@ -234,13 +236,13 @@ namespace PolAutData.Vehicle
         /// <param name="automobil"></param>
         public void Snimi2(Automobil automobil)
         {
-            if (!PostojiOglas(automobil))
+            if (!Exists(automobil.BrojOglasa))
             {
-                Dodaj(automobil);
+                Insert(automobil);
             }
             else
             {
-                Izmeni(automobil);
+                Update(automobil);
             }
         }
     }
