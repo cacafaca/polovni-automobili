@@ -30,7 +30,7 @@ namespace Common
                 OtseciVisak(ref message);
                 System.Diagnostics.EventLog.WriteEntry(EventLogSourceName, message, System.Diagnostics.EventLogEntryType.Error);
             }
-            catch 
+            catch
             {
                 // nemam vise gde da logujem!
             }
@@ -38,13 +38,26 @@ namespace Common
 
         public static void WriteEventError(string message, Exception ex)
         {
-            var trace = new System.Diagnostics.StackTrace(ex);
-            string poruka =
-                message + "\r\n" +
-                "Exception message: " + ex.Message + "\r\n" +
-                "Exception type: " + ex.GetType().ToString() + "\r\n" +
-                trace;
-            WriteEventError(poruka);
+            string exMessage;
+            string exGetType;
+            string trace;
+            string wholeMessage;
+            if (ex != null)
+            {
+                exMessage = ex.Message;
+                exGetType = ex.GetType().ToString();
+                trace = (new System.Diagnostics.StackTrace(ex)).ToString();
+                wholeMessage = string.Format("{0}\r\nException message: {1}\r\nException type: {2}\r\n{3}",
+                    message, exMessage, exGetType, trace);
+            }
+            else
+            {
+                exMessage = string.Empty;
+                exGetType = string.Empty;
+                trace = string.Empty;
+                wholeMessage = message;
+            }
+            WriteEventError(wholeMessage);
         }
 
         private static bool DuzinaPrekoracena(ref string poruka)

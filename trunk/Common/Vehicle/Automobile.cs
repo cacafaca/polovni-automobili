@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Common.Vehicle
 {
-    public class Automobil : Vehicle
+    public class Automobile : Vehicle
     {
         // Zaglavlje
         string url;
@@ -158,7 +158,7 @@ namespace Common.Vehicle
         }
         public static string CSVZaglavlje2()
         {
-            Type type1 = typeof(Automobil);
+            Type type1 = typeof(Automobile);
             FieldInfo[] fi = type1.GetFields(System.Reflection.BindingFlags.GetField);
             string s = string.Empty;
             foreach (FieldInfo i in fi)
@@ -169,7 +169,7 @@ namespace Common.Vehicle
         }
         public string CSV2()
         {
-            Type type1 = typeof(Automobil);
+            Type type1 = typeof(Automobile);
             FieldInfo[] fi = type1.GetFields(System.Reflection.BindingFlags.Instance);
             string s = string.Empty;
             foreach (FieldInfo i in fi)
@@ -181,7 +181,7 @@ namespace Common.Vehicle
             return s;
         }
 
-        public Automobil(
+        public Automobile(
             //zaglavlje
             int brojOglasa, string naslov, float cena, string url, 
             //opste informacije

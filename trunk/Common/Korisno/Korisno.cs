@@ -61,16 +61,20 @@ namespace Common.Korisno
             return vrednost.ToString("0".PadLeft(duz, '0'));
         }
 
-        public static void LogujGresku(string tekst, Exception ex)
+        public static void LogError(string message, Exception ex)
         {
             try
             {
-                Common.EventLogger.WriteEventError(string.Format("Thred {0}> " + tekst, System.Threading.Thread.CurrentThread.Name), ex);
-                Common.Dnevnik.PisiSaThredomGreska(tekst, ex);
+                Common.EventLogger.WriteEventError(string.Format("Thred {0}> " + message, System.Threading.Thread.CurrentThread.Name), ex);
+                Common.Dnevnik.PisiSaThredomGreska(message, ex);
             }
             catch
             {
             }
+        }
+        public static void LogError(string tekst)
+        {
+            LogError(tekst, null);
         }
         public enum Disciplina { dPulse, dPulseAll };
         public static Disciplina disciplina = Disciplina.dPulseAll;

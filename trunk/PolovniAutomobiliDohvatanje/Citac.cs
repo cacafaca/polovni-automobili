@@ -11,7 +11,7 @@ namespace PolovniAutomobiliDohvatanje
     {
         Thread Radnik;
         protected Common.Http.ListaStrana procitaneStrane;    // Zajednicki objekat/resurs
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -23,11 +23,11 @@ namespace PolovniAutomobiliDohvatanje
         {
             this.procitaneStrane = procitaneStrane;
             Radnik = new Thread(new ThreadStart(Obrada));
-            Radnik.Name = threadName + threadId.ToString(new String('0', brojCitaca));
-        }        
+            Radnik.Name = threadName + threadId.ToString(new String('0', brojCitaca.ToString().Length));
+        }
 
         protected abstract void RadiObradu();
-        
+
         public bool radi = true;
 
         /// <summary>

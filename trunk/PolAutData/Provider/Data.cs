@@ -42,6 +42,26 @@ namespace PolAutData.Provider
             return DataInstance;
         }
 
+        /// <summary>
+        /// Get new data instance. Make new connection.
+        /// </summary>
+        /// <returns></returns>
+        public static Data GetNewDataInstance()
+        {
+            Data dataInstance = null;
+            switch (DataBaseProvider)
+            {
+                case ProviderType.Firebird:
+                default:
+                    dataInstance = new Provider.Firebird.DataFirebird();
+                    break;
+                case ProviderType.MsSql:
+                    dataInstance = new Provider.MsSql.DataMsSql();
+                    break;
+            }
+            return dataInstance;
+        }
+
         #region Interface methods
         public abstract bool Open();
         public abstract bool Close();
@@ -49,7 +69,7 @@ namespace PolAutData.Provider
         public abstract bool CommitTran();
         public abstract bool RollbackTran();
         public abstract bool InTransaction();
-        public abstract bool GetDataSet(string query, Hashtable parameters, DataSet queryResult);
+        public abstract bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult);
         public abstract bool Execute(string query, Hashtable parameters);
         public abstract bool Execute(string query);
         #endregion

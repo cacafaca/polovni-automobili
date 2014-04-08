@@ -25,7 +25,7 @@ namespace PolAutData.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MsSql")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Firebird")]
         public string DatabaseProvider {
             get {
                 return ((string)(this["DatabaseProvider"]));

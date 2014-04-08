@@ -81,8 +81,9 @@ namespace PolAutData.Provider.MsSql
         {
             return Transaction != null;
         }
-        public override bool GetDataSet(string query, Hashtable parameters, DataSet queryResult)
+        public override bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult)
         {
+            queryResult = null;
             return false;
         }
         public override bool Execute(string query, Hashtable parameters)

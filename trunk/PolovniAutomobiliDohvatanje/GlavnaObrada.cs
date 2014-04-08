@@ -16,7 +16,7 @@ namespace PolovniAutomobiliDohvatanje
 
         PisacZaglavlja[] pisacZaglavlja = new PisacZaglavlja[Properties.Settings.Default.BrojPisacaZaglavlja];
         CitacZaglavlja[] citacZaglavlja = new CitacZaglavlja[Properties.Settings.Default.BrojCitacaZaglavlja];
-        CitacOglasa[] citacOglasa = new CitacOglasa[Properties.Settings.Default.BrojCitacaOglasa];
+        AdReader[] citacOglasa = new AdReader[Properties.Settings.Default.BrojCitacaOglasa];
         public GlavnaObrada()
         {
             Dnevnik.Pisi("Inicijalizacija glavne obrade");
@@ -47,7 +47,7 @@ namespace PolovniAutomobiliDohvatanje
             // inicijalizacija citaca oglasa
             for (int i = 0; i < citacOglasa.Length; i++)
             {
-                citacOglasa[i] = new CitacOglasa(ref procitaneStraneOglasa, i);
+                citacOglasa[i] = new AdReader(ref procitaneStraneOglasa, i);
             }
 
             //EventLogger.WriteEventInfo("Glavna obrada inicijalizovana.");
@@ -95,7 +95,7 @@ namespace PolovniAutomobiliDohvatanje
                 {
                     citacOglasa[i].Zaustavi();
                 }
-                //EventLogger.WriteEventInfo("Glavna obrada zaustavljena.");
+                PolAutData.Provider.DataInstance.Data.Close();
                 Dnevnik.PisiSaThredom("Glavna obrada zaustavljena. Poslate komande za zaustavljanje.");
             }
             catch (Exception ex)
