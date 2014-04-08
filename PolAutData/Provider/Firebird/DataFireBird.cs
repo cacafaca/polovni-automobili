@@ -45,57 +45,68 @@ namespace PolAutData.Provider.Firebird
         /// <returns>Vraca true ako je otvaranje uspesno.</returns>
         override public bool Open()
         {
-            try
-            {
-                Connection.Open();
-                return true;
-            }
-            catch { return false; }
-        }
-        override public bool Close()
-        {
-            try
-            {
-                Connection.Close();
-                return true;
-            }
-            catch { return false; }
-        }
-        public override bool BeginTran()
-        {
-            if (Transaction == null)
+            if (Connection.State != ConnectionState.Open)
                 try
                 {
-                    Transaction = Connection.BeginTransaction(System.Threading.Thread.CurrentThread.Name);
+                    Connection.Open();
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    Korisno.LogujGresku("Nisam uspeo da otvorim transakciju.", ex);
+                    Korisno.LogError("Can't open connection.", ex);
                     return false;
                 }
             else
-                return false;
+                return true;
         }
-        public override bool CommitTran()
+        override public bool Close()
+        {
+            if (Connection.State != ConnectionState.Closed)
+                try
+                {
+                    Connection.Close();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Korisno.LogError("Can't close connection.", ex);
+                    return false;
+                }
+            else
+                return true;
+        }
+        public override bool BeginTran()
         {
             try
             {
-                if (Transaction != null)
+                Transaction = Connection.BeginTransaction(System.Threading.Thread.CurrentThread.Name);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Korisno.LogError("Can't begin transaction.", ex);
+                return false;
+            }
+        }
+        public override bool CommitTran()
+        {
+            if (Transaction != null)
+            {
+                try
                 {
                     Transaction.Commit();
                     Transaction.Dispose();
                     Transaction = null;
                     return true;
                 }
-                else
+                catch (Exception ex)
+                {
+                    Korisno.LogError("Can't commit transaction.", ex);
                     return false;
+                }
             }
-            catch (Exception ex)
-            {
-                Korisno.LogujGresku("Nisam uspeo da komitujem transakciju.", ex);
+            else
                 return false;
-            }
         }
         override public bool RollbackTran()
         {
@@ -113,7 +124,7 @@ namespace PolAutData.Provider.Firebird
             }
             catch (Exception ex)
             {
-                Korisno.LogujGresku("Nisam uspeo da rolbekujem transakciju.", ex);
+                Korisno.LogError("Nisam uspeo da rolbekujem transakciju.", ex);
                 return false;
             }
         }
@@ -125,9 +136,23 @@ namespace PolAutData.Provider.Firebird
         {
             return Transaction != null;
         }
-        override public bool GetDataSet(string query, Hashtable parameters, DataSet queryResult)
-        { 
-            return false;
+        override public bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult)
+        {
+            try
+            {
+                FbCommand cmd = new FbCommand(query, Connection, Transaction);
+                FillParams(cmd, parameters);
+                FbDataAdapter da = new FbDataAdapter(cmd);
+                queryResult = new DataSet();
+                da.Fill(queryResult);
+                return (queryResult != null) && (queryResult.Tables.Count > 0) && (queryResult.Tables[0].Rows.Count > 0);
+            }
+            catch (Exception ex)
+            {
+                queryResult = null;
+                Common.EventLogger.WriteEventError("Can't get dataset.", ex);
+                return false;
+            }
         }
         public override bool Execute(string query, Hashtable parameters)
         {
@@ -136,12 +161,11 @@ namespace PolAutData.Provider.Firebird
                 FbCommand Command = new FbCommand(query, Connection, Transaction);
                 FillParams(Command, parameters);
                 Command.CommandType = System.Data.CommandType.Text;
-                Command.ExecuteNonQuery();
-                return true;
+                return Command.ExecuteNonQuery() > 0;
             }
-            catch 
+            catch (Exception ex)
             {
-                // todo logovanje
+                Common.EventLogger.WriteEventError("Fail to execute SQL.", ex);
                 return false;
             }
         }
@@ -232,7 +256,7 @@ namespace PolAutData.Provider.Firebird
             }
             catch (Exception ex)
             {
-                Korisno.LogujGresku("Nisam uspeo da zatvorim konekciju.", ex);
+                Korisno.LogError("Nisam uspeo da zatvorim konekciju.", ex);
             }
         }
     }

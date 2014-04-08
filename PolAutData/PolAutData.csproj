@@ -20,6 +20,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +50,7 @@
   -->
   <ItemGroup>
     <Compile Include="AutomobilCSV.cs" />
+    <Compile Include="Provider\DataInstance.cs" />
     <Compile Include="Vehicle\Automobile.cs" />
     <Compile Include="Provider\Firebird\DataFireBird.cs" />
     <Compile Include="Provider\MsSql\DataMsSql.cs" />
@@ -66,7 +69,7 @@
   <ItemGroup>
     <Reference Include="FirebirdSql.Data.FirebirdClient, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>FirebirdClient\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+      <HintPath>FirebirdClient_3.0.2.0\FirebirdSql.Data.FirebirdClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />

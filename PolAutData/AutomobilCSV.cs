@@ -13,7 +13,7 @@ namespace PolAutData
     /// </summary>
     public class AutomobilCSV
     {
-        List<Automobil> Lista;
+        List<Automobile> Lista;
         protected static readonly object lokerListeAutomobila = new object();
         protected static DateTime vremeSnimanja;
 
@@ -22,11 +22,11 @@ namespace PolAutData
 
         public AutomobilCSV()
         {
-            Lista = new List<Automobil>();
+            Lista = new List<Automobile>();
             vremeSnimanja = DateTime.Now;
         }
 
-        public void DodajMem(Automobil automobil, string threadName)
+        public void DodajMem(Automobile automobil, string threadName)
         {
             lock(lokerListeAutomobila)
             {
@@ -40,12 +40,12 @@ namespace PolAutData
                 }
             }            
         }
-        public void DodajMem(Automobil automobil)
+        public void DodajMem(Automobile automobil)
         {
             DodajMem(automobil, System.Threading.Thread.CurrentThread.Name);
         }
 
-        public void DodajDB(Automobil automobil, string threadName)
+        public void DodajDB(Automobile automobil, string threadName)
         {
             lock (lokerListeAutomobila)
             {
@@ -60,7 +60,7 @@ namespace PolAutData
             }
         }
 
-        public List<Automobil> DajListu()
+        public List<Automobile> DajListu()
         {
             lock (lokerListeAutomobila)
             {
@@ -82,8 +82,8 @@ namespace PolAutData
             {
                 try
                 {
-                    tw.WriteLine(Automobil.CSVZaglavlje());
-                    foreach (Automobil a in Lista)
+                    tw.WriteLine(Automobile.CSVZaglavlje());
+                    foreach (Automobile a in Lista)
                     {
                         if (a != null)
                         {

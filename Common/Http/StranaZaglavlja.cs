@@ -19,20 +19,5 @@ namespace Common.Http
             else
                 return true; // ako nije dobro procitao neka vrati true, pa neka cita dalje.
         }
-
-        /*public List<string> DajAdreseOglasa()
-        {
-            HtmlAgilityPack.HtmlDocument d = new HtmlAgilityPack.HtmlDocument();
-            d.LoadHtml(Sadrzaj);
-            List<string> adrese = new List<string>();
-            foreach (HtmlNode n in d.DocumentNode.SelectNodes("//*[@id=\"searchlist-items\"]")["div"].ChildNodes["ul"].ChildNodes)
-            {
-                if (n.Name.ToLower().Equals("li") && (n.Attributes.Count == 1))
-                {
-                    adrese.Add("http://www.polovniautomobili.com" + n.ChildNodes[1].ChildNodes[1].ChildNodes[0].Attributes[0].Value);
-                }
-            }
-            return adrese;
-        }*/
     }
 }

@@ -9,7 +9,7 @@ using PolAutData.Provider;
 
 namespace PolAutData.Vehicle
 {
-    public class Automobile: Vehicle
+    public class Automobile : Vehicle
     {
         #region Private fields
         Data Data;
@@ -20,9 +20,16 @@ namespace PolAutData.Vehicle
         {
             Data = data;
         }
+        /// <summary>
+        /// If no args are specified instance has it onw connection.
+        /// </summary>
+        public Automobile()
+        {
+            Data = PolAutData.Provider.Data.GetNewDataInstance();
+        }
         #endregion
 
-        private Hashtable FillParams(Automobil automobil)
+        private Hashtable FillParams(Common.Vehicle.Automobile automobil)
         {
             Hashtable par = new Hashtable();
             par.Add("@brojoglasa", automobil.BrojOglasa);
@@ -81,7 +88,7 @@ namespace PolAutData.Vehicle
                 Hashtable par = new Hashtable();
                 par.Add("@brojOglasa", adNumber);
                 System.Data.DataSet exists = null;
-                if(Data.GetDataSet("select null from automobil where brojOglasa = @brojOglasa", par, exists))
+                if (Data.GetDataSet("select null from automobil where brojOglasa = @brojOglasa", par, out exists))
                     found = exists != null && exists.Tables[0].Rows.Count == 1;
             }
             catch (Exception ex)
@@ -90,31 +97,31 @@ namespace PolAutData.Vehicle
             }
             return found;
         }
-        
+
         /// <summary>
-        /// Insert u tabelu AUTOMOBILI
+        /// Inserts object Automobile in DB.
         /// </summary>
         /// <param name="automobil"></param>
-        private bool Insert(Automobil automobil)
+        private bool Insert(Common.Vehicle.Automobile automobil)
         {
             Hashtable parameters;
             parameters = FillParams(automobil);
             return Data.Execute(
-                "insert into automobil (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija, " +
+                "insert into automobil (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija/*, " +
                     " gorivo, fiksnacena, zamena, datumpostavljanja, kubikaza, snaga_KW, snaga_KS, Kilometraza, EmisionaKlasa, " +
                     " Pogon, Menjac, brojvrata, brojsedista, stranavolana, klima, boja, registrovando, POREKLOVOZILA, " +
-                    " opis, kontakt, thread)" +
-                    " values (@brojoglasa, @naslov, @cena, @url, @vozilo, @marka, @model, @godinaproizvodnje, @karoserija, " +
+                    " opis, kontakt, thread*/)" +
+                    " values (@brojoglasa, @naslov, @cena, @url, @vozilo, @marka, @model, @godinaproizvodnje, @karoserija/*, " +
                     " @gorivo, @fiksnacena, @zamena, @datumpostavljanja, @kubikaza, @snaga_KW, @snaga_KS, @Kilometraza, @EmisionaKlasa, " +
                     " @Pogon, @Menjac, @brojvrata, @brojsedista, @stranavolana, @klima, @boja, @registrovando, @POREKLOVOZILA, " +
-                    " @opis, @kontakt, @thread)"
+                    " @opis, @kontakt, @thread*/)"
                     , parameters);
         }
         /// <summary>
         /// Update u tabelu automobili.
         /// </summary>
         /// <param name="automobil"></param>
-        private bool Update(Automobil automobil)
+        private bool Update(Common.Vehicle.Automobile automobil)
         {
             Hashtable parameters;
             parameters = FillParams(automobil);
@@ -130,7 +137,7 @@ namespace PolAutData.Vehicle
             updateCommand.AppendLine("       ,godinaproizvodnje = @godinaproizvodnje");
             updateCommand.AppendLine("       ,karoserija = @karoserija");
             updateCommand.AppendLine("       ,gorivo = @gorivo");
-            updateCommand.AppendLine("       ,fiksnacena = @fiksnacena");
+            /*updateCommand.AppendLine("       ,fiksnacena = @fiksnacena");
             updateCommand.AppendLine("       ,zamena = @zamena");
             updateCommand.AppendLine("       ,datumpostavljanja = @datumpostavljanja");
             updateCommand.AppendLine("       ,kubikaza = @kubikaza");
@@ -149,68 +156,54 @@ namespace PolAutData.Vehicle
             updateCommand.AppendLine("       ,poreklovozila = @poreklovozila");
             updateCommand.AppendLine("       ,opis = @opis");
             updateCommand.AppendLine("       ,kontakt = @kontakt");
-            updateCommand.AppendLine("       ,thread = @thread");
+            updateCommand.AppendLine("       ,thread = @thread");*/
             updateCommand.AppendLine("WHERE  brojoglasa = @brojoglasa ");
             return Data.Execute(updateCommand.ToString(), parameters);
         }
 
         /// <summary>
-        /// Provera i dodavanje/izmena se obavlja u jednoj transakciji.
+        /// Saves autmobile in DB
         /// </summary>
-        /// <param name="automobil">Objekat koji se snima u bazu.</param>
-        public void Snimi(Automobil automobil)
+        /// <param name="automobile">Automobile to save.</param>
+        public bool Save(Common.Vehicle.Automobile automobile)
         {
-            if (Data.InTransaction()) // ako je otvorena zatvori. ne smem da zateknem ovde otvorenu transakciju
+            bool saveSucceed = false;
+            if (automobile.BrojOglasa > 0)
             {
-                Common.Dnevnik.PisiSaThredomUpozorenje("Transakcija je bila otvorena, a nije trebala da bude. Rollback-ujem");
-                try
-                {
-                    Data.RollbackTran();
-                }
-                catch (Exception ex)
-                {
-                    Common.Dnevnik.PisiSaThredomGreska("Nisam mogao da rollbackujem transakciju.", ex);
-                    try
-                    {
-                        Data.Open();
-                    }
-                    catch (Exception ex1)
-                    {
-                        // Ako ovo ne uspe onda ne znam sta da mu radim!? Samo cu da logujem.
-                        Common.Dnevnik.PisiSaThredomGreska("Nisam uspeo da ponovo otvorim konekciju.", ex1);
-                        throw ex1;
-                    }
-                }
-            }
-            try
-            {
+                Data.Open();
                 if (Data.BeginTran())
                 {
                     try
                     {
-                        if (!Exists(automobil.BrojOglasa))   // select
-                            if(Insert(automobil))
-                                Common.Dnevnik.PisiSaThredom("Uspešno dodat u bazu oglas " + automobil);
+                        if (!Exists(automobile.BrojOglasa))   // select
+                            if (Insert(automobile))
+                                Common.Dnevnik.PisiSaThredom("Uspešno dodat u bazu oglas " + automobile);
                             else
-                                Common.Dnevnik.PisiSaThredom("Nije dodat u bazu oglas " + automobil);
+                                Common.Dnevnik.PisiSaThredom("Nije dodat u bazu oglas " + automobile);
                         else
-                            if (Update(automobil))
-                                Common.Dnevnik.PisiSaThredom("Uspešno izmenjen u bazi oglas " + automobil);
+                            if (Update(automobile))
+                                Common.Dnevnik.PisiSaThredom("Uspešno izmenjen u bazi oglas " + automobile);
                             else
-                                Common.Dnevnik.PisiSaThredom("Nije izmenjen u bazi oglas " + automobil);
-                        if (!Data.CommitTran())
+                                Common.Dnevnik.PisiSaThredom("Nije izmenjen u bazi oglas " + automobile);
+
+                        if (Data.CommitTran())
                         {
-                            // posto nije uspeo da komituje, pokusacu da rollbekujem
+                            saveSucceed = true;
+                            Common.Dnevnik.PisiSaThredom("Uspešno dodat u bazu oglas " + automobile);
+                        }
+                        else
+                        {
+                            Common.Korisno.Korisno.LogError("Can't commit transaction. Automobile: " + automobile);
                             if (!Data.RollbackTran())
                             {
-                                Data.Open();
+                                Common.Korisno.Korisno.LogError("Can't rollback transaction. Automobile: " + automobile);
                             }
-                            throw new Exception("Nisam uspeo da komitujem transakciju.");
+
                         }
                     }
                     catch (Exception ex)
                     {
-                        Common.Korisno.Korisno.LogujGresku(string.Format("Neuspelo azuriranje oglasa broj {0}.", automobil.BrojOglasa), ex);
+                        Common.Korisno.Korisno.LogError(string.Format("Neuspelo azuriranje oglasa broj {0}.", automobile.BrojOglasa), ex);
                         if (!Data.RollbackTran())
                         {
                             Data.Open();
@@ -221,28 +214,33 @@ namespace PolAutData.Vehicle
                 }
                 else
                 {
-                    throw new Exception("Ne mogu da otvorim transakciju.");
+                    Common.Korisno.Korisno.LogError("Can't begin transaction. Automobile: " + automobile);
                 }
             }
-            catch (Exception ex)
-            {
-                Common.Korisno.Korisno.LogujGresku("Snimanje nije uspelo.", ex);
-            }
+            return saveSucceed;
         }
 
         /// <summary>
-        /// Provera i dodavanje, ili provera i izmena se obavljaju u razlicitim transakcijama.
+        /// Saves automobile in DB. 
         /// </summary>
-        /// <param name="automobil"></param>
-        public void Snimi2(Automobil automobil)
+        /// <param name="automobil">Automobile to save.</param>
+        /// <param name="withTransaction">If true saves automobile in transaction.</param>
+        public void Save(Common.Vehicle.Automobile automobil, Boolean withTransaction)
         {
-            if (!Exists(automobil.BrojOglasa))
+            if (withTransaction)
             {
-                Insert(automobil);
+                Save(automobil);
             }
             else
             {
-                Update(automobil);
+                if (!Exists(automobil.BrojOglasa))
+                {
+                    Insert(automobil);
+                }
+                else
+                {
+                    Update(automobil);
+                }
             }
         }
     }

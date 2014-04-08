@@ -16,7 +16,8 @@ namespace PolovniAutomobiliDohvatanje
         {
             this.procitaneStrane = straneZaglavlja;
             Pisac = new Thread(new ThreadStart(Obrada));
-            Pisac.Name = "PisacZaglavlja" + Common.Korisno.Korisno.IntUStrSaNulama(threadId, (int)Properties.Settings.Default.BrojPisacaZaglavlja);
+            Pisac.Name = "PisacZaglavlja" + threadId.ToString(new String('0', Properties.Settings.Default.BrojPisacaZaglavlja.ToString().Length));
+            
             this.threadId = threadId;
             this.brojacStranaZaglavlja = brojac;
             this.barijera = barijera;

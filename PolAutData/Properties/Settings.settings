@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DatabaseProvider" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">MsSql</Value>
+      <Value Profile="(Default)">Firebird</Value>
     </Setting>
     <Setting Name="MsSqlConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

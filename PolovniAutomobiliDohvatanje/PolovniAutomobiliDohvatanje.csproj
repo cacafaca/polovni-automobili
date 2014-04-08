@@ -18,7 +18,7 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <StartupObject>PolovniAutomobiliDohvatanje.Program</StartupObject>
-    <ApplicationIcon>polautsrv.ico</ApplicationIcon>
+    <ApplicationIcon>PolovniAutomobiliLogo32x32.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -69,7 +69,7 @@
   -->
   <ItemGroup>
     <Compile Include="Barijera.cs" />
-    <Compile Include="CitacOglasa.cs" />
+    <Compile Include="AdReader.cs" />
     <Compile Include="CitacZaglavlja.cs" />
     <Compile Include="Citac.cs" />
     <Compile Include="GlavnaObrada.cs" />
@@ -169,6 +169,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PolovniAutomobiliLogo32x32.ico" />
     <None Include="InstallUtil.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

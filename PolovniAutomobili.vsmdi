@@ -14,7 +14,10 @@
       <TestLink id="6c46d5aa-8e61-7ba9-376d-9b38de20e8da" name="CloseConnection" storage="polautdatatest\bin\debug\testproject1.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     </TestLinks>
   </TestList>
+  <TestList name="BusinessLogicLayer" id="489e8f36-ebd2-4968-921a-998509eda600" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
   <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
     <RunConfiguration id="e92095fd-dfc3-4560-8d1f-742883501953" name="Local" storage="local.testsettings" type="Microsoft.VisualStudio.TestTools.Common.TestRunConfiguration, Microsoft.VisualStudio.QualityTools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   </TestList>
+  <TestList name="tst1" id="9bb1b664-b4c3-468f-9ad4-a9a5a8549f9c" parentListId="43ae325e-a5d1-4905-855f-ffda2f2a0e79" />
+  <TestList name="CommonLayer" id="b41daca9-1448-46ec-aa09-e9ee02ab794d" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
 </TestLists>
