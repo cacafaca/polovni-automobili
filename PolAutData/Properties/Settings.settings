@@ -18,5 +18,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Database=192.168.2.1:e:\fbbaze\POLOVNIAUTOMOBILI.FDB;User=sysdba;Password=megaplast;CHARSET=UTF8</Value>
     </Setting>
+    <Setting Name="NumberOfSaveAttempts" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="SleepTimeAfterFailedSave" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

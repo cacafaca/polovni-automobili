@@ -66,5 +66,23 @@ namespace PolAutData.Properties {
                 return ((string)(this["FBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int NumberOfSaveAttempts {
+            get {
+                return ((int)(this["NumberOfSaveAttempts"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int SleepTimeAfterFailedSave {
+            get {
+                return ((int)(this["SleepTimeAfterFailedSave"]));
+            }
+        }
     }
 }

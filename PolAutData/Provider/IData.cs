@@ -16,6 +16,7 @@ namespace PolAutData
         bool RollbackTran();
         bool InTransaction();
         bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult);
+        bool GetDataSet(string query, out DataSet queryResult);
         bool Execute(string query, Hashtable parameters);
     }
 }

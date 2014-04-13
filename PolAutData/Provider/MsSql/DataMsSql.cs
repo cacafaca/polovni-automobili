@@ -15,6 +15,7 @@ namespace PolAutData.Provider.MsSql
         public DataMsSql()
         {
             //ConnectionString = Properties.Settings.Default.MsSqlConnectionString;
+            m_DbConnection = Connection;
         }
         #endregion
 
@@ -85,6 +86,10 @@ namespace PolAutData.Provider.MsSql
         {
             queryResult = null;
             return false;
+        }
+        public override bool GetDataSet(string query, out DataSet queryResult)
+        {
+            return GetDataSet(query, null, out queryResult);
         }
         public override bool Execute(string query, Hashtable parameters)
         {

@@ -18,7 +18,7 @@ namespace PolAutData.Provider.Firebird
         FbTransaction Transaction;
         FbConnection Connection;
         #endregion
-
+ 
         #region Constructors
         /// <summary>
         /// Constructor sets:
@@ -34,6 +34,7 @@ namespace PolAutData.Provider.Firebird
         public DataFirebird()
         {
             Connection = new FbConnection(Properties.Settings.Default.FBConnectionString);
+            m_DbConnection = Connection; 
             ParameterPrefix = Properties.Settings.Default.PodrazumevaniPrefixParametra;
         }
         #endregion
@@ -154,6 +155,10 @@ namespace PolAutData.Provider.Firebird
                 return false;
             }
         }
+        override public bool GetDataSet(string query, out DataSet queryResult)
+        {
+            return GetDataSet(query, null, out queryResult);
+        }
         public override bool Execute(string query, Hashtable parameters)
         {
             try
@@ -165,7 +170,9 @@ namespace PolAutData.Provider.Firebird
             }
             catch (Exception ex)
             {
-                Common.EventLogger.WriteEventError("Fail to execute SQL.", ex);
+                Korisno.LogError("Fail to execute SQL.", ex);
+                //Common.EventLogger.WriteEventError("Fail to execute SQL.", ex); // Comment this after approving class.
+                m_LastException = ex;
                 return false;
             }
         }

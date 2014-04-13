@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>C:\Temp\publish\PolovniAutomobiliDohvatanje\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Temp\PAS\|C:\Temp\publish\PolovniAutomobiliDohvatanje\</PublishUrlHistory>
     <InstallUrlHistory>
     </InstallUrlHistory>
     <SupportUrlHistory>
