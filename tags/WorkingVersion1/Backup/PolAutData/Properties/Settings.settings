@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PolAutData.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PolovniAutomobiliConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User=servis;Password=megaplast;Database=192.168.2.1:d:\fbbaze\POLOVNIAUTOMOBILI.FDB;CHARSET=UTF8</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

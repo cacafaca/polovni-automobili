@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Common.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AdresaPocetneStrane" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://www.polovniautomobili.com</Value>
+    </Setting>
+    <Setting Name="MaxVelicinaEventLoggera" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">32766</Value>
+    </Setting>
+    <Setting Name="MaxBrojCitanjaStrane" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PisiUDnevnik" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="VremeCekanjaNaPonovnoCitanjeStrane" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="NazivServisa" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PolovAutoSajt</Value>
+    </Setting>
+    <Setting Name="NazivServisaDuzi" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Polovni automobili dohvatanje</Value>
+    </Setting>
+    <Setting Name="ValicinaBaferaDnevnika" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100000</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
