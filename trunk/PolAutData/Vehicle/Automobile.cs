@@ -262,6 +262,20 @@ namespace PolAutData.Vehicle
             }
         }
 
+        public System.Data.DataSet GetAllAsDataSet(int count = 0)
+        {
+            string firstN = string.Empty;
+            if (count > 0)
+                firstN = string.Format(" first {0} ", count);
+            System.Data.DataSet allAutomobiles = null;
+            Data.GetDataSet(string.Format(
+                @" select {0} BROJOGLASA, NASLOV, CENA, URL, VOZILO, MARKA, MODEL, GODINAPROIZVODNJE, KAROSERIJA, GORIVO, FIKSNACENA, ZAMENA, 
+                       DATUMPOSTAVLJANJA, KUBIKAZA, SNAGA_KW, SNAGA_KS, KILOMETRAZA, EMISIONAKLASA, POGON, MENJAC, BROJVRATA,
+                       BROJSEDISTA, STRANAVOLANA, KLIMA, BOJA, REGISTROVANDO, POREKLOVOZILA, OPIS, KONTAKT
+                 from AUTOMOBIL A ", firstN), out allAutomobiles);
+            return allAutomobiles;
+        }
+
         private Common.Vehicle.Automobile DataRowToAutomobile(System.Data.DataRow dr)
         {
             Common.Vehicle.Automobile a = null;
@@ -320,7 +334,7 @@ namespace PolAutData.Vehicle
             return a;
         }
 
-        public List<Common.Vehicle.Automobile> GetAll()
+        public List<Common.Vehicle.Automobile> GetAllAsList()
         {
             System.Data.DataSet allAutomobiles;
             List<Common.Vehicle.Automobile> automobileList = null;
@@ -329,8 +343,8 @@ namespace PolAutData.Vehicle
                        DATUMPOSTAVLJANJA, KUBIKAZA, SNAGA_KW, SNAGA_KS, KILOMETRAZA, EMISIONAKLASA, POGON, MENJAC, BROJVRATA,
                        BROJSEDISTA, STRANAVOLANA, KLIMA, BOJA, REGISTROVANDO, POREKLOVOZILA, OPIS, KONTAKT
                  from AUTOMOBIL A ", out allAutomobiles))
-            {                
-                if(allAutomobiles != null && allAutomobiles.Tables.Count > 0 && allAutomobiles.Tables[0].Rows.Count > 0)
+            {
+                if (allAutomobiles != null && allAutomobiles.Tables.Count > 0 && allAutomobiles.Tables[0].Rows.Count > 0)
                 {
                     automobileList = new List<Common.Vehicle.Automobile>();
                     foreach (System.Data.DataRow autoDb in allAutomobiles.Tables[0].Rows)
@@ -344,13 +358,34 @@ namespace PolAutData.Vehicle
             return automobileList;
         }
 
+        /// <summary>
+        /// Returns two dimensional array with column header at position 0.
+        /// </summary>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public object[,] GetAllAsArray(int count = 0)
+        {
+            System.Data.DataSet allAutomobiles = GetAllAsDataSet(count);
+            object[,] automobileArray = null;
+            if (allAutomobiles != null && allAutomobiles.Tables.Count > 0 && allAutomobiles.Tables[0].Rows.Count > 0)
+            {
+                automobileArray = new object[allAutomobiles.Tables[0].Rows.Count + 1, allAutomobiles.Tables[0].Columns.Count];
+                for (int col = 0; col < allAutomobiles.Tables[0].Columns.Count; col++)
+                    automobileArray[0, col] = allAutomobiles.Tables[0].Columns[col].ColumnName;
+                for (int row = 1; row < allAutomobiles.Tables[0].Rows.Count + 1; row++)
+                    for (int col = 0; col < allAutomobiles.Tables[0].Columns.Count; col++)
+                        automobileArray[row, col] = allAutomobiles.Tables[0].Rows[row-1][col];
+            }
+            return automobileArray;
+        }
+
         public bool ExportToExcel(string fileName)
         {
             bool success = false;
             if (fileName != null && fileName != string.Empty)
             {
-                List<Common.Vehicle.Automobile> al = GetAll();
-                if(al!=null && al.Count>0)
+                object[,] autos = GetAllAsArray();
+                if (autos != null && autos.Length > 0)
                 {
                     Excel.Application exportExcel = null;
                     Excel.Workbook exportWorkbook = null;
@@ -361,29 +396,15 @@ namespace PolAutData.Vehicle
                     exportWorkbook = exportExcel.Workbooks.Add();
                     exportWorksheet = exportWorkbook.Sheets[1];
 
-                    int lastRow = 1; int lastColl = 1;
+                    Excel.Range range = exportWorksheet.get_Range("A1", System.Reflection.Missing.Value).
+                        get_Resize(autos.GetLength(0), autos.GetLength(1));
+                    range.set_Value(System.Reflection.Missing.Value, autos);
 
-                    //Zaglavlje
-                    exportWorksheet.Cells[lastRow, lastColl++] = al[0].BrojOglasa.GetType().Name;
-                    exportWorksheet.Cells[lastRow, lastColl++] = al[0].Naslov.GetType().Name;
-                    exportWorksheet.Cells[lastRow, lastColl++] = al[0].URL.GetType().Name;
-                    lastRow++;
-                    
-                    // petlja
-                    //('A' + 29).ToString() + (lastRow+al.Count).ToString()
-                    Excel.Range range = exportWorksheet.get_Range("A" + lastRow.ToString(), "AD" + (lastRow+al.Count).ToString());
-                    lastRow = 1;
-                    foreach (Common.Vehicle.Automobile a in al)
-                    {
-                        lastColl = 1;
-                        range.Cells[lastRow, lastColl++] = a.BrojOglasa;
-                        range.Cells[lastRow, lastColl++] = a.Naslov;
-                        range.Cells[lastRow, lastColl++] = a.URL;
-                        lastRow++;
-                    }
-
-                    // Snimanje
                     exportWorkbook.SaveAs(fileName);
+                    exportWorkbook.Close();
+
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorkbook);
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorksheet);
                 }
             }
             return success;
