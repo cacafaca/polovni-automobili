@@ -40,6 +40,7 @@ namespace PolAutoExport
 
         private void btIzvozUExcel_Click(object sender, EventArgs e)
         {
+            DateTime startTime = DateTime.Now;
             try
             {
                 saveFileDialog1.DefaultExt = "*.xlsx";
@@ -50,7 +51,8 @@ namespace PolAutoExport
                     PolAutData.Vehicle.Automobile a = new PolAutData.Vehicle.Automobile();
                     a.ExportToExcel(saveFileDialog1.FileName);
                     Cursor = Cursors.Default;
-                    MessageBox.Show("Gotovo!", "Izvoz");
+                    DateTime endTime = DateTime.Now;
+                    MessageBox.Show(string.Format("Gotovo! Trajanje {0} min.", (endTime-startTime).TotalMinutes), "Izvoz");
                 }
             }
             catch (Exception ex)
