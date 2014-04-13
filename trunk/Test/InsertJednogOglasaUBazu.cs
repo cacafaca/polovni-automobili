@@ -10,7 +10,7 @@ namespace Test
         {
             PolAutData.Provider.DataInstance.Data.Open();
             PolAutData.Vehicle.Automobile autoDB = new PolAutData.Vehicle.Automobile(PolAutData.Provider.DataInstance.Data);
-            string adresa = "http://www.polovniautomobili.com/oglas4056741/opel_astra_h_17_cdti/";
+            string adresa = "http://www.polovniautomobili.com/oglas3593818/fiat_punto_12_16v/";
             Common.Http.StranaOglasa strOgl = new Common.Http.StranaOglasa(adresa);
             try
             {

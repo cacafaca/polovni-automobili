@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolovniAutomobiliDohvatanje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTest", "CommonTest\CommonTest.csproj", "{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup PolovniAutomobiliDohvatanje", "Setup PolovniAutomobiliDohvatanje\Setup PolovniAutomobiliDohvatanje.vdproj", "{AD26D518-DF65-430B-A3EC-7E6424955993}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PolovniAutomobili.vsmdi
@@ -180,6 +182,12 @@ Global
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|x86.ActiveCfg = Release|Any CPU
+		{AD26D518-DF65-430B-A3EC-7E6424955993}.Debug|Any CPU.ActiveCfg = Debug
+		{AD26D518-DF65-430B-A3EC-7E6424955993}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{AD26D518-DF65-430B-A3EC-7E6424955993}.Debug|x86.ActiveCfg = Debug
+		{AD26D518-DF65-430B-A3EC-7E6424955993}.Release|Any CPU.ActiveCfg = Release
+		{AD26D518-DF65-430B-A3EC-7E6424955993}.Release|Mixed Platforms.ActiveCfg = Release
+		{AD26D518-DF65-430B-A3EC-7E6424955993}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

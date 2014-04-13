@@ -17,7 +17,7 @@ namespace Common.Http
 
         private enum PodaciOAutomobilu { OpsteInformacije, DodatneInformacije, Sigurnost, Oprema, StanjeVozila, Opis, Kontakt }
 
-        public void Obradi()
+        public void ExtractAutomobile()
         {
             if (Sadrzaj != null && !Sadrzaj.Equals(string.Empty))
             {
@@ -409,7 +409,7 @@ namespace Common.Http
         {
             bool rezultat = base.Procitaj();
             if (Sadrzaj != null)
-                Obradi();
+                ExtractAutomobile();
             return rezultat && Sadrzaj != null && automobil != null;
         }
 

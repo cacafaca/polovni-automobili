@@ -47,7 +47,8 @@ namespace PolAutoExport
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     Cursor = Cursors.WaitCursor;
-                    //DataExport.ExportAutomobiliExcel(saveFileDialog1.FileName);
+                    PolAutData.Vehicle.Automobile a = new PolAutData.Vehicle.Automobile();
+                    a.ExportToExcel(saveFileDialog1.FileName);
                     Cursor = Cursors.Default;
                     MessageBox.Show("Gotovo!", "Izvoz");
                 }

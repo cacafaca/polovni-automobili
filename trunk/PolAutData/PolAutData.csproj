@@ -96,10 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="polautdata.ico" />
+    <Content Include="SQL\Firebird\DDL\automobil.sql" />
+    <Content Include="SQL\Firebird\Misc\broj upisanih oglasa po minutima.sql" />
+    <Content Include="SQL\Firebird\Misc\broj upisanih oglasa po satima.sql" />
+    <Content Include="SQL\Firebird\Misc\broj vozila po godistu.sql" />
+    <Content Include="SQL\Firebird\Misc\broj vozila po marci i modelu.sql" />
+    <Content Include="SQL\Firebird\Misc\broj vozila po marci.sql" />
+    <Content Include="SQL\Firebird\Misc\izmenjeni zapisi poređani po vremnu izmene unazad.sql" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FirebirdClient\" />
-    <Folder Include="SQL\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

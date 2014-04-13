@@ -79,6 +79,7 @@
     <Compile Include="Vehicle\Automobile.cs" />
     <Compile Include="Korisno\EventLogger.cs" />
     <Compile Include="Http\HttpComm.cs" />
+    <Compile Include="Vehicle\Automobiles.cs" />
     <Compile Include="Vehicle\Bicycle.cs" />
     <Compile Include="Vehicle\Marka.cs" />
     <Compile Include="Vehicle\MarkaLista.cs" />
@@ -105,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

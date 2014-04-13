@@ -15,6 +15,13 @@ namespace PolAutData.Provider
 
         #region Protected fields
         protected static ProviderType DataBaseProvider;
+        protected Exception m_LastException;
+        protected System.Data.Common.DbConnection m_DbConnection;
+        #endregion
+
+        #region Public fields
+        Exception LastException { get { return m_LastException; } }
+        System.Data.Common.DbConnection DbConnection { get { return m_DbConnection; } }
         #endregion
 
         #region Constructors
@@ -31,11 +38,11 @@ namespace PolAutData.Provider
             {
                 case ProviderType.Firebird:
                 default:
-                    if(DataInstance == null)
+                    if (DataInstance == null)
                         DataInstance = new Provider.Firebird.DataFirebird();
                     break;
                 case ProviderType.MsSql:
-                    if(DataInstance == null)
+                    if (DataInstance == null)
                         DataInstance = new Provider.MsSql.DataMsSql();
                     break;
             }
@@ -70,8 +77,17 @@ namespace PolAutData.Provider
         public abstract bool RollbackTran();
         public abstract bool InTransaction();
         public abstract bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult);
+        public abstract bool GetDataSet(string query, out DataSet queryResult);
         public abstract bool Execute(string query, Hashtable parameters);
         public abstract bool Execute(string query);
         #endregion
+
+        public override string ToString()
+        {
+            if (m_DbConnection != null)
+                return m_DbConnection.State.ToString();
+            else
+                return string.Empty;
+        }
     }
 }

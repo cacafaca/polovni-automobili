@@ -61,6 +61,7 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="FbParalelnaTransakcija.cs" />
     <Compile Include="InsertJednogOglasaUBazu.cs" />
     <Compile Include="PokretanjeGlavneObrade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

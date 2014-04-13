@@ -1,31 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
-  <Class Name="PolAutData.DataFirebird" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>wBCAAAAAACAAIAEAQgAAAAAACAAAAAAAAAAQAASAoAA=</HashCode>
-      <FileName>Common\DataFireBird.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="PolAutData.DataMsSql" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>wACAAAAAAAAAIAEAQgAAAAAAAAAAAAAAAAAQAACAAAA=</HashCode>
-      <FileName>Common\DataMsSql.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="PolAutData.Data" Collapsed="true">
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="PolAutData.Provider.Data" Collapsed="true">
     <Position X="1.75" Y="0.5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
     <TypeIdentifier>
-      <HashCode>wAAAAAAAAAAAIAAAQAAAAAAAgAAAAAAAACAQAACAIAA=</HashCode>
-      <FileName>Common\Data.cs</FileName>
+      <HashCode>wAAIQCAEAAAAIAQEAAAAAAAAAAQCAAAAAACQiACAIAA=</HashCode>
+      <FileName>Provider\Data.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PolAutData.Provider.DataInstance" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>Provider\DataInstance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PolAutData.Provider.Firebird.DataFirebird" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wACIAAAAACAAIIUAAAAAAAAAAAACAgAAAgAQAACAgAA=</HashCode>
+      <FileName>Provider\Firebird\DataFireBird.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PolAutData.Provider.MsSql.DataMsSql" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wACIAAAAAAAAIAUAAAAAAAAAAAACAAAAAgAQAACAAAA=</HashCode>
+      <FileName>Provider\MsSql\DataMsSql.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PolAutData.Vehicle.Vehicle" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Vehicle\Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PolAutData.Vehicle.Automobile" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAMAAAAAAAAAAAAAAAAAAAAAAABAAAgBAAAEAAAA=</HashCode>
+      <FileName>Vehicle\Automobile.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Tahoma" Size="8.25" />
 </ClassDiagram>
