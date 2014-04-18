@@ -391,20 +391,26 @@ namespace PolAutData.Vehicle
                     Excel.Workbook exportWorkbook = null;
                     Excel.Worksheet exportWorksheet = null;
 
-                    exportExcel = new Excel.Application();
-                    exportExcel.Visible = false;
-                    exportWorkbook = exportExcel.Workbooks.Add();
-                    exportWorksheet = exportWorkbook.Sheets[1];
+                    try
+                    {
+                        exportExcel = new Excel.Application();
+                        exportExcel.Visible = false;
+                        exportWorkbook = exportExcel.Workbooks.Add();
+                        exportWorksheet = exportWorkbook.Sheets[1];
 
-                    Excel.Range range = exportWorksheet.get_Range("A1", System.Reflection.Missing.Value).
-                        get_Resize(autos.GetLength(0), autos.GetLength(1));
-                    range.set_Value(System.Reflection.Missing.Value, autos);
+                        Excel.Range range = exportWorksheet.get_Range("A1", System.Reflection.Missing.Value).
+                            get_Resize(autos.GetLength(0), autos.GetLength(1));
+                        range.set_Value(System.Reflection.Missing.Value, autos);
 
-                    exportWorkbook.SaveAs(fileName);
-                    exportWorkbook.Close();
+                        exportWorkbook.SaveAs(fileName);
+                    }
+                    finally
+                    {
+                        exportWorkbook.Close();
 
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorkbook);
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorksheet);
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorkbook);
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorksheet);
+                    }
                 }
             }
             return success;
