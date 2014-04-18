@@ -15,38 +15,14 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2CA66F4D418EB70328652B3A67C8AC6C"
+        "MsmKey" = "8:_609D700631039DD1B47B23A3A674437F"
+        "OwnerKey" = "8:_D694CEF3BA0411E147BE66703F7323CE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_609D700631039DD1B47B23A3A674437F"
         "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2CA66F4D418EB70328652B3A67C8AC6C"
-        "OwnerKey" = "8:_CCCA952C5A29D3A8BA87D68590041527"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_31BC8B8130ACD75CBFC49508B8855674"
-        "OwnerKey" = "8:_CCCA952C5A29D3A8BA87D68590041527"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_31BC8B8130ACD75CBFC49508B8855674"
-        "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_748960E3D649D264B61148F759969198"
-        "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_748960E3D649D264B61148F759969198"
-        "OwnerKey" = "8:_2CA66F4D418EB70328652B3A67C8AC6C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,38 +33,62 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CCCA952C5A29D3A8BA87D68590041527"
+        "MsmKey" = "8:_D694CEF3BA0411E147BE66703F7323CE"
+        "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D694CEF3BA0411E147BE66703F7323CE"
+        "OwnerKey" = "8:_FC6465BF60BA8A5BEDA0EE6898D37E7A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC6465BF60BA8A5BEDA0EE6898D37E7A"
+        "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE5A34BF33D2838B484182C6C12CCCEC"
+        "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE5A34BF33D2838B484182C6C12CCCEC"
+        "OwnerKey" = "8:_FC6465BF60BA8A5BEDA0EE6898D37E7A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_748960E3D649D264B61148F759969198"
+        "OwnerKey" = "8:_FC6465BF60BA8A5BEDA0EE6898D37E7A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+        "OwnerKey" = "8:_FE5A34BF33D2838B484182C6C12CCCEC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_CCCA952C5A29D3A8BA87D68590041527"
+        "OwnerKey" = "8:_D694CEF3BA0411E147BE66703F7323CE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2CA66F4D418EB70328652B3A67C8AC6C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_31BC8B8130ACD75CBFC49508B8855674"
+        "OwnerKey" = "8:_609D700631039DD1B47B23A3A674437F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -109,6 +109,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -152,6 +173,62 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_017650D5C45A44CCA2E50FB9BB0286D4"
+            {
+            "Name" = "8:Primary output from PolovniAutomobiliDohvatanje (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_AE319FB0_ACCD_4ED6_8668_BE78CCD406B5"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_9CB6B3AD12F7472CAC0F2C5465B8560B"
+            {
+            "Name" = "8:Primary output from PolovniAutomobiliDohvatanje (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_23F1D76A_DD45_4AE3_AE94_D18B3A59EF15"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_B5763A5BD6F145E58A73847CA218EA97"
+            {
+            "Name" = "8:Primary output from PolovniAutomobiliDohvatanje (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_9F591CF8_35A5_4BBD_B8FC_7F9E7F0DAB2E"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_FE34A39287434A9F8327D73580B899E7"
+            {
+            "Name" = "8:Primary output from PolovniAutomobiliDohvatanje (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_9AAB3E3D2FEC4252898DB55652707B45"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_1F9234E5_8A52_493D_B1A9_E8C3B8F7944E"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -175,13 +252,49 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2CA66F4D418EB70328652B3A67C8AC6C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_609D700631039DD1B47B23A3A674437F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_609D700631039DD1B47B23A3A674437F"
+                    {
+                    "Name" = "8:HtmlAgilityPack.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HtmlAgilityPack.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_CAD3C9952B58453D9CC633897C712A74"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D694CEF3BA0411E147BE66703F7323CE"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Common, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_D694CEF3BA0411E147BE66703F7323CE"
+                    {
+                    "Name" = "8:Common.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Common.dll"
             "TargetName" = "8:"
@@ -201,67 +314,51 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_31BC8B8130ACD75CBFC49508B8855674"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FirebirdSql.Data.FirebirdClient, Version=3.0.2.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:FirebirdSql.Data.FirebirdClient.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_CAD3C9952B58453D9CC633897C712A74"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_748960E3D649D264B61148F759969198"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:HtmlAgilityPack.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_CAD3C9952B58453D9CC633897C712A74"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CCCA952C5A29D3A8BA87D68590041527"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FC6465BF60BA8A5BEDA0EE6898D37E7A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:PolAutData, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_FC6465BF60BA8A5BEDA0EE6898D37E7A"
+                    {
+                    "Name" = "8:PolAutData.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:PolAutData.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_CAD3C9952B58453D9CC633897C712A74"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FE5A34BF33D2838B484182C6C12CCCEC"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FirebirdSql.Data.FirebirdClient, Version=3.0.2.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_FE5A34BF33D2838B484182C6C12CCCEC"
+                    {
+                    "Name" = "8:FirebirdSql.Data.FirebirdClient.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FirebirdSql.Data.FirebirdClient.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_CAD3C9952B58453D9CC633897C712A74"
@@ -334,9 +431,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup PolovniAutomobiliDohvatanje"
+        "ProductName" = "8:PolovniAutomobiliDohvatanje"
         "ProductCode" = "8:{8CE207C9-E9DF-448B-8957-D73779099021}"
-        "PackageCode" = "8:{DE5C8AD2-BC3E-4FE1-8425-1890409FAC4B}"
+        "PackageCode" = "8:{4C652D98-4737-4524-B6D3-B538EA2121D4}"
         "UpgradeCode" = "8:{A7F51E48-A2F1-4DB7-9B6B-23B36FC5C69F}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -857,7 +954,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9AAB3E3D2FEC4252898DB55652707B45"
             {
-            "SourcePath" = "8:..\\PolovniAutomobiliDohvatanje\\obj\\Release\\PolovniAutomobiliDohvatanje.exe"
+            "SourcePath" = "8:..\\PolovniAutomobiliDohvatanje\\obj\\Debug\\PolovniAutomobiliDohvatanje.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_CAD3C9952B58453D9CC633897C712A74"
