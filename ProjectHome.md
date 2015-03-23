@@ -1,0 +1,1 @@
+Aplikacija je servis koji skida sve oglase sa sajta http://www.polovniautomobili.com/ i smešta ih u bazu. U rešenju postoji i prateća palikacija za export podataka u excel.
