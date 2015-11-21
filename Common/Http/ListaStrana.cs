@@ -20,7 +20,7 @@ namespace Common.Http
                     radi = false;
                     lock (lokerListe)
                     {
-                        Dnevnik.PisiSaThredom(string.Format("Budim sve! (zaustavljanje-zaglavlja) /{0}/", koJeZvao));
+                        Dnevnik.PisiSaImenomThreda(string.Format("Budim sve! (zaustavljanje-zaglavlja) /{0}/", koJeZvao));
                         Monitor.PulseAll(lokerListe);
                     }
                 }
@@ -50,19 +50,19 @@ namespace Common.Http
                         if (!radi)
                             return;                            
                     }
-                    Dnevnik.PisiSaThredom("Uspavan. Lista puna. Elemenata " + Lista.Count + ".");
+                    Dnevnik.PisiSaImenomThreda("Uspavan. Lista puna. Elemenata " + Lista.Count + ".");
                     Monitor.Wait(lokerListe);
-                    Dnevnik.PisiSaThredom("Probuđen. Lista je bila puna. Elemenata " + Lista.Count + ".");
+                    Dnevnik.PisiSaImenomThreda("Probuđen. Lista je bila puna. Elemenata " + Lista.Count + ".");
                 }
                 Lista.Enqueue(strana);
                 switch(Common.Korisno.Korisno.disciplina)
                 {
                     case Common.Korisno.Korisno.Disciplina.dPulse:
-                        Dnevnik.PisiSaThredom("Budim slecećeg. Dodao element. Elemenata " + Lista.Count + ".");
+                        Dnevnik.PisiSaImenomThreda("Budim slecećeg. Dodao element. Elemenata " + Lista.Count + ".");
                         Monitor.Pulse(lokerListe);
                         break;
                     case Common.Korisno.Korisno.Disciplina.dPulseAll:
-                        Dnevnik.PisiSaThredom("Budim sve. Dodao element. Elemenata " + Lista.Count + ".");
+                        Dnevnik.PisiSaImenomThreda("Budim sve. Dodao element. Elemenata " + Lista.Count + ".");
                         Monitor.PulseAll(lokerListe);
                         break;
 
@@ -82,19 +82,19 @@ namespace Common.Http
                         if (!radi)
                             return null;
                     }
-                    Dnevnik.PisiSaThredom("Uspavan. Lista je prazna. Elemenata " + Lista.Count + ".");
+                    Dnevnik.PisiSaImenomThreda("Uspavan. Lista je prazna. Elemenata " + Lista.Count + ".");
                     Monitor.Wait(lokerListe);
-                    Dnevnik.PisiSaThredom("Probuđen. Lista je bila prazna. Elemenata " + Lista.Count + ".");
+                    Dnevnik.PisiSaImenomThreda("Probuđen. Lista je bila prazna. Elemenata " + Lista.Count + ".");
                 }
                 s = (Strana)Lista.Dequeue();
                 switch (Common.Korisno.Korisno.disciplina)
                 {
                     case Common.Korisno.Korisno.Disciplina.dPulse:
-                        Dnevnik.PisiSaThredom("Budim sledećeg. Uzeo element. Elemenata " + Lista.Count + ".");
+                        Dnevnik.PisiSaImenomThreda("Budim sledećeg. Uzeo element. Elemenata " + Lista.Count + ".");
                         Monitor.Pulse(lokerListe);
                         break;
                     case Common.Korisno.Korisno.Disciplina.dPulseAll:
-                        Dnevnik.PisiSaThredom("Budim sve. Uzeo element. Elemenata " + Lista.Count + ".");
+                        Dnevnik.PisiSaImenomThreda("Budim sve. Uzeo element. Elemenata " + Lista.Count + ".");
                         Monitor.PulseAll(lokerListe);
                         break;
                 }

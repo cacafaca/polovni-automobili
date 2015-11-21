@@ -49,7 +49,7 @@ namespace Common.Http
                         vreme = DateTime.Now;
                         if (sadrzaj != null && !sadrzaj.Equals(string.Empty))
                         {
-                            Dnevnik.PisiSaThredom("Strana je procitana. URL: " + adresa);
+                            Dnevnik.PisiSaImenomThreda("Strana je procitana. URL: " + adresa);
                             return true;
                         }
                     }

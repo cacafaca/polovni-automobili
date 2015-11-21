@@ -35,7 +35,7 @@ namespace PolovniAutomobiliDohvatanje
         /// </summary>
         private void Obrada()
         {
-            Dnevnik.PisiSaThredom("Obrada pokrenuta.");
+            Dnevnik.PisiSaImenomThreda("Obrada pokrenuta.");
             try
             {
                 RadiObradu();

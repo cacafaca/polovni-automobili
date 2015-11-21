@@ -37,7 +37,7 @@ namespace PolovniAutomobiliDohvatanje
                             if (auto != null)
                             {
                                 autoDB.Save(auto); 
-                                Dnevnik.PisiSaThredom("Dodat oglas u bazu: " + auto.ToString());
+                                Dnevnik.PisiSaImenomThreda("Dodat oglas u bazu: " + auto.ToString());
                             }
                         }
                         else

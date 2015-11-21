@@ -25,7 +25,7 @@ namespace PolovniAutomobiliDohvatanje
 
         private void Obrada()
         {
-            Dnevnik.PisiSaThredom("Obrada pokrenuta.");
+            Dnevnik.PisiSaImenomThreda("Obrada pokrenuta.");
             try
             {
                 while (radi)
@@ -35,7 +35,7 @@ namespace PolovniAutomobiliDohvatanje
                     // malo logovanja
                     string porukaOZavrsetku = String.Format("Thread {0} je završio sa dohvatanjem zaglavlja. Čekam da završe ostali pisci zaglavlja.", Pisac.Name);
                     EventLogger.WriteEventInfo(porukaOZavrsetku);
-                    Dnevnik.PisiSaThredom(porukaOZavrsetku);
+                    Dnevnik.PisiSaImenomThreda(porukaOZavrsetku);
 
                     // sinhronizacija na barijeri
                     if (barijera.PisacZaglavljaZavrsio() == 0)
@@ -53,7 +53,7 @@ namespace PolovniAutomobiliDohvatanje
             {
                 EventLogger.WriteEventError("Greska pri pokretanju obrade zaglavlja", ex);
             }
-            Dnevnik.PisiSaThredom("Obrada završena.");
+            Dnevnik.PisiSaImenomThreda("Obrada završena.");
             Dnevnik.Isprazni();
         }
 
@@ -65,7 +65,7 @@ namespace PolovniAutomobiliDohvatanje
             i = brojacStranaZaglavlja.Sledeci();
             try
             {
-                adresa = Zaglavlje(i);
+                adresa = DajAdresuZaglavlja(i);
                 Common.Http.Strana strana = new Common.Http.StranaZaglavlja(adresa);
                 while (strana.Procitaj())
                 {
@@ -73,17 +73,17 @@ namespace PolovniAutomobiliDohvatanje
                     if (!radi)
                         return;
                     i = brojacStranaZaglavlja.Sledeci();
-                    adresa = Zaglavlje(i);
+                    adresa = DajAdresuZaglavlja(i);
                     strana = new Common.Http.StranaZaglavlja(adresa);
                 }
-                Dnevnik.PisiSaThredom("Više nema zaglavlja za čitanje.");
+                Dnevnik.PisiSaImenomThreda("Više nema zaglavlja za čitanje.");
                 //brojacStranaZaglavlja.Ponisti();   // ponistavam brojac da krene iz pocetka ???????
             }
             catch (Exception ex)
             {
                 string porukaGreske = "Citac zaglavlja nije uspesno zavrsio.";
                 EventLogger.WriteEventError(porukaGreske, ex);
-                Dnevnik.PisiSaThredom(porukaGreske);
+                Dnevnik.PisiSaImenomThreda(porukaGreske);
             }
             finally
             {
@@ -91,11 +91,10 @@ namespace PolovniAutomobiliDohvatanje
             }
         }
 
-        private string Zaglavlje(uint brojStrane)
+        private string DajAdresuZaglavlja(uint brojStrane)
         {
-            return @"http://www.polovniautomobili.com/putnicka-vozila-26/" +
-                (brojStrane - 1).ToString() +
-                @"/?tags=&showold_pt=false&shownew_pt=false&brand=0&price_to=&tag_218_from=0&tag_218_to=0&selectedRegion=0&showoldnew=all";
+            return @"http://www.polovniautomobili.com/putnicka-vozila/pretraga?page=" + (brojStrane - 1).ToString() +
+                @"&sort=renewDate_desc&model=&city_distance=0&showOldNew=all&without_price=1";
         }
 
         public void Pokreni()

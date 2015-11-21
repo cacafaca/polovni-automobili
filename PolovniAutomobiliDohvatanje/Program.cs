@@ -9,7 +9,7 @@ namespace PolovniAutomobiliDohvatanje
     {
         static void Main(string[] args)
         {
-            ServiceBase[] servicesToRun = new ServiceBase[] { new PolAutSrv() };
+            ServiceBase servicesToRun = new PolAutSrv();
 
             ServiceBase.Run(servicesToRun);
         }

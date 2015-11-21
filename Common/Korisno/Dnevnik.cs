@@ -38,7 +38,7 @@ namespace Common
             }
         }
 
-        public static void PisiSaThredom(string tekst)
+        public static void PisiSaImenomThreda(string tekst)
         {
             if (tekst != null)
             {
@@ -48,13 +48,13 @@ namespace Common
         }
         public static void PisiSaThredom(string tekst, bool isprazni)
         {
-            PisiSaThredom(tekst);
+            PisiSaImenomThreda(tekst);
             if(isprazni)
                 Isprazni();
         }
         public static void PisiSaThredomGreska(string tekst)
         {
-            PisiSaThredom("Greška: " + tekst);
+            PisiSaImenomThreda("Greška: " + tekst);
         }
         public static void PisiSaThredomGreska(string tekst, Exception ex)
         {
@@ -63,7 +63,7 @@ namespace Common
 
         public static void PisiSaThredomUpozorenje(string tekst)
         {
-            PisiSaThredom("Upozorenje: " + tekst);
+            PisiSaImenomThreda("Upozorenje: " + tekst);
         }
         public static bool Arhiviraj()
         {

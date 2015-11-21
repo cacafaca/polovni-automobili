@@ -25,13 +25,13 @@ namespace PolovniAutomobiliDohvatanje
             {
                 string poruka = "Pokrecem servis.";
                 //EventLogger.WriteEventInfo(poruka);
-                Dnevnik.PisiSaThredom(poruka);
+                Dnevnik.PisiSaImenomThreda(poruka);
                 
                 obrada.Pokreni();
 
                 poruka = "Servis je pokrenut.\n"+obrada.ToString(); 
                 EventLogger.WriteEventInfo(poruka);
-                Dnevnik.PisiSaThredom(poruka);
+                Dnevnik.PisiSaImenomThreda(poruka);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace PolovniAutomobiliDohvatanje
 
             string poruka = "Servis je zaustavljen.";
             EventLogger.WriteEventInfo(poruka);
-            Dnevnik.PisiSaThredom(poruka);
+            Dnevnik.PisiSaImenomThreda(poruka);
 
             Dnevnik.Isprazni();
             base.OnStop();

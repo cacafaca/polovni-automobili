@@ -333,7 +333,7 @@ namespace Common.Http
                     }
                     else
                     {
-                        Dnevnik.PisiSaThredom("Nema cele tabele.");
+                        Dnevnik.PisiSaImenomThreda("Nema cele tabele.");
                     }
                     return podrVred;
                 case PodaciOAutomobilu.DodatneInformacije:
@@ -355,7 +355,7 @@ namespace Common.Http
                     }
                     else
                     {
-                        Dnevnik.PisiSaThredom("Nema cele tabele.");
+                        Dnevnik.PisiSaImenomThreda("Nema cele tabele.");
                     }
                     return podrVred;
                 case PodaciOAutomobilu.Sigurnost:

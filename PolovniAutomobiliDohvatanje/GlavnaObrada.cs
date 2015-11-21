@@ -80,7 +80,7 @@ namespace PolovniAutomobiliDohvatanje
 
         public void Zaustavi()
         {
-            Dnevnik.PisiSaThredom("Zaustavljanje threadova.");
+            Dnevnik.PisiSaImenomThreda("Zaustavljanje threadova.");
             try
             {
                 for (int i = 0; i < pisacZaglavlja.Length; i++)
@@ -96,7 +96,7 @@ namespace PolovniAutomobiliDohvatanje
                     citacOglasa[i].Zaustavi();
                 }
                 PolAutData.Provider.DataInstance.Data.Close();
-                Dnevnik.PisiSaThredom("Glavna obrada zaustavljena. Poslate komande za zaustavljanje.");
+                Dnevnik.PisiSaImenomThreda("Glavna obrada zaustavljena. Poslate komande za zaustavljanje.");
             }
             catch (Exception ex)
             {

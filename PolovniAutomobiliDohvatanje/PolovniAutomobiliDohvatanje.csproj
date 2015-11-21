@@ -16,7 +16,7 @@
     <ManifestCertificateThumbprint>A7E2FF448D5F03FA31B534E2735F168D1C95D13D</ManifestCertificateThumbprint>
     <ManifestKeyFile>PolovniAutomobiliDohvatanje_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <StartupObject>PolovniAutomobiliDohvatanje.Program</StartupObject>
     <ApplicationIcon>PolovniAutomobiliLogo32x32.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>

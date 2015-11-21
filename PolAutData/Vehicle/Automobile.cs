@@ -174,19 +174,19 @@ namespace PolAutData.Vehicle
                     {
                         if (!Exists(automobile.BrojOglasa))   // select
                             if (Insert(automobile))
-                                Common.Dnevnik.PisiSaThredom("Uspešno dodat u bazu oglas " + automobile);
+                                Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
                             else
-                                Common.Dnevnik.PisiSaThredom("Nije dodat u bazu oglas " + automobile);
+                                Common.Dnevnik.PisiSaImenomThreda("Nije dodat u bazu oglas " + automobile);
                         else
                             if (Update(automobile))
-                                Common.Dnevnik.PisiSaThredom("Uspešno izmenjen u bazi oglas " + automobile);
+                                Common.Dnevnik.PisiSaImenomThreda("Uspešno izmenjen u bazi oglas " + automobile);
                             else
-                                Common.Dnevnik.PisiSaThredom("Nije izmenjen u bazi oglas " + automobile);
+                                Common.Dnevnik.PisiSaImenomThreda("Nije izmenjen u bazi oglas " + automobile);
 
                         if (Data.CommitTran())
                         {
                             saveSucceed = true;
-                            Common.Dnevnik.PisiSaThredom("Uspešno dodat u bazu oglas " + automobile);
+                            Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
                         }
                         else
                         {

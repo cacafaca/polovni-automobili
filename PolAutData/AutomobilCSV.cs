@@ -36,7 +36,7 @@ namespace PolAutData
                 {
                     SnimiCSV("c:\\temp\\" + threadName + "_" + DateTime.Now.ToString().Replace(":","_")+ ".csv");
                     vremeSnimanja = DateTime.Now;                    
-                    Dnevnik.PisiSaThredom("Snimljen CSV.");
+                    Dnevnik.PisiSaImenomThreda("Snimljen CSV.");
                 }
             }            
         }

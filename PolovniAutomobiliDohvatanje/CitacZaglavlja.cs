@@ -40,7 +40,7 @@ namespace PolovniAutomobiliDohvatanje
                                 if (!radi)
                                     return;
                             }
-                            Dnevnik.PisiSaThredom("Obrađeno je zaglavlje: " + strana.Adresa);
+                            Dnevnik.PisiSaImenomThreda("Obrađeno je zaglavlje: " + strana.Adresa);
                         }
                         else
                         {
