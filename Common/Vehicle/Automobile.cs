@@ -7,7 +7,7 @@ namespace Common.Vehicle
 {
     public class Automobile : Vehicle
     {
-        // Zaglavlje
+        #region Zaglavlje
         string url;
         string naslov;
         float cena;
@@ -15,8 +15,9 @@ namespace Common.Vehicle
         public string Naslov { get { return naslov; } }
         public float Cena { get { return cena; } }
         public string URL { get { return url; } }
+        #endregion Zaglavlje
 
-        // Opste informacije
+        #region Opste informacije
         string vozilo;
         string marka;
         string model;
@@ -38,8 +39,9 @@ namespace Common.Vehicle
         public bool Zamena { get { return zamena; } }
         public DateTime DatumPostavljanja { get { return datumPostavljanja; } }
         public int BrojOglasa { get { return brojOglasa; } }
+        #endregion Opste informacije
 
-        // Dodatne informacije
+        #region Dodatne informacije
         int kubikaza;
         int snagaKW; // kilovati
         int snagaKS; // konjska snaga
@@ -69,7 +71,7 @@ namespace Common.Vehicle
         public string Boja { get { return boja; } }
         public DateTime RegistrovanDo { get { return registrovanDo; } }
         public string PorekloVozila { get { return porekloVozila; } }
-
+        #endregion Dodatne informacije
         // Sigurnost
 
         // Oprema
@@ -156,6 +158,7 @@ namespace Common.Vehicle
                 "RegistrovanDo" + ";" +
                 "PorekloVozila";
         }
+        
         public static string CSVZaglavlje2()
         {
             Type type1 = typeof(Automobile);
@@ -167,6 +170,7 @@ namespace Common.Vehicle
             }
             return s;
         }
+        
         public string CSV2()
         {
             Type type1 = typeof(Automobile);

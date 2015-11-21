@@ -6,6 +6,9 @@ using Common;
 
 namespace PolovniAutomobiliDohvatanje
 {
+    /// <summary>
+    /// This thread reads ads.
+    /// </summary>
     class AdReader: Citac
     {
         #region Private fields

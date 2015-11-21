@@ -93,7 +93,7 @@ namespace PolovniAutomobiliDohvatanje
 
         private string DajAdresuZaglavlja(uint brojStrane)
         {
-            return @"http://www.polovniautomobili.com/putnicka-vozila/pretraga?page=" + (brojStrane - 1).ToString() +
+            return @"http://www.polovniautomobili.com/putnicka-vozila/pretraga?page=" + (brojStrane).ToString() +
                 @"&sort=renewDate_desc&model=&city_distance=0&showOldNew=all&without_price=1";
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using HtmlAgilityPack;
+using System.Linq;
 
 namespace Common.Http
 {
@@ -14,17 +15,17 @@ namespace Common.Http
         public string Adresa { get { return adresa; } }
         public string Sadrzaj { get { return sadrzaj; } }
         public DateTime Vreme { get { return vreme; } }
-        
+
         public Strana(string adresa)
         {
             this.adresa = adresa;
             sadrzaj = null;
         }
-        
+
         public virtual bool Procitaj()
         {
             if (Properties.Settings.Default.MaxBrojCitanjaStrane >= 0)
-            {                
+            {
                 int vremeCekanja = Properties.Settings.Default.VremeCekanjaNaPonovnoCitanjeStrane;
                 sadrzaj = string.Empty;
                 List<Exception> izuzeci = new List<Exception>();
@@ -47,7 +48,7 @@ namespace Common.Http
                         }*/
 
                         vreme = DateTime.Now;
-                        if (sadrzaj != null && !sadrzaj.Equals(string.Empty))
+                        if (!string.IsNullOrWhiteSpace(sadrzaj))
                         {
                             Dnevnik.PisiSaImenomThreda("Strana je procitana. URL: " + adresa);
                             return true;
@@ -90,14 +91,20 @@ namespace Common.Http
             d.LoadHtml(Sadrzaj);
             List<string> adrese = new List<string>();
             HtmlAgilityPack.HtmlNodeCollection nodeCol;
-            nodeCol = d.DocumentNode.SelectNodes("//*[@id=\"searchlist-items\"]/ul");
+            nodeCol = d.DocumentNode.SelectNodes("id('searchlist-items')");
             if (nodeCol != null)
             {
-                foreach (HtmlNode n in nodeCol[0].ChildNodes)
+                foreach (HtmlNode n in nodeCol[0].ChildNodes.Where(node => node.Name.ToLower().Equals("li")))
                 {
-                    if (n.Name.ToLower().Equals("li") && (n.Attributes.Count == 1))
+                    if ((n.Attributes.Count == 1))
                     {
-                        adrese.Add("http://www.polovniautomobili.com" + n.ChildNodes[1].ChildNodes[1].ChildNodes[0].Attributes[0].Value);
+                        if (n.ChildNodes.Count >= 2 &&
+                            n.ChildNodes[1].ChildNodes.Count >= 2 &&
+                            n.ChildNodes[1].ChildNodes[1].ChildNodes.Count >= 2 &&
+                            n.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes.Count >= 2)
+                        { 
+                            adrese.Add("http://www.polovniautomobili.com" + n.ChildNodes[1].ChildNodes[1].ChildNodes[1].Attributes[1].Value);
+                        }
                     }
                 }
                 return adrese;
