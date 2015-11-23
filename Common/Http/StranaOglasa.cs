@@ -193,10 +193,10 @@ namespace Common.Http
                         greske.AppendLine("Nisam mogao da pročitam polje fiksnaCena: " + ex.Message);
                     }
 
-                    DateTime datumPostavljanja = DateTime.MinValue;                    
+                    DateTime datumPostavljanja = DateTime.MinValue;
                     try
                     {
-                        string datumPostavljanjaStr = nodeOpste.SelectNodes("ul/li[13]/time")[0].Attributes["datetime"].Value.Trim(); ;                        
+                        string datumPostavljanjaStr = nodeOpste.SelectNodes("ul/li[13]/time")[0].Attributes["datetime"].Value.Trim(); ;
                         datumPostavljanja = DateTime.SpecifyKind(DateTime.Parse(datumPostavljanjaStr), DateTimeKind.Utc);
                     }
                     catch (Exception ex)
@@ -216,7 +216,7 @@ namespace Common.Http
                     #endregion Opste
 
                     #region Dodatne informacije
-                    
+
                     var nodeDodatno = dok.DocumentNode.Descendants("div").Where(div => div.Attributes.Contains("class") &&
                         div.Attributes["class"].Value.Equals("detailed-info")).First();
 
@@ -234,35 +234,65 @@ namespace Common.Http
 
                     string klima = nodeDodatno.SelectNodes("ul/li[7]/span[2]")[0].InnerHtml.Trim();
 
-                    string boja = nodeDodatno.SelectNodes("ul/li[8]/span[2]")[0].InnerHtml.Trim();
-                    
+                    string bojaKaroserije = nodeDodatno.SelectNodes("ul/li[8]/span[2]")[0].InnerHtml.Trim();
+
+                    string materijalEnterijera = nodeDodatno.SelectNodes("ul/li[9]/span[2]")[0].InnerHtml.Trim();
+
+                    string bojaEnterijera = nodeDodatno.SelectNodes("ul/li[10]/span[2]")[0].InnerHtml.Trim();
+
                     DateTime registrovanDo = DateTime.MinValue;
                     try
                     {
-                        string regDoStr = nodeDodatno.SelectNodes("ul/li[9]/span[2]")[0].InnerHtml.Trim();
+                        string regDoStr = "01." + nodeDodatno.SelectNodes("ul/li[11]/span[2]")[0].InnerHtml.Trim();
+                        regDoStr = regDoStr.Remove(regDoStr.Length - 1);
                         DateTime.TryParse(regDoStr, out registrovanDo);
                     }
                     catch (Exception ex)
                     {
                         greske.AppendLine("Nisam mogao da pročitam polje 'Registrovan do': " + ex.Message);
                     }
-                    string porekloVozila = DajPodatakIzDokumenta(ref dok, PodaciOAutomobilu.DodatneInformacije, "Poreklo vozila");
-                    
+
+                    string porekloVozila = nodeDodatno.SelectNodes("ul/li[12]/span[2]")[0].InnerHtml.Trim();
+
+                    string vlastnistvo = nodeDodatno.SelectNodes("ul/li[13]/span[2]")[0].InnerHtml.Trim();
+
+                    string ostecenje = nodeDodatno.SelectNodes("ul/li[14]/span[2]")[0].InnerHtml.Trim();
+
                     #endregion Dodatne informacije
 
-                    // Sigurnost
+                    #region Sigurnost
+                    #endregion Sigurnost
 
-                    // Oprema
+                    #region Oprema
+                    #endregion Oprema
 
-                    // Opis
-                    string opis = DajPodatakIzDokumenta(ref dok, PodaciOAutomobilu.Opis);
+                    #region Opis
+                    var nodeOpis = dok.DocumentNode.Descendants("div").Where(div => div.Attributes.Contains("class") &&
+                            div.Attributes["class"].Value.Equals("description")).First();
 
-                    //kontakt
-                    string kontakt = DajPodatakIzDokumenta(ref dok, PodaciOAutomobilu.Kontakt).Replace("(Pogledajte mapu)\r\n", "");
+                    string opis = string.Empty;
+                    foreach (var element in nodeOpis.ChildNodes)
+                    {
+                        if (element.NodeType == HtmlAgilityPack.HtmlNodeType.Text)
+                            opis += element.InnerHtml.Trim();
+                        else if (element.NodeType == HtmlAgilityPack.HtmlNodeType.Element && element.Name == "br")
+                            opis += Environment.NewLine;
+                    }
+                    opis = opis.Trim();
+
+                    #endregion Opis
+
+                    #region Kontakt
+
+                    var nodeKontakt = dok.DocumentNode.Descendants("div").Where(div => div.Attributes.Contains("class") &&
+                            div.Attributes["class"].Value.Equals("advertiser-info")).First();
+                    string kontakt = nodeKontakt.InnerHtml.Trim();
+
+                    #endregion Kontakt
 
                     automobil = new Automobile(brojOglasa, naslov, cena, adresa, vozilo, marka, model, godinaProizvodnje, karoserija,
                         gorivo, fiksnaCena, zamena, datumPostavljanja, kubikaza, snagaKW, snagaKS, kilometraza, emisionaKlasa, pogon,
-                        menjac, brojVrata, brojSedista, stranaVolana, klima, boja, registrovanDo, porekloVozila, opis, kontakt);
+                        menjac, brojVrata, brojSedista, stranaVolana, klima, bojaKaroserije, registrovanDo, porekloVozila, opis, kontakt);
 
                     if (greske.Length > 0)
                     {

@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6D580959-3922-46E2-86BB-1340B976C48F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutoPolicajac", "PolAutoPolicajac\PolAutoPolicajac.csproj", "{7F3091FA-D0D8-4AE9-931D-AEC526A479F0}"
@@ -17,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolovniAutomobiliZaglavlje"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutoExport", "PolAutoExport\PolAutoExport.csproj", "{6322A09B-7393-4614-9802-F7A4244BC2BA}"
 EndProject
-Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "PolAutDB", "PolAutDB\PolAutDB.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PolAutDB", "PolAutDB\PolAutDB.sqlproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{258521F0-5A0E-4B55-B176-6D4C24DD27A8}"
 	ProjectSection(SolutionItems) = preProject
@@ -36,10 +38,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTest", "CommonTest\Co
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup PolovniAutomobiliDohvatanje", "Setup PolovniAutomobiliDohvatanje\Setup PolovniAutomobiliDohvatanje.vdproj", "{AD26D518-DF65-430B-A3EC-7E6424955993}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84765268-2743-4181-A655-EE3A7FC6CE74}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = PolovniAutomobili.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -191,5 +192,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6D580959-3922-46E2-86BB-1340B976C48F} = {84765268-2743-4181-A655-EE3A7FC6CE74}
+		{B106154B-C9C0-47D9-AD39-EC78F34BC1EC} = {84765268-2743-4181-A655-EE3A7FC6CE74}
+		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442} = {84765268-2743-4181-A655-EE3A7FC6CE74}
+		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F} = {84765268-2743-4181-A655-EE3A7FC6CE74}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = PolovniAutomobili.vsmdi
 	EndGlobalSection
 EndGlobal
