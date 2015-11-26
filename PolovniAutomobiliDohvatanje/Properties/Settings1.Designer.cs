@@ -34,7 +34,7 @@ namespace PolovniAutomobiliDohvatanje.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public uint BrojCitacaZaglavlja {
             get {
                 return ((uint)(this["BrojCitacaZaglavlja"]));
@@ -43,7 +43,7 @@ namespace PolovniAutomobiliDohvatanje.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
         public uint BrojPisacaZaglavlja {
             get {
                 return ((uint)(this["BrojPisacaZaglavlja"]));
@@ -52,7 +52,7 @@ namespace PolovniAutomobiliDohvatanje.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
         public uint BrojCitacaOglasa {
             get {
                 return ((uint)(this["BrojCitacaOglasa"]));

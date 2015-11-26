@@ -28,15 +28,15 @@ namespace PolovniAutomobiliDohvatanje
         {
             while (radi)
             {
-                Strana strana = procitaneStrane.Uzmi();
-                if (strana != null)
+                StranaOglasa stranaOglasa = procitaneStrane.Uzmi() as StranaOglasa;
+                if (stranaOglasa != null)
                 {
                     Common.Vehicle.Automobile auto = null;
                     try
                     {
-                        if (strana.Procitaj())
+                        if (stranaOglasa.Procitaj())
                         {
-                            auto = ((StranaOglasa)strana).Automobil;
+                            auto = stranaOglasa.Automobil;
                             if (auto != null)
                             {
                                 autoDB.Save(auto); 
@@ -45,12 +45,12 @@ namespace PolovniAutomobiliDohvatanje
                         }
                         else
                         {
-                            Dnevnik.PisiSaThredomGreska("Nisam uspeo da pročitam stranu. URL: " + strana.Adresa);
+                            Dnevnik.PisiSaThredomGreska("Nisam uspeo da pročitam stranu. URL: " + stranaOglasa.Adresa);
                         }
                     }
                     catch (Exception ex)
                     {
-                        EventLogger.WriteEventError(string.Format("Nisam uspeo da dodam automobil (br.ogl.{0}) u bazu.\nURL: {1}", auto.BrojOglasa, strana.Adresa), ex);
+                        EventLogger.WriteEventError(string.Format("Nisam uspeo da dodam automobil (br.ogl.{0}) u bazu.\nURL: {1}", auto.BrojOglasa, stranaOglasa.Adresa), ex);
                     }
                 }
                 else

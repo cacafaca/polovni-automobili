@@ -15,7 +15,7 @@ namespace PolAutData.Provider.MsSql
         public DataMsSql()
         {
             //ConnectionString = Properties.Settings.Default.MsSqlConnectionString;
-            m_DbConnection = Connection;
+            //m_DbConnection = Connection;
         }
         #endregion
 

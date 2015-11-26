@@ -89,7 +89,7 @@ namespace PolAutData.Vehicle
                 Hashtable par = new Hashtable();
                 par.Add("@brojOglasa", adNumber);
                 System.Data.DataSet exists = null;
-                if (Data.GetDataSet("select null from automobil where brojOglasa = @brojOglasa", par, out exists))
+                if (Data.GetDataSet("select null from AUTOMOBIL where brojOglasa = @brojOglasa", par, out exists))
                     found = exists != null && exists.Tables[0].Rows.Count == 1;
             }
             catch (Exception ex)
@@ -108,7 +108,7 @@ namespace PolAutData.Vehicle
             Hashtable parameters;
             parameters = FillParams(automobil);
             return Data.Execute(
-                "insert into automobil (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija, " +
+                "insert into AUTOMOBIL (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija, " +
                     " gorivo, fiksnacena, zamena, datumpostavljanja, kubikaza, snaga_KW, snaga_KS, Kilometraza, EmisionaKlasa, " +
                     " Pogon, Menjac, brojvrata, brojsedista, stranavolana, klima, boja, registrovando, POREKLOVOZILA, " +
                     " opis, kontakt, thread)" +
@@ -128,7 +128,7 @@ namespace PolAutData.Vehicle
             parameters = FillParams(automobile);
 
             StringBuilder updateCommand = new StringBuilder();
-            updateCommand.AppendLine("UPDATE automobil");
+            updateCommand.AppendLine("UPDATE AUTOMOBIL");
             updateCommand.AppendLine("SET    naslov = @naslov");
             updateCommand.AppendLine("       ,cena = @cena");
             updateCommand.AppendLine("       ,url = @url");
@@ -167,55 +167,57 @@ namespace PolAutData.Vehicle
             bool saveSucceed = false;
             if (automobile.BrojOglasa > 0)
             {
-                Data.Open();
-                if (Data.BeginTran())
+                if (Data.Open())
                 {
-                    try
+                    if (Data.BeginTran())
                     {
-                        if (!Exists(automobile.BrojOglasa))   // select
-                            if (Insert(automobile))
-                                Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
+                        try
+                        {
+                            if (!Exists(automobile.BrojOglasa))   // select
+                                if (Insert(automobile))
+                                    Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
+                                else
+                                    Common.Dnevnik.PisiSaImenomThreda("Nije dodat u bazu oglas " + automobile);
                             else
-                                Common.Dnevnik.PisiSaImenomThreda("Nije dodat u bazu oglas " + automobile);
-                        else
-                            if (Update(automobile))
-                                Common.Dnevnik.PisiSaImenomThreda("Uspešno izmenjen u bazi oglas " + automobile);
-                            else
-                                Common.Dnevnik.PisiSaImenomThreda("Nije izmenjen u bazi oglas " + automobile);
+                                if (Update(automobile))
+                                    Common.Dnevnik.PisiSaImenomThreda("Uspešno izmenjen u bazi oglas " + automobile);
+                                else
+                                    Common.Dnevnik.PisiSaImenomThreda("Nije izmenjen u bazi oglas " + automobile);
 
-                        if (Data.CommitTran())
-                        {
-                            saveSucceed = true;
-                            Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
+                            if (Data.CommitTran())
+                            {
+                                saveSucceed = true;
+                                Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
+                            }
+                            else
+                            {
+                                //Common.Korisno.Korisno.LogError("Can't commit transaction. Automobile: " + automobile);
+                                if (!Data.RollbackTran())
+                                {
+                                    Common.Korisno.Korisno.LogError(string.Format("Can't rollback transaction. Connection: {0}. Automobile: {1}", Data, automobile));
+                                    if (!Data.Close())
+                                    {
+                                        Common.Korisno.Korisno.LogError("Can't close connection. Automobile: " + automobile);
+                                    }
+                                }
+
+                            }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            //Common.Korisno.Korisno.LogError("Can't commit transaction. Automobile: " + automobile);
+                            Common.Korisno.Korisno.LogError(string.Format("Neuspelo azuriranje oglasa broj {0}.", automobile.BrojOglasa), ex);
                             if (!Data.RollbackTran())
                             {
-                                Common.Korisno.Korisno.LogError(string.Format("Can't rollback transaction. Connection: {0}. Automobile: {1}", Data, automobile));
-                                if (!Data.Close())
-                                {
-                                    Common.Korisno.Korisno.LogError("Can't close connection. Automobile: " + automobile);
-                                }
+                                Data.Open();
+                                throw new Exception("Nisam uspeo da rollbekujem transakciju.");
                             }
-
+                            throw ex;
                         }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Common.Korisno.Korisno.LogError(string.Format("Neuspelo azuriranje oglasa broj {0}.", automobile.BrojOglasa), ex);
-                        if (!Data.RollbackTran())
-                        {
-                            Data.Open();
-                            throw new Exception("Nisam uspeo da rollbekujem transakciju.");
-                        }
-                        throw ex;
+                        Common.Korisno.Korisno.LogError("Can't begin transaction. Automobile: " + automobile);
                     }
-                }
-                else
-                {
-                    Common.Korisno.Korisno.LogError("Can't begin transaction. Automobile: " + automobile);
                 }
             }
             return saveSucceed;

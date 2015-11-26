@@ -1,40 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
-using FirebirdSql.Data.FirebirdClient;
+﻿using Common.Korisno;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
-using Common.Korisno;
+using System.Text;
 
-namespace PolAutData.Provider.Firebird
+namespace PolAutData.Provider.MySql
 {
     /// <summary>
     /// <b>Acces Firebird</b> client provider.
     /// </summary>
-    public class DataFirebird : Data, IData
+    public class DataMySql : Data, IData
     {
         #region Private fields
-        FbTransaction Transaction;
-        FbConnection Connection;
+        MySqlTransaction Transaction;
         #endregion
- 
+
         #region Constructors
-        /// <summary>
-        /// Constructor sets:
-        ///     <list type="bullet">
-        ///         <listheader>
-        ///             <term>term</term>
-        ///             <description>description</description>
-        ///         </listheader>
-        ///         <item>default connection string</item>
-        ///         <item>parameter prefix (eg. "@")</item>       
-        ///     </list>
-        /// </summary>
-        public DataFirebird()
+        public DataMySql()
+            : base(new MySqlConnection(Properties.Settings.Default.MySqlConnectionString))
         {
-            Connection = new FbConnection(Properties.Settings.Default.FBConnectionString);
-            //m_DbConnection = Connection; 
             ParameterPrefix = Properties.Settings.Default.PodrazumevaniPrefixParametra;
         }
         #endregion
@@ -46,10 +32,10 @@ namespace PolAutData.Provider.Firebird
         /// <returns>Vraca true ako je otvaranje uspesno.</returns>
         override public bool Open()
         {
-            if (Connection.State != ConnectionState.Open)
+            if (DbConnection.State != ConnectionState.Open)
                 try
                 {
-                    Connection.Open();
+                    DbConnection.Open();
                     return true;
                 }
                 catch (Exception ex)
@@ -62,10 +48,10 @@ namespace PolAutData.Provider.Firebird
         }
         override public bool Close()
         {
-            if (Connection.State != ConnectionState.Closed)
+            if (DbConnection.State != ConnectionState.Closed)
                 try
                 {
-                    Connection.Close();
+                    DbConnection.Close();
                     return true;
                 }
                 catch (Exception ex)
@@ -80,7 +66,7 @@ namespace PolAutData.Provider.Firebird
         {
             try
             {
-                Transaction = Connection.BeginTransaction(System.Threading.Thread.CurrentThread.Name);
+                Transaction = ((MySqlConnection)DbConnection).BeginTransaction();
                 return true;
             }
             catch (Exception ex)
@@ -141,9 +127,9 @@ namespace PolAutData.Provider.Firebird
         {
             try
             {
-                FbCommand cmd = new FbCommand(query, Connection, Transaction);
+                MySqlCommand cmd = new MySqlCommand(query, (MySqlConnection)DbConnection, Transaction);
                 FillParams(cmd, parameters);
-                FbDataAdapter da = new FbDataAdapter(cmd);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 queryResult = new DataSet();
                 da.Fill(queryResult);
                 return (queryResult != null) && (queryResult.Tables.Count > 0) && (queryResult.Tables[0].Rows.Count > 0);
@@ -163,10 +149,10 @@ namespace PolAutData.Provider.Firebird
         {
             try
             {
-                FbCommand Command = new FbCommand(query, Connection, Transaction);
-                FillParams(Command, parameters);
-                Command.CommandType = System.Data.CommandType.Text;
-                return Command.ExecuteNonQuery() > 0;
+                MySqlCommand command = new MySqlCommand(query, (MySqlConnection)DbConnection, Transaction);
+                FillParams(command, parameters);
+                command.CommandType = System.Data.CommandType.Text;
+                return command.ExecuteNonQuery() > 0;
             }
             catch (Exception ex)
             {
@@ -183,13 +169,13 @@ namespace PolAutData.Provider.Firebird
         #endregion
 
         #region Private methods
-        private void FillParams(FbCommand command, Hashtable parametri)
+        private void FillParams(MySqlCommand command, Hashtable parametri)
         {
             if (parametri != null)
             {
                 foreach (DictionaryEntry p in parametri)
                 {
-                    command.Parameters.Add(new FbParameter(p.Key.ToString(), p.Value));
+                    command.Parameters.Add(new MySqlParameter(p.Key.ToString(), p.Value));
                 }
             }
         }
@@ -200,14 +186,15 @@ namespace PolAutData.Provider.Firebird
             get;
             set;
         }
+
         public DataSet OpenDataSet(string upit, Hashtable parametri)
         {
             bool uTransakciji;
-            FbTransaction tran;
+            MySqlTransaction tran;
             DataSet ds = null;
             if (Transaction == null)
             {
-                tran = Connection.BeginTransaction();
+                tran = ((MySqlConnection)DbConnection).BeginTransaction();
                 uTransakciji = false;
             }
             else
@@ -217,9 +204,9 @@ namespace PolAutData.Provider.Firebird
             }
             try
             {
-                FbCommand Command = new FbCommand(upit, Connection, tran);
+                MySqlCommand Command = new MySqlCommand(upit, (MySqlConnection)DbConnection, tran);
                 FillParams(Command, parametri);
-                FbDataAdapter da = new FbDataAdapter(Command);
+                MySqlDataAdapter da = new MySqlDataAdapter(Command);
                 ds = new DataSet();
                 da.Fill(ds);
                 if (!uTransakciji)
@@ -259,7 +246,7 @@ namespace PolAutData.Provider.Firebird
         {
             try
             {
-                Connection.Close();
+                ((MySqlConnection)DbConnection).Close();
             }
             catch (Exception ex)
             {

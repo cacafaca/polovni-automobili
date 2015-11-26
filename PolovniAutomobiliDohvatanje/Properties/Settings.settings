@@ -6,13 +6,13 @@
       <Value Profile="(Default)">20</Value>
     </Setting>
     <Setting Name="BrojCitacaZaglavlja" Type="System.UInt32" Scope="Application">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="BrojPisacaZaglavlja" Type="System.UInt32" Scope="Application">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="BrojCitacaOglasa" Type="System.UInt32" Scope="Application">
-      <Value Profile="(Default)">1</Value>
+      <Value Profile="(Default)">10</Value>
     </Setting>
     <Setting Name="BrojStranaOglasa" Type="System.UInt32" Scope="Application">
       <Value Profile="(Default)">20</Value>

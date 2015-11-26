@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Data;
+using System.Data.Common;
 
 namespace PolAutData.Provider
 {
@@ -11,24 +12,29 @@ namespace PolAutData.Provider
     {
         #region Private fields
         static Data DataInstance;
+        private System.Data.Common.DbConnection m_DbConnection;
         #endregion
 
         #region Protected fields
-        protected static ProviderType DataBaseProvider;
+        protected static ProviderType DataBaseProvider = (ProviderType)Enum.Parse(typeof(ProviderType), Properties.Settings.Default.DatabaseProvider, true);
         protected Exception m_LastException;
-        protected System.Data.Common.DbConnection m_DbConnection;
         #endregion
 
         #region Public fields
         Exception LastException { get { return m_LastException; } }
-        System.Data.Common.DbConnection DbConnection { get { return m_DbConnection; } }
+        public DbConnection DbConnection { get { return m_DbConnection; } }
         #endregion
 
         #region Constructors
-        public Data()
+        public Data(DbConnection dbConnection)
         {
+            m_DbConnection = dbConnection;
             DataInstance = null;
-            DataBaseProvider = (ProviderType)Enum.Parse(typeof(ProviderType), Properties.Settings.Default.DatabaseProvider, true);
+        }
+
+        public Data()
+            :this(null)
+        {
         }
         #endregion
 
@@ -64,6 +70,9 @@ namespace PolAutData.Provider
                     break;
                 case ProviderType.MsSql:
                     dataInstance = new Provider.MsSql.DataMsSql();
+                    break;
+                case ProviderType.MySql:
+                    dataInstance = new Provider.MySql.DataMySql();
                     break;
             }
             return dataInstance;

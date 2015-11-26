@@ -3,6 +3,7 @@
     public enum ProviderType
     {
         Firebird,
-        MsSql
+        MsSql,
+        MySql
     }
 }
