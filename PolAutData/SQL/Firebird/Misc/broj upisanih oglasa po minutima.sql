@@ -1,5 +1,6 @@
 -- broj upisanih oglasa po minutima
-select datumizmene, extract(hour from vremeizmene) as Sat , extract(minute from vremeizmene) as Minut, count(*) Broj
-from automobil
-group by datumizmene, extract(hour from vremeizmene), extract(minute from vremeizmene)
-order by 1 desc ,2 desc,3 desc
+select extract(day from A.DATUM_AZURIRANJA), extract(hour from A.DATUM_AZURIRANJA) as SAT,
+       extract(minute from A.DATUM_AZURIRANJA) as MINUT, count(*) BROJ
+from AUTOMOBIL A
+group by extract(day from A.DATUM_AZURIRANJA), extract(hour from A.DATUM_AZURIRANJA), extract(minute from A.DATUM_AZURIRANJA)
+order by 1 desc, 2 desc, 3 desc  
