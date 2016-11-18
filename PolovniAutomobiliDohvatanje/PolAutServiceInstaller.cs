@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.ServiceProcess;
 using System.Configuration.Assemblies;
 
-namespace PolovniAutomobiliDohvatanje
+namespace Procode.PolovniAutomobili.Dohvatanje
 {
     [RunInstaller(true)]
     public class PolAutServiceInstaller : System.Configuration.Install.Installer

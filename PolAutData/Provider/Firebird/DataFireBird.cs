@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 using FirebirdSql.Data.FirebirdClient;
 using System.Collections;
 using System.Data;
-using Common.Korisno;
+using Procode.PolovniAutomobili.Common.Korisno;
 
-namespace PolAutData.Provider.Firebird
+namespace Procode.PolovniAutomobili.Data.Provider.Firebird
 {
     /// <summary>
     /// <b>Acces Firebird</b> client provider.

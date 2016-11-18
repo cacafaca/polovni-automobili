@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using System.Net;
 
-namespace Common.Http
+namespace Procode.PolovniAutomobili.Common.Http
 {
     public static class HttpComm
     {

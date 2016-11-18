@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common.Vehicle;
-using PolAutData;
+using Procode.PolovniAutomobili.Common.Vehicle;
+using Procode.PolovniAutomobili.Data;
 using System.Collections;
 using System.Threading;
-using PolAutData.Provider;
-using Excel = Microsoft.Office.Interop.Excel;
+using Procode.PolovniAutomobili.Data.Provider;
 
-namespace PolAutData.Vehicle
+namespace Procode.PolovniAutomobili.Data.Vehicle
 {
     public class Automobile : Vehicle
     {
         #region Private fields
-        Data Data;
+        Procode.PolovniAutomobili.Data.Provider.Data Data;
         #endregion
 
         #region Constructors
-        public Automobile(Data data)
+        public Automobile(Procode.PolovniAutomobili.Data.Provider.Data data)
         {
             Data = data;
         }
+
         /// <summary>
         /// If no args are specified instance has it onw connection.
         /// </summary>
         public Automobile()
         {
-            Data = PolAutData.Provider.Data.GetNewDataInstance();
+            Data = Procode.PolovniAutomobili.Data.Provider.Data.GetNewDataInstance();
         }
         #endregion
 
@@ -379,43 +379,6 @@ namespace PolAutData.Vehicle
                         automobileArray[row, col] = allAutomobiles.Tables[0].Rows[row-1][col];
             }
             return automobileArray;
-        }
-
-        public bool ExportToExcel(string fileName)
-        {
-            bool success = false;
-            if (fileName != null && fileName != string.Empty)
-            {
-                object[,] autos = GetAllAsArray();
-                if (autos != null && autos.Length > 0)
-                {
-                    Excel.Application exportExcel = null;
-                    Excel.Workbook exportWorkbook = null;
-                    Excel.Worksheet exportWorksheet = null;
-
-                    try
-                    {
-                        exportExcel = new Excel.Application();
-                        exportExcel.Visible = false;
-                        exportWorkbook = exportExcel.Workbooks.Add();
-                        exportWorksheet = exportWorkbook.Sheets[1];
-
-                        Excel.Range range = exportWorksheet.get_Range("A1", System.Reflection.Missing.Value).
-                            get_Resize(autos.GetLength(0), autos.GetLength(1));
-                        range.set_Value(System.Reflection.Missing.Value, autos);
-
-                        exportWorkbook.SaveAs(fileName);
-                    }
-                    finally
-                    {
-                        exportWorkbook.Close();
-
-                        System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorkbook);
-                        System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorksheet);
-                    }
-                }
-            }
-            return success;
         }
     }
 }

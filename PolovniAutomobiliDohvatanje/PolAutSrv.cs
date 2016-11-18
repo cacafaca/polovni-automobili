@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ServiceProcess;
-using Common;
+using Procode.PolovniAutomobili.Common;
 
-namespace PolovniAutomobiliDohvatanje
+namespace Procode.PolovniAutomobili.Dohvatanje
 {
     class PolAutSrv : ServiceBase
     {

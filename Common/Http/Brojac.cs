@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Common.Http
+namespace Procode.PolovniAutomobili.Common.Http
 {
     public class Brojac
     {

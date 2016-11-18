@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PolAutData.Provider
+namespace Procode.PolovniAutomobili.Data.Provider
 {
     public static class DataInstance
     {

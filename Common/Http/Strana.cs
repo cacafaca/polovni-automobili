@@ -5,7 +5,7 @@ using System.Threading;
 using HtmlAgilityPack;
 using System.Linq;
 
-namespace Common.Http
+namespace Procode.PolovniAutomobili.Common.Http
 {
     public class Strana
     {

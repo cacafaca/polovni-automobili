@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Data;
 
-namespace PolAutData
+namespace Procode.PolovniAutomobili.Data
 {
     interface IData
     {

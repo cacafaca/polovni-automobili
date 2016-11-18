@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Common.Vehicle
+namespace Procode.PolovniAutomobili.Common.Vehicle
 {
     class Automobiles
     {

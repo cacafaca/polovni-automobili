@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Procode.PolovniAutomobili.Common;
+using Procode.PolovniAutomobili.Common.Vehicle;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using Common.Vehicle;
 using System.IO;
-using Common;
 
-namespace PolAutData
+namespace Procode.PolovniAutomobili.Data
 {
     /// <summary>
     /// Ovu klasu više ne koristim. Služila je za upisivanje u CSV file dok nisam implementirao 

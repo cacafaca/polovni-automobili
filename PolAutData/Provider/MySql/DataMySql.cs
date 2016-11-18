@@ -1,4 +1,4 @@
-﻿using Common.Korisno;
+﻿using Procode.PolovniAutomobili.Common.Korisno;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace PolAutData.Provider.MySql
+namespace Procode.PolovniAutomobili.Data.Provider.MySql
 {
     /// <summary>
     /// <b>Acces Firebird</b> client provider.

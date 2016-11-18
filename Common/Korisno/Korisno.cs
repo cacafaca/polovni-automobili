@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System;
 
-namespace Common.Korisno
+namespace Procode.PolovniAutomobili.Common.Korisno
 {
     public static class Korisno
     {

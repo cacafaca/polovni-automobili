@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common;
+using Procode.PolovniAutomobili.Common;
 
 namespace Test
 {
@@ -9,7 +9,7 @@ namespace Test
     {
         static void Main()
         {
-            PolovniAutomobiliDohvatanje.GlavnaObrada obrada = new PolovniAutomobiliDohvatanje.GlavnaObrada();
+            Procode.PolovniAutomobili.Dohvatanje.GlavnaObrada obrada = new Procode.PolovniAutomobili.Dohvatanje.GlavnaObrada();
             obrada.Pokreni();
 
             System.Console.WriteLine("Lupi enter za kraj obrade.");

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HtmlAgilityPack;
 
-namespace Common.Http
+namespace Procode.PolovniAutomobili.Common.Http
 {
     public class StranaZaglavlja: Strana 
     {

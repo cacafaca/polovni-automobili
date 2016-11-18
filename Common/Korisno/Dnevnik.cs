@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Threading;
 
-namespace Common
+namespace Procode.PolovniAutomobili.Common
 {
     public static class Dnevnik
     {

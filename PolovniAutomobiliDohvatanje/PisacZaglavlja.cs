@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
-using Common;
+using Procode.PolovniAutomobili.Common;
 
-namespace PolovniAutomobiliDohvatanje
+namespace Procode.PolovniAutomobili.Dohvatanje
 {
     class PisacZaglavlja
     {

@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using PolAutData;
+using Procode.PolovniAutomobili.Data;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PolAutoExport
 {
@@ -48,8 +49,8 @@ namespace PolAutoExport
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     Cursor = Cursors.WaitCursor;
-                    PolAutData.Vehicle.Automobile a = new PolAutData.Vehicle.Automobile();
-                    a.ExportToExcel(saveFileDialog1.FileName);
+                    Procode.PolovniAutomobili.Data.Vehicle.Automobile a = new Procode.PolovniAutomobili.Data.Vehicle.Automobile();
+                    ExportToExcel(saveFileDialog1.FileName, a.GetAllAsArray());
                     Cursor = Cursors.Default;
                     DateTime endTime = DateTime.Now;
                     MessageBox.Show(string.Format("Gotovo! Trajanje {0} min.", (endTime-startTime).TotalMinutes), "Izvoz");
@@ -60,6 +61,42 @@ namespace PolAutoExport
                 Cursor = Cursors.Default;
                 MessageBox.Show("Greska: " + ex.Message);
             }
+        }
+
+        public bool ExportToExcel(string fileName, object[,] autos)
+        {
+            bool success = false;
+            if (fileName != null && fileName != string.Empty)
+            {
+                if (autos != null && autos.Length > 0)
+                {
+                    Excel.Application exportExcel = null;
+                    Excel.Workbook exportWorkbook = null;
+                    Excel.Worksheet exportWorksheet = null;
+
+                    try
+                    {
+                        exportExcel = new Excel.Application();
+                        exportExcel.Visible = false;
+                        exportWorkbook = exportExcel.Workbooks.Add();
+                        exportWorksheet = exportWorkbook.Sheets[1];
+
+                        Excel.Range range = exportWorksheet.get_Range("A1", System.Reflection.Missing.Value).
+                            get_Resize(autos.GetLength(0), autos.GetLength(1));
+                        range.set_Value(System.Reflection.Missing.Value, autos);
+
+                        exportWorkbook.SaveAs(fileName);
+                    }
+                    finally
+                    {
+                        exportWorkbook.Close();
+
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorkbook);
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(exportWorksheet);
+                    }
+                }
+            }
+            return success;
         }
     }
 }

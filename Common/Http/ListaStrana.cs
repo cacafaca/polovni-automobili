@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Threading;
 
-namespace Common.Http
+namespace Procode.PolovniAutomobili.Common.Http
 {
     public class ListaStrana
     {

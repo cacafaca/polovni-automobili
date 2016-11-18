@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Data;
 
-namespace PolAutData.Provider.MsSql
+namespace Procode.PolovniAutomobili.Data.Provider.MsSql
 {
     public class DataMsSql : Data, IData
     {

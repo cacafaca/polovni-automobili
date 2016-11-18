@@ -86,20 +86,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{C93658D6-B228-4F6F-8802-A387D140EC22}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PolAutData\PolAutData.csproj">
-      <Project>{540B637D-E727-4602-99D5-1B2976E54B7D}</Project>
-      <Name>PolAutData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PolovniAutomobiliDohvatanje\PolovniAutomobiliDohvatanje.csproj">
-      <Project>{A987FA16-423D-4DC0-85CE-CB9CFC5A4FA2}</Project>
-      <Name>PolovniAutomobiliDohvatanje</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>

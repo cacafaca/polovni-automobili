@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common.Http;
-using Common;
+using Procode.PolovniAutomobili.Common.Http;
+using Procode.PolovniAutomobili.Common;
 
-namespace PolovniAutomobiliDohvatanje
+namespace Procode.PolovniAutomobili.Dohvatanje
 {
     /// <summary>
     /// This thread reads ads.
@@ -12,14 +12,14 @@ namespace PolovniAutomobiliDohvatanje
     class AdReader: Citac
     {
         #region Private fields
-        PolAutData.Vehicle.Automobile autoDB;
+        Procode.PolovniAutomobili.Data.Vehicle.Automobile autoDB;
         #endregion
 
         #region Constructors
         public AdReader(ref Common.Http.ListaStrana procitaneStraneOglasa, int threadId):
             base(ref procitaneStraneOglasa, threadId, typeof(AdReader).Name, (int)Properties.Settings.Default.BrojCitacaOglasa)
         {
-            autoDB = new PolAutData.Vehicle.Automobile();
+            autoDB = new Procode.PolovniAutomobili.Data.Vehicle.Automobile();
         }
         #endregion
 

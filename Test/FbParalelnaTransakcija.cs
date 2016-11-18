@@ -9,8 +9,8 @@ namespace Test
     {
         public static void Main()
         {
-            PolAutData.Provider.Data d1;
-            d1 = PolAutData.Provider.Data.GetNewDataInstance();
+            Procode.PolovniAutomobili.Data.Provider.Data d1;
+            d1 = Procode.PolovniAutomobili.Data.Provider.Data.GetNewDataInstance();
             //d2 = PolAutData.Provider.Data.GetNewDataInstance();
             d1.Open();
             //d2.Open();

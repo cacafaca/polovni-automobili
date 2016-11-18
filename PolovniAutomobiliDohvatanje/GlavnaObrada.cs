@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using Common;
+using Procode.PolovniAutomobili.Common;
 
-namespace PolovniAutomobiliDohvatanje
+namespace Procode.PolovniAutomobili.Dohvatanje
 {
     public class GlavnaObrada 
     {
@@ -95,7 +95,7 @@ namespace PolovniAutomobiliDohvatanje
                 {
                     citacOglasa[i].Zaustavi();
                 }
-                PolAutData.Provider.DataInstance.Data.Close();
+                Procode.PolovniAutomobili.Data.Provider.DataInstance.Data.Close();
                 Dnevnik.PisiSaImenomThreda("Glavna obrada zaustavljena. Poslate komande za zaustavljanje.");
             }
             catch (Exception ex)

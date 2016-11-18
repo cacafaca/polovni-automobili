@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common.Vehicle;
+using Procode.PolovniAutomobili.Common.Vehicle;
 using System.Linq;
 
-namespace Common.Http
+namespace Procode.PolovniAutomobili.Common.Http
 {
     public class StranaOglasa : Strana
     {

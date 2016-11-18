@@ -3,3 +3,16 @@
 ################################################################################
 
 /PolAutoExport/bin/Debug
+/PolAutoExport/obj/x86/Debug
+/PolAutoPolicajac/obj/Debug
+/PolovniAutomobiliDohvatanje/obj/Debug
+/PolAutData/obj/Debug
+/Test/obj/Debug
+/Common/obj/Debug
+/.vs
+/Common/bin/Debug
+/packages
+/PolAutData/bin/Debug
+/PolAutoExport/obj/Debug
+/PolAutoPolicajac/bin/Debug
+/PolovniAutomobiliDohvatanje/bin/Debug

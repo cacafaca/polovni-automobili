@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
-using Common.Http;
-using Common;
+using Procode.PolovniAutomobili.Common.Http;
+using Procode.PolovniAutomobili.Common;
 
-namespace PolovniAutomobiliDohvatanje
+namespace Procode.PolovniAutomobili.Dohvatanje
 {
     public abstract class Citac
     {

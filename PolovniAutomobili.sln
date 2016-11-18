@@ -1,23 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6D580959-3922-46E2-86BB-1340B976C48F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutoPolicajac", "PolAutoPolicajac\PolAutoPolicajac.csproj", "{7F3091FA-D0D8-4AE9-931D-AEC526A479F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{C93658D6-B228-4F6F-8802-A387D140EC22}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.Common", "Common\Procode.PolovniAutomobili.Common.csproj", "{C93658D6-B228-4F6F-8802-A387D140EC22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutData", "PolAutData\PolAutData.csproj", "{540B637D-E727-4602-99D5-1B2976E54B7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.Data", "PolAutData\Procode.PolovniAutomobili.Data.csproj", "{540B637D-E727-4602-99D5-1B2976E54B7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolovniAutomobiliDohvatanje", "PolovniAutomobiliDohvatanje\PolovniAutomobiliDohvatanje.csproj", "{A987FA16-423D-4DC0-85CE-CB9CFC5A4FA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.Dohvatanje", "PolovniAutomobiliDohvatanje\Procode.PolovniAutomobili.Dohvatanje.csproj", "{A987FA16-423D-4DC0-85CE-CB9CFC5A4FA2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutMerac", "PolAutMerac\PolAutMerac.csproj", "{D1811B72-5560-41C4-ACEC-81A8A913EBA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolovniAutomobiliZaglavlje", "PolovniAutomobiliZaglavlje\PolovniAutomobiliZaglavlje.csproj", "{B96549BE-D050-41E8-9AAB-13DC6BF213B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutoExport", "PolAutoExport\PolAutoExport.csproj", "{6322A09B-7393-4614-9802-F7A4244BC2BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.Export", "PolAutoExport\Procode.PolovniAutomobili.Export.csproj", "{6322A09B-7393-4614-9802-F7A4244BC2BA}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PolAutDB", "PolAutDB\PolAutDB.sqlproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
 EndProject
@@ -35,8 +35,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolovniAutomobiliDohvatanjeTest", "PolovniAutomobiliDohvatanjeTest\PolovniAutomobiliDohvatanjeTest.csproj", "{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTest", "CommonTest\CommonTest.csproj", "{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup PolovniAutomobiliDohvatanje", "Setup PolovniAutomobiliDohvatanje\Setup PolovniAutomobiliDohvatanje.vdproj", "{AD26D518-DF65-430B-A3EC-7E6424955993}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84765268-2743-4181-A655-EE3A7FC6CE74}"
 EndProject
@@ -157,20 +155,24 @@ Global
 		{B96549BE-D050-41E8-9AAB-13DC6BF213B1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B96549BE-D050-41E8-9AAB-13DC6BF213B1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B96549BE-D050-41E8-9AAB-13DC6BF213B1}.Release|x86.ActiveCfg = Release|Any CPU
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|Any CPU.ActiveCfg = Azure|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|Mixed Platforms.ActiveCfg = Azure|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|x86.ActiveCfg = Azure|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|x86.Build.0 = Azure|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|x86.ActiveCfg = Debug|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|x86.Build.0 = Debug|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Any CPU.ActiveCfg = Release|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Mixed Platforms.Build.0 = Release|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|x86.ActiveCfg = Release|x86
-		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|x86.Build.0 = Release|x86
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|Any CPU.ActiveCfg = Azure|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|Any CPU.Build.0 = Azure|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|Mixed Platforms.ActiveCfg = Azure|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|Mixed Platforms.Build.0 = Azure|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|x86.ActiveCfg = Azure|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Azure|x86.Build.0 = Azure|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Debug|x86.Build.0 = Debug|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{6322A09B-7393-4614-9802-F7A4244BC2BA}.Release|x86.Build.0 = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Azure|Any CPU.ActiveCfg = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Azure|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Azure|x86.ActiveCfg = Release|Any CPU
@@ -243,15 +245,6 @@ Global
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|x86.ActiveCfg = Release|Any CPU
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Azure|Any CPU.ActiveCfg = Release
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Azure|Mixed Platforms.ActiveCfg = Release
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Azure|x86.ActiveCfg = Release
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Debug|Any CPU.ActiveCfg = Debug
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Debug|x86.ActiveCfg = Debug
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Release|Any CPU.ActiveCfg = Release
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Release|Mixed Platforms.ActiveCfg = Release
-		{AD26D518-DF65-430B-A3EC-7E6424955993}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -267,7 +260,6 @@ Global
 		{B106154B-C9C0-47D9-AD39-EC78F34BC1EC} = {84765268-2743-4181-A655-EE3A7FC6CE74}
 		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442} = {84765268-2743-4181-A655-EE3A7FC6CE74}
 		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F} = {84765268-2743-4181-A655-EE3A7FC6CE74}
-		{AD26D518-DF65-430B-A3EC-7E6424955993} = {AA2F7111-99C7-450F-B13F-FAEE04709749}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PolovniAutomobili.vsmdi

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Common.Http;
-using PolAutData.Provider;
+using Procode.PolovniAutomobili.Common.Http;
+using Procode.PolovniAutomobili.Data.Provider;
 
-namespace PolAutData
+namespace Procode.PolovniAutomobili.Data
 {
     class StranaZaglavljaDB: StranaZaglavlja
     {
@@ -18,7 +18,7 @@ namespace PolAutData
             if (Sadrzaj != string.Empty)
             {
                 System.Collections.Hashtable parametri = new System.Collections.Hashtable();
-                Data data = Data.GetDataInstance();
+                Provider.Data data = Provider.Data.GetDataInstance();
                 data.Execute("", parametri);
                 return true;
             }

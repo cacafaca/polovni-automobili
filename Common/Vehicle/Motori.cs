@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Common.Vehicle
+namespace Procode.PolovniAutomobili.Common.Vehicle
 {
     public class Motori: Vehicle
     {
