@@ -1,5 +1,5 @@
 ﻿using Procode.PolovniAutomobili.Common;
-using Procode.PolovniAutomobili.Common.Vehicle;
+using Procode.PolovniAutomobili.Common.Model.Vehicle;
 using System;
 using System.Collections.Generic;
 using System.IO;

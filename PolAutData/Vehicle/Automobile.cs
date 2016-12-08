@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Procode.PolovniAutomobili.Common.Vehicle;
+using Procode.PolovniAutomobili.Common.Model.Vehicle;
 using Procode.PolovniAutomobili.Data;
 using System.Collections;
 using System.Threading;
 using Procode.PolovniAutomobili.Data.Provider;
+using System.Data;
 
 namespace Procode.PolovniAutomobili.Data.Vehicle
 {
@@ -15,7 +16,9 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         Procode.PolovniAutomobili.Data.Provider.Data Data;
         #endregion
 
+
         #region Constructors
+
         public Automobile(Procode.PolovniAutomobili.Data.Provider.Data data)
         {
             Data = data;
@@ -28,9 +31,11 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         {
             Data = Procode.PolovniAutomobili.Data.Provider.Data.GetNewDataInstance();
         }
+        
         #endregion
 
-        private Hashtable FillParams(Common.Vehicle.Automobile automobil)
+
+        private Hashtable FillParams(Common.Model.Vehicle.Automobile automobil)
         {
             Hashtable par = new Hashtable();
             par.Add("@brojoglasa", automobil.BrojOglasa);
@@ -77,19 +82,21 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
             par.Add("@Kontakt", automobil.Kontakt);
             //slike mozda
 
-            par.Add("@thread", Thread.CurrentThread.Name);
+            par.Add("@thread", Thread.CurrentThread.Name != null ? Thread.CurrentThread.Name : string.Empty);
             return par;
         }
 
         private bool Exists(int adNumber)
         {
+            CheckOrCreateTable();
+
             bool found = false;
             try
             {
                 Hashtable par = new Hashtable();
                 par.Add("@brojOglasa", adNumber);
                 System.Data.DataSet exists = null;
-                if (Data.GetDataSet("select null from AUTOMOBIL where brojOglasa = @brojOglasa", par, out exists))
+                if (Data.GetDataSet("select null from AUTOMOBILe where brojOglasa = @brojOglasa", par, out exists))
                     found = exists != null && exists.Tables[0].Rows.Count == 1;
             }
             catch (Exception ex)
@@ -100,15 +107,47 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         }
 
         /// <summary>
+        /// Check if table exists.
+        /// </summary>
+        /// <returns></returns>
+        private bool TableExists()
+        {
+            DataSet numberOfTables;
+            Data.GetDataSet(
+@"IF EXISTS (SELECT 1 
+           FROM INFORMATION_SCHEMA.TABLES 
+           WHERE TABLE_TYPE='BASE TABLE' 
+           AND TABLE_NAME='automobile') 
+   SELECT 1 AS res ELSE SELECT 0 AS res;", null, out numberOfTables);
+            int num = 0;
+            num = (int)numberOfTables?.Tables[0].Rows[0].ItemArray[0];
+            return num == 1;
+        }
+
+        private void CreateTable()
+        {
+            Data.Execute(Properties.Resources.AutomobileMsSql);
+        }
+
+        /// <summary>
+        /// Check if table exists. If not, create the table.
+        /// </summary>
+        private void CheckOrCreateTable()
+        {
+            if (!TableExists())
+                CreateTable();
+        }
+
+        /// <summary>
         /// Inserts object Automobile in DB.
         /// </summary>
         /// <param name="automobil"></param>
-        private bool Insert(Common.Vehicle.Automobile automobil)
+        private bool Insert(Common.Model.Vehicle.Automobile automobil)
         {
             Hashtable parameters;
             parameters = FillParams(automobil);
             return Data.Execute(
-                "insert into AUTOMOBIL (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija, " +
+                "insert into AUTOMOBILe (brojoglasa, naslov, cena, url, vozilo, marka, model, godinaproizvodnje, karoserija, " +
                     " gorivo, fiksnacena, zamena, datumpostavljanja, kubikaza, snaga_KW, snaga_KS, Kilometraza, EmisionaKlasa, " +
                     " Pogon, Menjac, brojvrata, brojsedista, stranavolana, klima, boja, registrovando, POREKLOVOZILA, " +
                     " opis, kontakt, thread)" +
@@ -118,11 +157,12 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                     " @opis, @kontakt, @thread)"
                     , parameters);
         }
+
         /// <summary>
         /// Update u tabelu automobili.
         /// </summary>
         /// <param name="automobile"></param>
-        private bool Update(Common.Vehicle.Automobile automobile)
+        private bool Update(Common.Model.Vehicle.Automobile automobile)
         {
             Hashtable parameters;
             parameters = FillParams(automobile);
@@ -162,7 +202,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
             return Data.Execute(updateCommand.ToString(), parameters);
         }
 
-        private bool SaveOnce(Common.Vehicle.Automobile automobile)
+        private bool SaveOnce(Common.Model.Vehicle.Automobile automobile)
         {
             bool saveSucceed = false;
             if (automobile.BrojOglasa > 0)
@@ -227,7 +267,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         /// Saves autmobile in DB.
         /// </summary>
         /// <param name="automobile">Automobile to save.</param>
-        public bool Save(Common.Vehicle.Automobile automobile)
+        public bool Save(Common.Model.Vehicle.Automobile automobile)
         {
             for (int i = 0; i < Properties.Settings.Default.NumberOfSaveAttempts; i++)
                 if (SaveOnce(automobile))
@@ -238,30 +278,6 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                     Thread.Sleep(Properties.Settings.Default.SleepTimeAfterFailedSave);
                 }
             return false;
-        }
-
-        /// <summary>
-        /// Saves automobile in DB. 
-        /// </summary>
-        /// <param name="automobil">Automobile to save.</param>
-        /// <param name="withTransaction">If true saves automobile in transaction.</param>
-        public void Save(Common.Vehicle.Automobile automobil, Boolean withTransaction)
-        {
-            if (withTransaction)
-            {
-                Save(automobil);
-            }
-            else
-            {
-                if (!Exists(automobil.BrojOglasa))
-                {
-                    Insert(automobil);
-                }
-                else
-                {
-                    Update(automobil);
-                }
-            }
         }
 
         public System.Data.DataSet GetAllAsDataSet(int count = 0)
@@ -278,9 +294,9 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
             return allAutomobiles;
         }
 
-        private Common.Vehicle.Automobile DataRowToAutomobile(System.Data.DataRow dr)
+        private Common.Model.Vehicle.Automobile DataRowToAutomobile(System.Data.DataRow dr)
         {
-            Common.Vehicle.Automobile a = null;
+            Common.Model.Vehicle.Automobile a = null;
             if (dr != null)
             {
                 try
@@ -324,7 +340,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                     string opis = dr["opis"].ToString();
                     string kontakt = dr["kontakt"].ToString();
 
-                    a = new Common.Vehicle.Automobile(brojOglasa, naslov, cena, url, vozilo, marka, model, godinaProizvodnje, karoserija,
+                    a = new Common.Model.Vehicle.Automobile(brojOglasa, naslov, cena, url, vozilo, marka, model, godinaProizvodnje, karoserija,
                             gorivo, fiksnaCena, zamena, datumPostavljanja, kubikaza, snagaKW, snagaKS, kilometraza, emisionaKlasa, pogon, menjac,
                             brojVrata, brojSedista, stranaVolana, klima, boja, registrovanDo, porekloVozila, opis, kontakt);
                 }
@@ -336,10 +352,10 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
             return a;
         }
 
-        public List<Common.Vehicle.Automobile> GetAllAsList()
+        public List<Common.Model.Vehicle.Automobile> GetAllAsList()
         {
             System.Data.DataSet allAutomobiles;
-            List<Common.Vehicle.Automobile> automobileList = null;
+            List<Common.Model.Vehicle.Automobile> automobileList = null;
             if (Data.GetDataSet(
                 @" select BROJOGLASA, NASLOV, CENA, URL, VOZILO, MARKA, MODEL, GODINAPROIZVODNJE, KAROSERIJA, GORIVO, FIKSNACENA, ZAMENA, 
                        DATUMPOSTAVLJANJA, KUBIKAZA, SNAGA_KW, SNAGA_KS, KILOMETRAZA, EMISIONAKLASA, POGON, MENJAC, BROJVRATA,
@@ -348,10 +364,10 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
             {
                 if (allAutomobiles != null && allAutomobiles.Tables.Count > 0 && allAutomobiles.Tables[0].Rows.Count > 0)
                 {
-                    automobileList = new List<Common.Vehicle.Automobile>();
+                    automobileList = new List<Common.Model.Vehicle.Automobile>();
                     foreach (System.Data.DataRow autoDb in allAutomobiles.Tables[0].Rows)
                     {
-                        Common.Vehicle.Automobile auto = DataRowToAutomobile(autoDb);
+                        Common.Model.Vehicle.Automobile auto = DataRowToAutomobile(autoDb);
                         if (auto != null)
                             automobileList.Add(auto);
                     }

@@ -11,7 +11,7 @@ namespace Procode.PolovniAutomobili.Data.Provider
         public static Data Data { get { return data; } }
         static DataInstance()
         {
-            data = Data.GetDataInstance();
+            data = Data.GetNewDataInstance();
         }
     }
 }

@@ -8,11 +8,21 @@ namespace Procode.PolovniAutomobili.Common
 {
     public static class Dnevnik
     {
+        static Dnevnik()
+        {
+            HasAssembly = System.Reflection.Assembly.GetEntryAssembly() != null;
+            if (HasAssembly)
+            {
+                nazivDatoteke = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly()?.Location) + "\\Dnevnik.txt";
+            }
+        }
+
         public static readonly bool PisiUDnevnik = Properties.Settings.Default.PisiUDnevnik;
 
+        private static bool HasAssembly;
         private static int kapacitet = Properties.Settings.Default.ValicinaBaferaDnevnika;
         private static StringBuilder bafer = new StringBuilder(kapacitet);
-        private static string nazivDatoteke = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Dnevnik.txt";
+        private static string nazivDatoteke;
         private static string nazivDnevnikDir = "ArhivaDnevnika";
         private static readonly object loker = new object();
         private static bool arhivirao = false;
@@ -29,7 +39,7 @@ namespace Procode.PolovniAutomobili.Common
 
             lock (loker)
             {
-                isprazni = true; // za potrebe testiranja
+                //isprazni = true; // za potrebe testiranja
                 if (bafer.Length + tekst.Length > kapacitet || isprazni)
                 {
                     Snimi();
@@ -46,16 +56,19 @@ namespace Procode.PolovniAutomobili.Common
                 Pisi(threadName + ": " + tekst);
             }
         }
+
         public static void PisiSaThredom(string tekst, bool isprazni)
         {
             PisiSaImenomThreda(tekst);
-            if(isprazni)
+            if (isprazni)
                 Isprazni();
         }
+
         public static void PisiSaThredomGreska(string tekst)
         {
             PisiSaImenomThreda("Greška: " + tekst);
         }
+
         public static void PisiSaThredomGreska(string tekst, Exception ex)
         {
             PisiSaThredomGreska(tekst + "; Exception: " + ex.Message + "; StackTrace: " + ex.StackTrace);
@@ -67,8 +80,8 @@ namespace Procode.PolovniAutomobili.Common
         }
         public static bool Arhiviraj()
         {
-            string dirPath = Path.GetDirectoryName(nazivDatoteke)+"\\" + nazivDnevnikDir;
-            if(!Directory.Exists(dirPath))
+            string dirPath = Path.GetDirectoryName(nazivDatoteke) + "\\" + nazivDnevnikDir;
+            if (!Directory.Exists(dirPath))
             {
                 try
                 {
@@ -90,7 +103,7 @@ namespace Procode.PolovniAutomobili.Common
                 catch (Exception ex)
                 {
                     EventLogger.WriteEventError(string.Format("Nisam uspeo da preimenujem fajl '{0}' u '{1}'.", nazivDatoteke, novoIme), ex);
-                    return false; 
+                    return false;
                 }
             }
             return true;

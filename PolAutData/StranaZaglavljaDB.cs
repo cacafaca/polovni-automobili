@@ -18,7 +18,7 @@ namespace Procode.PolovniAutomobili.Data
             if (Sadrzaj != string.Empty)
             {
                 System.Collections.Hashtable parametri = new System.Collections.Hashtable();
-                Provider.Data data = Provider.Data.GetDataInstance();
+                Provider.Data data = Provider.Data.GetNewDataInstance();
                 data.Execute("", parametri);
                 return true;
             }

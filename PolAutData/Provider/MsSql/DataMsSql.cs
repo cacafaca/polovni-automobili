@@ -1,21 +1,21 @@
 ﻿using System.Data.SqlClient;
 using System.Collections;
 using System.Data;
+using System;
 
 namespace Procode.PolovniAutomobili.Data.Provider.MsSql
 {
     public class DataMsSql : Data, IData
     {
         #region Private fields
-        SqlConnection Connection;
-        SqlTransaction Transaction;        
+        SqlTransaction Transaction;
         #endregion
 
         #region Constructors
-        public DataMsSql()
+        public DataMsSql(string connectionString)
+            : base(connectionString)
         {
-            //ConnectionString = Properties.Settings.Default.MsSqlConnectionString;
-            //m_DbConnection = Connection;
+            Connection = new SqlConnection(connectionString);
         }
         #endregion
 
@@ -23,18 +23,23 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
         public override bool Open()
         {
             if (Connection != null)
-                Connection.Close();
-            Connection = new SqlConnection("");
-            try
             {
-                Connection.Open();
-                return true;
+                if (Connection.State == ConnectionState.Open)
+                    Connection.Close();
+                try
+                {
+                    Connection.Open();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
-            catch
-            {
+            else
                 return false;
-            }
         }
+
         public override bool Close()
         {
             try
@@ -47,14 +52,22 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
                 return false;
             }
         }
+
         public override bool BeginTran()
         {
-            throw new System.NotImplementedException();
+            if (Transaction != null)
+                throw new Exception("Transaction is not null.");
+            var con = (SqlConnection)Connection;
+            Transaction = con.BeginTransaction(System.Threading.Thread.CurrentThread.Name);
+            return true;
         }
+
         public override bool CommitTran()
-        {
-            throw new System.NotImplementedException();
+        {            
+            Transaction.Commit();
+            return true;
         }
+
         public override bool RollbackTran()
         {
             try
@@ -82,11 +95,26 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
         {
             return Transaction != null;
         }
+
         public override bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult)
         {
-            queryResult = null;
-            return false;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, (SqlConnection)Connection, Transaction);
+                FillParams(cmd, parameters);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                queryResult = new DataSet();
+                da.Fill(queryResult);
+                return (queryResult != null) && (queryResult.Tables.Count > 0) && (queryResult.Tables[0].Rows.Count > 0);
+            }
+            catch (Exception ex)
+            {
+                queryResult = null;
+                Common.EventLogger.WriteEventError("Can't get dataset.", ex);
+                return false;
+            }
         }
+
         public override bool GetDataSet(string query, out DataSet queryResult)
         {
             return GetDataSet(query, null, out queryResult);
@@ -95,7 +123,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
         {
             try
             {
-                SqlCommand command = new SqlCommand(query, Connection, Transaction);
+                SqlCommand command = new SqlCommand(query, (SqlConnection)Connection, Transaction);
                 FillParams(command, parameters);
                 command.CommandType = System.Data.CommandType.Text;
                 command.ExecuteNonQuery();

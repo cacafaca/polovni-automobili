@@ -6,6 +6,7 @@ using FirebirdSql.Data.FirebirdClient;
 using System.Collections;
 using System.Data;
 using Procode.PolovniAutomobili.Common.Korisno;
+using System.Data.Common;
 
 namespace Procode.PolovniAutomobili.Data.Provider.Firebird
 {
@@ -18,7 +19,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.Firebird
         FbTransaction Transaction;
         FbConnection Connection;
         #endregion
- 
+
         #region Constructors
         /// <summary>
         /// Constructor sets:
@@ -31,7 +32,8 @@ namespace Procode.PolovniAutomobili.Data.Provider.Firebird
         ///         <item>parameter prefix (eg. "@")</item>       
         ///     </list>
         /// </summary>
-        public DataFirebird()
+        public DataFirebird(string connectionString)
+            : base(connectionString)
         {
             Connection = new FbConnection(Properties.Settings.Default.FBConnectionString);
             //m_DbConnection = Connection; 
@@ -137,6 +139,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.Firebird
         {
             return Transaction != null;
         }
+
         override public bool GetDataSet(string query, Hashtable parameters, out DataSet queryResult)
         {
             try
@@ -155,6 +158,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.Firebird
                 return false;
             }
         }
+
         override public bool GetDataSet(string query, out DataSet queryResult)
         {
             return GetDataSet(query, null, out queryResult);

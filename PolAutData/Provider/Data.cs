@@ -18,6 +18,9 @@ namespace Procode.PolovniAutomobili.Data.Provider
         #region Protected fields
         protected static ProviderType DataBaseProvider = (ProviderType)Enum.Parse(typeof(ProviderType), Properties.Settings.Default.DatabaseProvider, true);
         protected Exception m_LastException;
+        protected string ConnectionString;
+        protected DbConnection Connection;
+        protected DbTransaction Transaction;
         #endregion
 
         #region Public fields
@@ -32,50 +35,48 @@ namespace Procode.PolovniAutomobili.Data.Provider
             DataInstance = null;
         }
 
-        public Data()
-            :this(null)
+        public Data(string connectionString)
         {
+            ConnectionString = connectionString;
+            Connection = null;
+            DataInstance = null;
         }
         #endregion
 
-        public static Data GetDataInstance()
+        public static Data GetNewDataInstance()
         {
             switch (DataBaseProvider)
             {
                 case ProviderType.Firebird:
                 default:
                     if (DataInstance == null)
-                        DataInstance = new Provider.Firebird.DataFirebird();
+                        DataInstance = new Provider.Firebird.DataFirebird(null);
                     break;
                 case ProviderType.MsSql:
                     if (DataInstance == null)
-                        DataInstance = new Provider.MsSql.DataMsSql();
+                        DataInstance = new Provider.MsSql.DataMsSql(null);
                     break;
             }
             return DataInstance;
         }
 
-        /// <summary>
-        /// Get new data instance. Make new connection.
-        /// </summary>
-        /// <returns></returns>
-        public static Data GetNewDataInstance()
+        public static Data GetNewDataInstance(ProviderType dataBaseProviderType, string connectionString)
         {
-            Data dataInstance = null;
-            switch (DataBaseProvider)
+            switch (dataBaseProviderType)
             {
                 case ProviderType.Firebird:
                 default:
-                    dataInstance = new Provider.Firebird.DataFirebird();
+                    if (DataInstance == null)
+                        DataInstance = new Provider.Firebird.DataFirebird(connectionString);
                     break;
                 case ProviderType.MsSql:
-                    dataInstance = new Provider.MsSql.DataMsSql();
+                    if (DataInstance == null)
+                        DataInstance = new Provider.MsSql.DataMsSql(connectionString);
                     break;
                 case ProviderType.MySql:
-                    dataInstance = new Provider.MySql.DataMySql();
-                    break;
+                    throw new NotImplementedException();
             }
-            return dataInstance;
+            return DataInstance;
         }
 
         #region Interface methods

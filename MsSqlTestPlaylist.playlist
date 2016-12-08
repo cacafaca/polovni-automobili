@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="Procode.PolovniAutomobili.Data.Provider.MsSql.Tests.DataMsSqlTests.OpenTest" /><Add Test="Procode.PolovniAutomobili.Data.Vehicle.Tests.AutomobileTests.SaveMsSqlTest" /><Add Test="Procode.PolovniAutomobili.Data.Provider.MsSql.Tests.DataMsSqlTests.OpenMsSqlTest" /></Playlist>

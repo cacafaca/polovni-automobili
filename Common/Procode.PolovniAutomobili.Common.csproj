@@ -89,21 +89,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Vehicle\Automobile.cs" />
+    <Compile Include="Model\Vehicle\Automobile.cs" />
     <Compile Include="Korisno\EventLogger.cs" />
     <Compile Include="Http\HttpComm.cs" />
-    <Compile Include="Vehicle\Automobiles.cs" />
-    <Compile Include="Vehicle\Bicycle.cs" />
-    <Compile Include="Vehicle\Marka.cs" />
-    <Compile Include="Vehicle\MarkaLista.cs" />
-    <Compile Include="Vehicle\Model.cs" />
-    <Compile Include="Vehicle\ModelList.cs" />
-    <Compile Include="Vehicle\Motori.cs" />
-    <Compile Include="Vehicle\Plovila.cs" />
-    <Compile Include="Vehicle\PoljoprivrednaVozila.cs" />
-    <Compile Include="Vehicle\RadneMasine.cs" />
-    <Compile Include="Vehicle\TransportnaVozila.cs" />
-    <Compile Include="Vehicle\Vozilo.cs" />
+    <Compile Include="Model\Vehicle\Automobiles.cs" />
+    <Compile Include="Model\Vehicle\Bicycle.cs" />
+    <Compile Include="Model\Vehicle\Motori.cs" />
+    <Compile Include="Model\Vehicle\Plovila.cs" />
+    <Compile Include="Model\Vehicle\PoljoprivrednaVozila.cs" />
+    <Compile Include="Model\Vehicle\RadneMasine.cs" />
+    <Compile Include="Model\Vehicle\TransportnaVozila.cs" />
+    <Compile Include="Model\Vehicle\Vozilo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">

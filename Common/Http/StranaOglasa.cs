@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Procode.PolovniAutomobili.Common.Vehicle;
+using Procode.PolovniAutomobili.Common.Model.Vehicle;
 using System.Linq;
 
 namespace Procode.PolovniAutomobili.Common.Http

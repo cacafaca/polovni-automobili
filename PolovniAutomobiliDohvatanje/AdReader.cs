@@ -31,7 +31,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
                 StranaOglasa stranaOglasa = procitaneStrane.Uzmi() as StranaOglasa;
                 if (stranaOglasa != null)
                 {
-                    Common.Vehicle.Automobile auto = null;
+                    Common.Model.Vehicle.Automobile auto = null;
                     try
                     {
                         if (stranaOglasa.Procitaj())
