@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Install", "Install", "{AA2F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.DataTests", "Procode.PolovniAutomobili.DataTests\Procode.PolovniAutomobili.DataTests.csproj", "{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PlovniAutomobili.DohvatanjeTest", "Procode.PlovniAutomobili.DohvatanjeTest\Procode.PlovniAutomobili.DohvatanjeTest.csproj", "{6EE2D21D-D854-496D-8FBF-56E4E2C55724}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.DohvatanjeTest", "Procode.PolovniAutomobili.DohvatanjeTest\Procode.PolovniAutomobili.DohvatanjeTest.csproj", "{6EE2D21D-D854-496D-8FBF-56E4E2C55724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
