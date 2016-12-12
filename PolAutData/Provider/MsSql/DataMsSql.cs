@@ -25,7 +25,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
             if (Connection != null)
             {
                 if (Connection.State == ConnectionState.Open)
-                    Connection.Close();
+                    return true;
                 try
                 {
                     Connection.Open();
@@ -65,6 +65,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
         public override bool CommitTran()
         {            
             Transaction.Commit();
+            Transaction = null;
             return true;
         }
 
@@ -87,6 +88,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
                 return false;
             }
         }
+
         /// <summary>
         /// Check if transaction is open.
         /// </summary>
@@ -119,6 +121,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
         {
             return GetDataSet(query, null, out queryResult);
         }
+
         public override bool Execute(string query, Hashtable parameters)
         {
             try
@@ -134,6 +137,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
                 return false;
             }
         }
+
         public override bool Execute(string query)
         {
             return Execute(query, null);

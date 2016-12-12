@@ -6,10 +6,10 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Servis za dohvatanje polovnih automobila")]
-[assembly: AssemblyDescription("Servis čita oglase polovnih automobila sa sajta www.polovniautomobili.com")]
+[assembly: AssemblyTitle("Fetch adds from site www.polovniautomobili.com")]
+[assembly: AssemblyDescription("Service for featching and saving ads from site www.polovniautomobili.com to database.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Nemanja Simović")]
+[assembly: AssemblyCompany("Procode")]
 [assembly: AssemblyProduct("PolovniAutomobiliDohvatanje.Properties")]
 [assembly: AssemblyCopyright("Nemanja Simović")]
 [assembly: AssemblyTrademark("")]

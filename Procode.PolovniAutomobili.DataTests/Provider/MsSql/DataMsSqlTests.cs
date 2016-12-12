@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Procode.PolovniAutomobili.Data.Provider;
 
-namespace Procode.PolovniAutomobili.Data.Provider.MsSql.Tests
+namespace Procode.PolovniAutomobili.DataTests.Provider.MsSql.Tests
 {
     [TestClass()]
     public class DataMsSqlTests
@@ -16,7 +17,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql.Tests
         [TestMethod()]
         public void OpenMsSqlTest()
         {
-            Data data = Data.GetNewDataInstance(ProviderType.MsSql, ConnectionString);
+            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(ProviderType.MsSql, ConnectionString);
             data.Open();
             data.Close();
         }

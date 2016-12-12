@@ -31,7 +31,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         {
             Data = Procode.PolovniAutomobili.Data.Provider.Data.GetNewDataInstance();
         }
-        
+
         #endregion
 
 
@@ -168,7 +168,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
             parameters = FillParams(automobile);
 
             StringBuilder updateCommand = new StringBuilder();
-            updateCommand.AppendLine("UPDATE AUTOMOBIL");
+            updateCommand.AppendLine("UPDATE AUTOMOBILe");
             updateCommand.AppendLine("SET    naslov = @naslov");
             updateCommand.AppendLine("       ,cena = @cena");
             updateCommand.AppendLine("       ,url = @url");
@@ -205,6 +205,8 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         private bool SaveOnce(Common.Model.Vehicle.Automobile automobile)
         {
             bool saveSucceed = false;
+            bool errorOccurred = false;
+
             if (automobile.BrojOglasa > 0)
             {
                 if (Data.Open())
@@ -214,34 +216,48 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                         try
                         {
                             if (!Exists(automobile.BrojOglasa))   // select
+                            {
                                 if (Insert(automobile))
                                     Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
                                 else
+                                {
+                                    errorOccurred = true;
                                     Common.Dnevnik.PisiSaImenomThreda("Nije dodat u bazu oglas " + automobile);
+                                }
+                            }
                             else
+                            {
                                 if (Update(automobile))
                                     Common.Dnevnik.PisiSaImenomThreda("Uspešno izmenjen u bazi oglas " + automobile);
                                 else
-                                    Common.Dnevnik.PisiSaImenomThreda("Nije izmenjen u bazi oglas " + automobile);
-
-                            if (Data.CommitTran())
-                            {
-                                saveSucceed = true;
-                                Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
-                            }
-                            else
-                            {
-                                //Common.Korisno.Korisno.LogError("Can't commit transaction. Automobile: " + automobile);
-                                if (!Data.RollbackTran())
                                 {
-                                    Common.Korisno.Korisno.LogError(string.Format("Can't rollback transaction. Connection: {0}. Automobile: {1}", Data, automobile));
-                                    if (!Data.Close())
+                                    errorOccurred = true;
+                                    Common.Dnevnik.PisiSaImenomThreda("Nije izmenjen u bazi oglas " + automobile);
+                                }
+                            }
+
+                            if (!errorOccurred)
+                            {
+                                if (Data.CommitTran())
+                                {
+                                    saveSucceed = true;
+                                    Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
+                                }
+                                else
+                                {
+                                    //Common.Korisno.Korisno.LogError("Can't commit transaction. Automobile: " + automobile);
+                                    if (!Data.RollbackTran())
                                     {
-                                        Common.Korisno.Korisno.LogError("Can't close connection. Automobile: " + automobile);
+                                        Common.Korisno.Korisno.LogError(string.Format("Can't rollback transaction. Connection: {0}. Automobile: {1}", Data, automobile));
+                                        if (!Data.Close())
+                                        {
+                                            Common.Korisno.Korisno.LogError("Can't close connection. Automobile: " + automobile);
+                                        }
                                     }
                                 }
-
                             }
+                            else
+                                Data.RollbackTran();
                         }
                         catch (Exception ex)
                         {
@@ -264,7 +280,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
         }
 
         /// <summary>
-        /// Saves autmobile in DB.
+        /// Saves automobile in DB.
         /// </summary>
         /// <param name="automobile">Automobile to save.</param>
         public bool Save(Common.Model.Vehicle.Automobile automobile)
@@ -274,7 +290,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                     return true;
                 else
                 {
-                    Common.Korisno.Korisno.LogError(string.Format("SaveOnce didn't succeded. Attempt #{0}. Sleeping {1} ms.", i, Properties.Settings.Default.SleepTimeAfterFailedSave));
+                    Common.Korisno.Korisno.LogError(string.Format("SaveOnce didn't succeeded. Attempt #{0}. Sleeping {1} ms.", i, Properties.Settings.Default.SleepTimeAfterFailedSave));
                     Thread.Sleep(Properties.Settings.Default.SleepTimeAfterFailedSave);
                 }
             return false;
@@ -392,7 +408,7 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                     automobileArray[0, col] = allAutomobiles.Tables[0].Columns[col].ColumnName;
                 for (int row = 1; row < allAutomobiles.Tables[0].Rows.Count + 1; row++)
                     for (int col = 0; col < allAutomobiles.Tables[0].Columns.Count; col++)
-                        automobileArray[row, col] = allAutomobiles.Tables[0].Rows[row-1][col];
+                        automobileArray[row, col] = allAutomobiles.Tables[0].Rows[row - 1][col];
             }
             return automobileArray;
         }

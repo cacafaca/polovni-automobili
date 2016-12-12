@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{6D580959-3922-46E2-86BB-1340B976C48F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutoPolicajac", "PolAutoPolicajac\PolAutoPolicajac.csproj", "{7F3091FA-D0D8-4AE9-931D-AEC526A479F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.Common", "Common\Procode.PolovniAutomobili.Common.csproj", "{C93658D6-B228-4F6F-8802-A387D140EC22}"
@@ -32,10 +30,6 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "Modelin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolAutDataTest", "PolAutDataTest\PolAutDataTest.csproj", "{B106154B-C9C0-47D9-AD39-EC78F34BC1EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolovniAutomobiliDohvatanjeTest", "PolovniAutomobiliDohvatanjeTest\PolovniAutomobiliDohvatanjeTest.csproj", "{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTest", "CommonTest\CommonTest.csproj", "{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{84765268-2743-4181-A655-EE3A7FC6CE74}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{957E85F2-3A77-49AF-B33D-E6B7CDD765A7}"
@@ -43,6 +37,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Install", "Install", "{AA2F7111-99C7-450F-B13F-FAEE04709749}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PolovniAutomobili.DataTests", "Procode.PolovniAutomobili.DataTests\Procode.PolovniAutomobili.DataTests.csproj", "{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Procode.PlovniAutomobili.DohvatanjeTest", "Procode.PlovniAutomobili.DohvatanjeTest\Procode.PlovniAutomobili.DohvatanjeTest.csproj", "{6EE2D21D-D854-496D-8FBF-56E4E2C55724}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,20 +53,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Azure|Any CPU.ActiveCfg = Azure|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Azure|Any CPU.Build.0 = Azure|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Azure|Mixed Platforms.ActiveCfg = Azure|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Azure|x86.ActiveCfg = Azure|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6D580959-3922-46E2-86BB-1340B976C48F}.Release|x86.ActiveCfg = Release|Any CPU
 		{7F3091FA-D0D8-4AE9-931D-AEC526A479F0}.Azure|Any CPU.ActiveCfg = Azure|Any CPU
 		{7F3091FA-D0D8-4AE9-931D-AEC526A479F0}.Azure|Any CPU.Build.0 = Azure|Any CPU
 		{7F3091FA-D0D8-4AE9-931D-AEC526A479F0}.Azure|Mixed Platforms.ActiveCfg = Azure|Any CPU
@@ -219,34 +201,6 @@ Global
 		{B106154B-C9C0-47D9-AD39-EC78F34BC1EC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B106154B-C9C0-47D9-AD39-EC78F34BC1EC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B106154B-C9C0-47D9-AD39-EC78F34BC1EC}.Release|x86.ActiveCfg = Release|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Azure|Any CPU.ActiveCfg = Azure|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Azure|Any CPU.Build.0 = Azure|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Azure|Mixed Platforms.ActiveCfg = Azure|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Azure|x86.ActiveCfg = Azure|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442}.Release|x86.ActiveCfg = Release|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Azure|Any CPU.ActiveCfg = Azure|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Azure|Any CPU.Build.0 = Azure|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Azure|Mixed Platforms.ActiveCfg = Azure|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Azure|x86.ActiveCfg = Azure|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F}.Release|x86.ActiveCfg = Release|Any CPU
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}.Azure|Any CPU.ActiveCfg = Release|Any CPU
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}.Azure|Any CPU.Build.0 = Release|Any CPU
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}.Azure|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -265,12 +219,29 @@ Global
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}.Release|x86.ActiveCfg = Release|Any CPU
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122}.Release|x86.Build.0 = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Azure|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Azure|Any CPU.Build.0 = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Azure|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Azure|Mixed Platforms.Build.0 = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Azure|x86.ActiveCfg = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Azure|x86.Build.0 = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Debug|x86.Build.0 = Debug|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Release|x86.ActiveCfg = Release|Any CPU
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6D580959-3922-46E2-86BB-1340B976C48F} = {84765268-2743-4181-A655-EE3A7FC6CE74}
 		{7F3091FA-D0D8-4AE9-931D-AEC526A479F0} = {957E85F2-3A77-49AF-B33D-E6B7CDD765A7}
 		{D1811B72-5560-41C4-ACEC-81A8A913EBA9} = {957E85F2-3A77-49AF-B33D-E6B7CDD765A7}
 		{B96549BE-D050-41E8-9AAB-13DC6BF213B1} = {957E85F2-3A77-49AF-B33D-E6B7CDD765A7}
@@ -278,9 +249,8 @@ Global
 		{67CBC824-A49E-4E9B-A947-360F3DFE65C3} = {957E85F2-3A77-49AF-B33D-E6B7CDD765A7}
 		{7443545E-EE7F-4543-BAEE-9FB149C96036} = {957E85F2-3A77-49AF-B33D-E6B7CDD765A7}
 		{B106154B-C9C0-47D9-AD39-EC78F34BC1EC} = {84765268-2743-4181-A655-EE3A7FC6CE74}
-		{3311CC1F-C7F4-48F3-98C4-3C8B9D3BA442} = {84765268-2743-4181-A655-EE3A7FC6CE74}
-		{ED88E8E8-3CA0-4FD0-A9B4-C7E4320DD70F} = {84765268-2743-4181-A655-EE3A7FC6CE74}
 		{E1D9B3DE-848D-4DD2-A8E2-04F5D1E24122} = {84765268-2743-4181-A655-EE3A7FC6CE74}
+		{6EE2D21D-D854-496D-8FBF-56E4E2C55724} = {84765268-2743-4181-A655-EE3A7FC6CE74}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PolovniAutomobili.vsmdi
