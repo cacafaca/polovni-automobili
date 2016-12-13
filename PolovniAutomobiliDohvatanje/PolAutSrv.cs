@@ -20,7 +20,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
         {
             base.OnStart(args); // Da li je ovo potrebno?
             //pozovi thread
-            obrada = new GlavnaObrada();
+            obrada = new GlavnaObrada(null);
             try
             {
                 string poruka = "Pokrecem servis.";

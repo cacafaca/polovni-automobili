@@ -13,10 +13,12 @@ namespace Procode.PolovniAutomobili.Dohvatanje
         {
             this.brojPisaca = brojPisaca;
             brojZavrsenihPisaca = 0;
+            myCyclesUntilBarrier = 0;
         }
 
         private int brojPisaca;
         private int brojZavrsenihPisaca;
+        private int myCyclesUntilBarrier;
         protected static readonly Object lokerBarijere = new Object();
 
         /// <summary>
@@ -25,16 +27,17 @@ namespace Procode.PolovniAutomobili.Dohvatanje
         public int PisacZaglavljaZavrsio()
         {
             int povratniBroj;
-            lock(lokerBarijere)
+            lock (lokerBarijere)
             {
-                if (brojZavrsenihPisaca < brojPisaca-1) // poslednji pisac ne treba da udje u blok i da se uspava
+                if (brojZavrsenihPisaca < brojPisaca - 1) // poslednji pisac ne treba da udje u blok i da se uspava
                 {
                     brojZavrsenihPisaca++;
                     Monitor.Wait(lokerBarijere);
                 }
-                if (brojZavrsenihPisaca >= brojPisaca-1)
+                if (brojZavrsenihPisaca >= brojPisaca - 1)
                 {
                     brojZavrsenihPisaca = 0;
+                    myCyclesUntilBarrier++;
                     switch (Common.Korisno.Korisno.disciplina)
                     {
                         case Common.Korisno.Korisno.Disciplina.dPulse:
@@ -48,6 +51,19 @@ namespace Procode.PolovniAutomobili.Dohvatanje
                 povratniBroj = brojZavrsenihPisaca;
             }
             return povratniBroj;
+        }
+
+        public int CyclesUntilBarrier
+        {
+            get
+            {
+                int result;
+                lock (lokerBarijere)
+                {
+                    result = myCyclesUntilBarrier;
+                }
+                return result;
+            }
         }
 
     }

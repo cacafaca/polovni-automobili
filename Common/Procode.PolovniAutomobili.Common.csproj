@@ -75,6 +75,7 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="Http\AutomobileAd.cs" />
     <Compile Include="Http\Brojac.cs" />
     <Compile Include="Http\ListaStrana.cs" />
     <Compile Include="Http\Strana.cs" />

@@ -17,7 +17,7 @@ namespace Procode.PolovniAutomobili.DataTests.Vehicle.Tests
         [TestMethod()]
         public void Insert_new_record_in_Automobile_Table()
         {
-            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql);
+            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(new Data.DbContext(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql));
 
             DataSet max;
             data.GetDataSet("select max(brojoglasa) from automobile", out max);
@@ -64,7 +64,7 @@ namespace Procode.PolovniAutomobili.DataTests.Vehicle.Tests
         [TestMethod()]
         public void Update_Existing_record_in_Automobile_Table()
         {
-            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql);
+            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(new Data.DbContext(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql));
 
             DataSet max;
             data.GetDataSet("select max(brojoglasa) from automobile", out max);
@@ -140,6 +140,20 @@ namespace Procode.PolovniAutomobili.DataTests.Vehicle.Tests
                 opis: "Test opis.",
                 kontakt: "Test kontakt."
                 ));
+        }
+
+        [TestMethod]
+        public void Save_2006_Seat_Altea_XL_1_9TDI_105ks_nova()
+        {
+            string adAddress = "http://www.polovniautomobili.com/putnicka-vozila/9290644/mitsubishi-carisma-19-d-nemacka";
+            Common.Model.Vehicle.Automobile automobile = Common.Http.AutomobileAd.ParseAutomobileAd(
+                Common.Http.HttpComm.GetPage(adAddress).ToString(),
+                adAddress);
+
+            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(new Data.DbContext(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql));
+
+            Automobile autoDb = new Automobile(data);
+            autoDb.Save(automobile);
         }
     }
 }

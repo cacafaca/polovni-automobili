@@ -58,7 +58,7 @@ namespace Procode.PolovniAutomobili.Data.Provider.MsSql
             if (Transaction != null)
                 throw new Exception("Transaction is not null.");
             var con = (SqlConnection)Connection;
-            Transaction = con.BeginTransaction(System.Threading.Thread.CurrentThread.Name);
+            Transaction = con.BeginTransaction(System.Threading.Thread.CurrentThread.Name.Remove(32));
             return true;
         }
 

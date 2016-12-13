@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="Procode.PolovniAutomobili.Common.Http.Tests.AutomobileAdTests.Parse_Ad_Property_Vlasnistvo_When_There_Is_No_One" /><Add Test="Procode.PolovniAutomobili.Common.Http.Tests.AutomobileAdTests.Parse_Ad_Property_Materijal_Enterijera_When_There_Is_No_One" /></Playlist>

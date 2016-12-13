@@ -8,7 +8,7 @@ namespace Procode.PolovniAutomobili.Common.Http
 {
     public static class HttpComm
     {
-        public static StringBuilder GetPage(string adresa)
+        public static StringBuilder GetPage(string url)
         {
             // used to build entire input
             StringBuilder sb = new StringBuilder();
@@ -17,7 +17,7 @@ namespace Procode.PolovniAutomobili.Common.Http
             byte[] buf = new byte[8192];
 
             // prepare the web page we will be asking for
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(adresa);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.UserAgent = Properties.Settings.Default.NazivServisa + ";" + Properties.Settings.Default.NazivServisaDuzi;
             request.Accept = "Accept-Charset: utf-8";
 

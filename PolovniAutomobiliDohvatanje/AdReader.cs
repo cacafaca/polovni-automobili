@@ -15,13 +15,17 @@ namespace Procode.PolovniAutomobili.Dohvatanje
         Procode.PolovniAutomobili.Data.Vehicle.Automobile autoDB;
         #endregion
 
+        
         #region Constructors
-        public AdReader(ref Common.Http.ListaStrana procitaneStraneOglasa, int threadId):
+
+        public AdReader(Data.DbContext dbContext, ref Common.Http.ListaStrana procitaneStraneOglasa, int threadId):
             base(ref procitaneStraneOglasa, threadId, typeof(AdReader).Name, (int)Properties.Settings.Default.BrojCitacaOglasa)
         {
-            autoDB = new Procode.PolovniAutomobili.Data.Vehicle.Automobile();
+            autoDB = new Procode.PolovniAutomobili.Data.Vehicle.Automobile(Data.Provider.Data.GetNewDataInstance(dbContext));
         }
+        
         #endregion
+
 
         #region RadiObradu
         protected override void RadiObradu()

@@ -17,7 +17,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
         PisacZaglavlja[] pisacZaglavlja = new PisacZaglavlja[Properties.Settings.Default.BrojPisacaZaglavlja];
         CitacZaglavlja[] citacZaglavlja = new CitacZaglavlja[Properties.Settings.Default.BrojCitacaZaglavlja];
         AdReader[] citacOglasa = new AdReader[Properties.Settings.Default.BrojCitacaOglasa];
-        public GlavnaObrada()
+        public GlavnaObrada(Data.DbContext dbContext)
         {
             Dnevnik.Pisi("Inicijalizacija glavne obrade");
             // Inicijalizacija liste strana zaglavlja
@@ -47,7 +47,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
             // inicijalizacija citaca oglasa
             for (int i = 0; i < citacOglasa.Length; i++)
             {
-                citacOglasa[i] = new AdReader(ref procitaneStraneOglasa, i);
+                citacOglasa[i] = new AdReader(dbContext, ref procitaneStraneOglasa, i);
             }
 
             //EventLogger.WriteEventInfo("Glavna obrada inicijalizovana.");
@@ -107,6 +107,12 @@ namespace Procode.PolovniAutomobili.Dohvatanje
         public override string ToString()
         {
             return string.Format("Glavna obrada pokrenuta. Pokrenuto je \n\t{0} pisaca zaglavlja,\n\t{1} citaca zaglavlja pokusaj\n\t{2} citaca oglasa.\nVerzija .Net je {3}.", pisacZaglavlja.Length, citacZaglavlja.Length, citacOglasa.Length, Environment.Version.ToString());
+        }
+
+        // This need to be refactored, as it is not accurate.
+        public bool CyclesFinished()
+        {
+            return barijera.CyclesUntilBarrier == 1;
         }
     }
 }

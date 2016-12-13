@@ -17,7 +17,7 @@ namespace Procode.PolovniAutomobili.DataTests.Provider.MsSql.Tests
         [TestMethod()]
         public void OpenMsSqlTest()
         {
-            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(ProviderType.MsSql, ConnectionString);
+            Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(new Data.DbContext(ProviderType.MsSql, ConnectionString));
             data.Open();
             data.Close();
         }

@@ -39,7 +39,6 @@ namespace Procode.PolovniAutomobili.Dohvatanje
             try
             {
                 RadiObradu();
-
             }
             catch (Exception ex)
             {

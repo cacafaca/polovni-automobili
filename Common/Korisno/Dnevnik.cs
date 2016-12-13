@@ -15,6 +15,8 @@ namespace Procode.PolovniAutomobili.Common
             {
                 nazivDatoteke = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly()?.Location) + "\\Dnevnik.txt";
             }
+            else
+                nazivDatoteke = "c:\\Temp\\Dnevnik.txt";
         }
 
         public static readonly bool PisiUDnevnik = Properties.Settings.Default.PisiUDnevnik;

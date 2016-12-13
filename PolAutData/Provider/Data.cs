@@ -60,18 +60,18 @@ namespace Procode.PolovniAutomobili.Data.Provider
             return DataInstance;
         }
 
-        public static Data GetNewDataInstance(ProviderType dataBaseProviderType, string connectionString)
+        public static Data GetNewDataInstance(DbContext dbContext)
         {
-            switch (dataBaseProviderType)
+            switch (dbContext.DatabaseProviderType)
             {
                 case ProviderType.Firebird:
                 default:
                     if (DataInstance == null)
-                        DataInstance = new Provider.Firebird.DataFirebird(connectionString);
+                        DataInstance = new Provider.Firebird.DataFirebird(dbContext.ConnectionString);
                     break;
                 case ProviderType.MsSql:
                     if (DataInstance == null)
-                        DataInstance = new Provider.MsSql.DataMsSql(connectionString);
+                        DataInstance = new Provider.MsSql.DataMsSql(dbContext.ConnectionString);
                     break;
                 case ProviderType.MySql:
                     throw new NotImplementedException();
