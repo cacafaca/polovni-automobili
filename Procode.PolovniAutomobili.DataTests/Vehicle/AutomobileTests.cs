@@ -15,7 +15,7 @@ namespace Procode.PolovniAutomobili.DataTests.Vehicle.Tests
         string ConnectionStringMsSql = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Nemanja\Source\Repos\polovni-automobili\PolAutData\Databases\PolovniAutomobili.mdf;Integrated Security=True";
 
         [TestMethod()]
-        public void Insert_new_record_in_Automobile_Table()
+        public void Insert_new_generated_record_in_Automobile_Table()
         {
             Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(new Data.DbContext(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql));
 
@@ -62,7 +62,7 @@ namespace Procode.PolovniAutomobili.DataTests.Vehicle.Tests
         }
 
         [TestMethod()]
-        public void Update_Existing_record_in_Automobile_Table()
+        public void Insert_new_generated_record_and_Update_Existing_record_in_Automobile_Table()
         {
             Data.Provider.Data data = Data.Provider.Data.GetNewDataInstance(new Data.DbContext(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql));
 
