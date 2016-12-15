@@ -218,7 +218,9 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                             if (!Exists(automobile.BrojOglasa))   // select
                             {
                                 if (Insert(automobile))
+                                { 
                                     Common.Dnevnik.PisiSaImenomThreda("Uspešno dodat u bazu oglas " + automobile);
+                                }
                                 else
                                 {
                                     errorOccurred = true;
@@ -228,7 +230,9 @@ namespace Procode.PolovniAutomobili.Data.Vehicle
                             else
                             {
                                 if (Update(automobile))
+                                { 
                                     Common.Dnevnik.PisiSaImenomThreda("Uspešno izmenjen u bazi oglas " + automobile);
+                                }
                                 else
                                 {
                                     errorOccurred = true;

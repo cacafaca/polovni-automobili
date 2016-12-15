@@ -16,7 +16,6 @@ namespace Procode.PolovniAutomobili.DohvatanjeTestFromConsole
                 Data.Provider.ProviderType.MsSql, connectionStringMsSql));
 
             mainProcess.Pokreni();
-
         }
     }
 }

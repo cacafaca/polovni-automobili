@@ -116,15 +116,20 @@ namespace Procode.PolovniAutomobili.Common.Http
                     int kilometraza = 0;
                     try
                     {
-                        string kmStr = nodeOpste.SelectNodes("ul/li[" + listItemIndex++ + "]")[0].InnerHtml.Trim();
-                        kilometraza = int.Parse(kmStr.Replace(" km", string.Empty).Replace(".", string.Empty));
+                        string kmStr = nodeOpste.SelectNodes("ul/li[" + listItemIndex + "]")[0].InnerHtml.Trim();
+                        kmStr = kmStr.Replace(" km", string.Empty).Replace(".", string.Empty).Trim();
+                        if (kmStr.All(c => char.IsDigit(c)))
+                        {
+                            kilometraza = int.Parse(kmStr);
+                            listItemIndex++;
+                        }
                     }
                     catch (Exception ex)
                     {
                         greske.AppendLine("Nisam mogao da pročitam polje 'Kilometraža': " + ex.Message);
                     }
 
-                    string karoserija = string.Empty; ;
+                    string karoserija = string.Empty;
                     try
                     {
                         karoserija = nodeOpste.SelectNodes("ul/li[" + listItemIndex++ + "]")[0].InnerHtml.Trim();
@@ -193,11 +198,14 @@ namespace Procode.PolovniAutomobili.Common.Http
                     }
 
                     DateTime datumPostavljanja = DateTime.MinValue;
-                    listItemIndex++;
                     try
                     {
-                        string datumPostavljanjaStr = nodeOpste.SelectNodes("ul/li[" + listItemIndex++ + "]/time")[0].Attributes["datetime"].Value.Trim(); ;
-                        datumPostavljanja = DateTime.SpecifyKind(DateTime.Parse(datumPostavljanjaStr), DateTimeKind.Utc);
+                        var datumPostavljanjaNode = nodeOpste.SelectNodes("ul/li").Where(li => li.ChildNodes?[0].InnerText.Trim().ToLower() == "postavljeno:").FirstOrDefault();
+                        if (datumPostavljanjaNode != null)
+                        {
+                            string datumPostavljanjaStr = datumPostavljanjaNode.ChildNodes[1].Attributes["datetime"].Value.Trim();
+                            datumPostavljanja = DateTime.SpecifyKind(DateTime.Parse(datumPostavljanjaStr), DateTimeKind.Utc);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -205,9 +213,12 @@ namespace Procode.PolovniAutomobili.Common.Http
                     }
 
                     int brojOglasa = 0;
+                    listItemIndex += 2;
                     try
                     {
-                        brojOglasa = int.Parse(nodeOpste.SelectNodes("ul/li[" + listItemIndex++ + "]")[0].InnerHtml.Trim().Replace("Broj oglasa: ", string.Empty));
+                        var brojOglasaNode = nodeOpste.SelectNodes("ul/li").Where(li => li.ChildNodes?[0].InnerText.Trim().ToLower() == "broj oglasa:").FirstOrDefault();
+                        if (brojOglasaNode != null)
+                            brojOglasa = int.Parse(nodeOpste.SelectNodes("ul/li[" + listItemIndex++ + "]")[0].InnerHtml.Trim().Replace("Broj oglasa: ", string.Empty));
                     }
                     catch (Exception ex)
                     {
@@ -265,26 +276,29 @@ namespace Procode.PolovniAutomobili.Common.Http
                     #endregion Oprema
 
                     #region Opis
+                    var x = dok.DocumentNode.Descendants("div").Where(div => div.Attributes.Contains("class") &&
+                            div.Attributes["class"].Value.Equals("description"));
                     var nodeOpis = dok.DocumentNode.Descendants("div").Where(div => div.Attributes.Contains("class") &&
-                            div.Attributes["class"].Value.Equals("description")).First();
+                            div.Attributes["class"].Value.Equals("description")).FirstOrDefault();
 
                     string opis = string.Empty;
-                    try
-                    {
-                        foreach (var element in nodeOpis.ChildNodes)
+                    if (nodeOpis != null)
+                        try
                         {
-                            if (element.NodeType == HtmlAgilityPack.HtmlNodeType.Text)
-                                opis += element.InnerHtml.Trim();
-                            else if (element.NodeType == HtmlAgilityPack.HtmlNodeType.Element && element.Name == "br")
-                                opis += Environment.NewLine;
+                            foreach (var element in nodeOpis.ChildNodes)
+                            {
+                                if (element.NodeType == HtmlAgilityPack.HtmlNodeType.Text)
+                                    opis += element.InnerHtml.Trim();
+                                else if (element.NodeType == HtmlAgilityPack.HtmlNodeType.Element && element.Name == "br")
+                                    opis += Environment.NewLine;
+                            }
+                            opis = opis.Trim();
+                            opis = string.Empty;
                         }
-                        opis = opis.Trim();
-                        opis = string.Empty;
-                    }
-                    catch (Exception ex)
-                    {
-                        greske.AppendLine("Nisam mogao da pročitam polje 'Opis': " + ex.Message);
-                    }
+                        catch (Exception ex)
+                        {
+                            greske.AppendLine("Nisam mogao da pročitam polje 'Opis': " + ex.Message);
+                        }
 
                     #endregion Opis
 
