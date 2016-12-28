@@ -27,7 +27,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
                 //EventLogger.WriteEventInfo(poruka);
                 Dnevnik.PisiSaImenomThreda(poruka);
                 
-                obrada.Pokreni();
+                obrada.Start();
 
                 poruka = "Servis je pokrenut.\n"+obrada.ToString(); 
                 EventLogger.WriteEventInfo(poruka);
@@ -43,7 +43,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
 
         protected override void OnStop()
         {
-            obrada.Zaustavi();
+            obrada.Stop();
             obrada = null;
 
             string poruka = "Servis je zaustavljen.";

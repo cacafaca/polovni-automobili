@@ -18,6 +18,7 @@ namespace Procode.PolovniAutomobili.Common.Http.Tests
             string adContent = Http.HttpComm.GetPage(adAddress).ToString();
 
             Common.Model.Vehicle.Automobile automobile = Common.Http.AutomobileAd.ParseAutomobileAd(adContent, adAddress);
+            Assert.AreNotEqual(0, automobile.BrojOglasa);
         }
 
         [TestMethod()]
@@ -27,6 +28,7 @@ namespace Procode.PolovniAutomobili.Common.Http.Tests
             string adContent = Http.HttpComm.GetPage(adAddress).ToString();
 
             Common.Model.Vehicle.Automobile automobile = Common.Http.AutomobileAd.ParseAutomobileAd(adContent, adAddress);
+            Assert.AreNotEqual(0, automobile.BrojOglasa);
         }
 
         [TestMethod]
@@ -37,6 +39,7 @@ namespace Procode.PolovniAutomobili.Common.Http.Tests
 
             Common.Model.Vehicle.Automobile automobile = Common.Http.AutomobileAd.ParseAutomobileAd(adContent, adAddress);
             Assert.IsNotNull(automobile);
+            Assert.AreNotEqual(0, automobile.BrojOglasa);
             Assert.IsTrue(string.IsNullOrEmpty(automobile.Opis));
         }
 
@@ -48,6 +51,7 @@ namespace Procode.PolovniAutomobili.Common.Http.Tests
 
             Common.Model.Vehicle.Automobile automobile = Common.Http.AutomobileAd.ParseAutomobileAd(adContent, adAddress);
             Assert.IsNotNull(automobile);
+            Assert.AreNotEqual(0, automobile.BrojOglasa);
             Assert.AreEqual(automobile.Kilometraza, 0);
         }
 
@@ -61,5 +65,26 @@ namespace Procode.PolovniAutomobili.Common.Http.Tests
             Assert.IsNotNull(automobile);
             Assert.AreNotEqual(automobile.DatumPostavljanja, DateTime.MinValue);
         }
+
+        [TestMethod]
+        public void Not_Found_404() // 27.12.2016. 01:11:02>           AdReader05: Greška: Neuspelo čitanje strane sa adrese http://www.polovniautomobili.com/putnicka-vozila/9279240/peugeot-407-20-hdi-ful-oprema. Pokušaj 1/3. Exception: Object reference not set to an instance of an object.. StackTrace:    at Procode.PolovniAutomobili.Common.Http.Strana.Procitaj() in C:\Users\Nemanja\Source\Repos\polovni-automobili\Common\Http\Strana.cs:line 38
+        {
+            string adAddress = "http://www.polovniautomobili.com/putnicka-vozila/9279240/peugeot-407-20-hdi-ful-oprema";
+            string exceptionMessage;
+            var x = HttpComm.GetPage(adAddress, out exceptionMessage);
+            if (x != null)
+            {
+                string adContent = x.ToString();
+
+                Model.Vehicle.Automobile automobile = AutomobileAd.ParseAutomobileAd(adContent, adAddress);
+                Assert.IsNotNull(automobile);
+            }
+            else
+            {
+                if (!exceptionMessage.Contains("404"))
+                    Assert.Fail("Can't read address: " + adAddress);
+            }
+        }
+
     }
 }

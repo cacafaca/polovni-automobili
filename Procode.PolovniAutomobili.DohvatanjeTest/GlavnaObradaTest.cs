@@ -14,7 +14,7 @@ namespace Procode.PolovniAutomobili.DohvatanjeTest
             Data.DbContext dbContext = new Data.DbContext(Data.Provider.ProviderType.MsSql, ConnectionStringMsSql);
 
             var obrada = new GlavnaObrada(dbContext);
-            obrada.Pokreni();
+            obrada.Start();
 
             System.Threading.Thread.Sleep(500);
 

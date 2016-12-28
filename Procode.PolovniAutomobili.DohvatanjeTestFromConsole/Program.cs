@@ -15,7 +15,13 @@ namespace Procode.PolovniAutomobili.DohvatanjeTestFromConsole
             Dohvatanje.GlavnaObrada mainProcess = new Dohvatanje.GlavnaObrada(new Data.DbContext(
                 Data.Provider.ProviderType.MsSql, connectionStringMsSql));
 
-            mainProcess.Pokreni();
+            System.Console.WriteLine("Starting... Press any key to stop.");
+
+            mainProcess.Start();
+
+            Console.ReadLine();
+
+            mainProcess.Stop();
         }
     }
 }

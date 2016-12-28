@@ -216,7 +216,7 @@ namespace Procode.PolovniAutomobili.Common.Http
                     listItemIndex += 2;
                     try
                     {
-                        var brojOglasaNode = nodeOpste.SelectNodes("ul/li").Where(li => li.ChildNodes?[0].InnerText.Trim().ToLower() == "broj oglasa:").FirstOrDefault();
+                        var brojOglasaNode = nodeOpste.SelectNodes("ul/li").Where(li => (bool)li.ChildNodes?[0].InnerText.Trim().ToLower().Contains("broj oglasa:")).FirstOrDefault();
                         if (brojOglasaNode != null)
                             brojOglasa = int.Parse(nodeOpste.SelectNodes("ul/li[" + listItemIndex++ + "]")[0].InnerHtml.Trim().Replace("Broj oglasa: ", string.Empty));
                     }

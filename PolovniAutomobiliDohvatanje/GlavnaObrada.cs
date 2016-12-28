@@ -53,7 +53,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
             //EventLogger.WriteEventInfo("Glavna obrada inicijalizovana.");
         }
 
-        public void Pokreni()
+        public void Start()
         {
             Dnevnik.Pisi("Pokretanje threadova.");
             try
@@ -78,7 +78,7 @@ namespace Procode.PolovniAutomobili.Dohvatanje
             }
         }
 
-        public void Zaustavi()
+        public void Stop()
         {
             Dnevnik.PisiSaImenomThreda("Zaustavljanje threadova.");
             try

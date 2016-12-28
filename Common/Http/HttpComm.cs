@@ -10,8 +10,15 @@ namespace Procode.PolovniAutomobili.Common.Http
     {
         public static StringBuilder GetPage(string url)
         {
+            string excaptionMessage = null;
+            return GetPage(url, out excaptionMessage);
+        }
+
+        public static StringBuilder GetPage(string url, out string exceptionMessage)
+        {
             // used to build entire input
             StringBuilder sb = new StringBuilder();
+            exceptionMessage = null;
 
             // used on each read operation
             byte[] buf = new byte[8192];
@@ -32,6 +39,7 @@ namespace Procode.PolovniAutomobili.Common.Http
             }
             catch (Exception ex)
             {
+                exceptionMessage = ex.Message;
                 Common.EventLogger.WriteEventError("Greška pri čitanju URL-a.", ex);
                 return null;
             }
