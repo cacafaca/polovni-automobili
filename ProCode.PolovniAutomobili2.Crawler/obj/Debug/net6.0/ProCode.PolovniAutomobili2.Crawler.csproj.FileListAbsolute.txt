@@ -1,0 +1,12 @@
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\bin\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.deps.json
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\bin\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.dll
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\bin\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.pdb
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.csproj.AssemblyReference.cache
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.AssemblyInfoInputs.cache
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.AssemblyInfo.cs
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.csproj.CoreCompileInputs.cache
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.dll
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\refint\ProCode.PolovniAutomobili2.Crawler.dll
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ProCode.PolovniAutomobili2.Crawler.pdb
+C:\Users\simovicn\Source\Repos\polovni-automobili\ProCode.PolovniAutomobili2.Crawler\obj\Debug\net6.0\ref\ProCode.PolovniAutomobili2.Crawler.dll

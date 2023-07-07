@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Procode.PolovniAutomobili.Dohvatanje</RootNamespace>
     <AssemblyName>Procode.PolovniAutomobili.Dohvatanje</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ManifestCertificateThumbprint>A7E2FF448D5F03FA31B534E2735F168D1C95D13D</ManifestCertificateThumbprint>
